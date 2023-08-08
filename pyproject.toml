@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "videomaker-helper"
+version = "0.1.0"
+description = "Simples tools to help video makers"
+authors = ["dunossauro <mendesxeduardo@gmail.com>"]
+readme = "README.md"
+packages = [{include = "vmh"}]
+classifiers = [
+    "Environment :: Console",
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydub = "^0.25.1"
+typer = "^0.9.0"
+loguru = "^0.7.0"
+tinydb = "^4.8.0"
+rich = "^13.5.2"
+pedalboard = "^0.7.7"
+parsel = "^1.8.1"
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.12.0"
+blue = "^0.9.1"
+ruff = "^0.0.282"
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+[tool.poetry.scripts]
+vmh = "vmh.cli:app"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -4,9 +4,9 @@ This repository is just, at least for now, to sketch ideas about some tools I wa
 
 ## DreamTools
 
-Some tools I would like to develop
+Some tools I would like to develop.
 
-### AudioSplitter
+### AudioSplitter - TODO
 Separate multiple stereo audio channels from a single video file.
 
 For example: A 7.1 video to 7 stereo files.
@@ -15,7 +15,7 @@ For example: A 7.1 video to 7 stereo files.
 
 Use ffmpeg: https://trac.ffmpeg.org/wiki/AudioChannelManipulation
 
-### VoiceCleaner
+### VoiceCleaner - TODO
 
 Clean audiofile with voice. Removing mouth clicks, essers, breath.
 
@@ -23,17 +23,17 @@ Clean audiofile with voice. Removing mouth clicks, essers, breath.
 
 Use [pedalboard](https://github.com/spotify/pedalboard) to load VST plugins.
 
-### AudioSlicer
+### AudioSlicer - TODO
 
-Detect silences in audio and export this in OpentimelineIO file
+Detect silences in audio and export this in OpentimelineIO file.
 
 #### Possible solution
 
-1. For detect silences in audio we can use [pydub](https://github.com/jiaaro/pydub)
-2. For timeline we can use [OpenTimelineIO](https://opentimelineio.readthedocs.io/en/latest/index.html#)
+1. For detect silences in audio, we can use [pydub](https://github.com/jiaaro/pydub)
+2. For timelines, we can use [OpenTimelineIO](https://opentimelineio.readthedocs.io/en/latest/index.html#)
 3. Kdenlive is compatible with OpenTimelineIO. REF: https://kdenlive.org/en/2020/04/kdenlive-20-04-is-out/
 
-### TimelineSlicer
+### TimelineSlicer - WIP
 
 Use audio with silence to create cuts in vídeos on kdenlive timeline.
 
