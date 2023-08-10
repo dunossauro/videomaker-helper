@@ -18,6 +18,8 @@ tinydb = "^4.8.0"
 rich = "^13.5.2"
 pedalboard = "^0.7.7"
 parsel = "^1.8.1"
+moviepy = "v2.0.0.dev2"
+appdirs = "^1.4.4"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.12.0"

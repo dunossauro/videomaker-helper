@@ -1,31 +1,32 @@
 from pathlib import Path
-from subprocess import Popen
 from shutil import rmtree
 from typing import Annotated
 
 from loguru import logger
 from rich.console import Console
 from tinydb import TinyDB
-from typer import Argument, Typer
+from typer import Argument, Option, Typer
 
-from vmh.audio_cuts import cut, read_silences
+from vmh import audio, settings, video
 from vmh.equalize import process_audio
+from vmh.kdenlive import cut
 
 path_arg = Annotated[Path, Argument()]
 
 app = Typer()
 console = Console()
-db = TinyDB('cache.json')
+
+db = TinyDB(str(settings.cache_db_path))
 
 
 @app.command()
-def extract_audio(file):
+def extract_audio(
+    audio_file: path_arg,
+    output_file: Path = Argument(default='output.wav'),
+    eq: bool = Option(True),
+):
     """Extrai o audio de um vídeo."""
-    path = Path(file)
-    result = Popen(
-        f'ffmpeg -i {str(path)} -vn -acodec copy {path.stem}.wav -y'.split()
-    )
-    result.wait()
+    console.print(audio.extract_audio(str(audio_file), str(output_file)))
 
 
 @app.command()
@@ -35,7 +36,17 @@ def silences(audio_file: path_arg):
     As verificações são armazenadas em cache
         caso o arquivo já tenha sido analisado, retornará o cache.
     """
-    console.print(read_silences(str(audio_file)))
+    console.print(list(audio.detect_silences(str(audio_file))))
+
+
+@app.command()
+def cut_silences(audio_file: path_arg, output_file: path_arg):
+    """Corta todos os silêncios de um arquivo de áudio
+
+    As verificações são armazenadas em cache
+        caso o arquivo já tenha sido analisado, retornará o cache.
+    """
+    console.print(audio.cut_silences(str(audio_file), str(output_file)))
 
 
 @app.command()
@@ -49,7 +60,7 @@ def equalize(
     audio_file: path_arg,
     output_file: Path = Argument(default='output.wav'),
 ):
-    """Adiciona compressão, 10db de ganho e um limiter de -10"""
+    """Adiciona compressão, 10db de ganho"""
     process_audio(str(audio_file.resolve()), str(output_file))
 
     console.print(f'{output_file} Created')
@@ -60,7 +71,7 @@ def kdenlive(
     audio_file: path_arg,
     video_file: path_arg,
     input_xml: path_arg,
-    output_path: path_arg,
+    output_path: Path = Argument(default='timelines'),
 ):
     """Gera um xml compatível com a configuração do kdenlive.
 
@@ -75,3 +86,13 @@ def kdenlive(
     output_path.mkdir()
 
     cut(audio_file, video_file, input_xml, output_path)
+
+
+@app.command()
+def cut_video(
+    video_file: path_arg,
+    audio_path: str = Argument(default=''),
+    output_path: Path = Argument(default='result.mov'),
+):
+    """Corta um vídeo usando os silêncios como base."""
+    video.cut_video(str(video_file), str(output_path), audio_path)
