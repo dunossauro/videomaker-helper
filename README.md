@@ -1,42 +1,46 @@
 # VideoMaker Helper
 
-This repository is just, at least for now, to sketch ideas about some tools I want to develop to make my life easier.
+Micro tools to help content creators!
 
-## DreamTools
 
-Some tools I would like to develop.
+## Install
 
-### AudioSplitter - TODO
-Separate multiple stereo audio channels from a single video file.
+`pipx install https://github.com/dunossauro/videomaker-helper.git`
 
-For example: A 7.1 video to 7 stereo files.
 
-#### Possible solution
+## Tools
 
-Use ffmpeg: https://trac.ffmpeg.org/wiki/AudioChannelManipulation
+### extract-audio
 
-### VoiceCleaner - TODO
+Extracts the audio from a video file.
 
-Clean audiofile with voice. Removing mouth clicks, essers, breath.
+Usage:
 
-#### Possible solution
+`vmh extract-audio <audio_path>`
 
-Use [pedalboard](https://github.com/spotify/pedalboard) to load VST plugins.
+### silences
 
-### AudioSlicer - TODO
+TODO doc
 
-Detect silences in audio and export this in OpentimelineIO file.
+### cut-silences
 
-#### Possible solution
+TODO doc
 
-1. For detect silences in audio, we can use [pydub](https://github.com/jiaaro/pydub)
-2. For timelines, we can use [OpenTimelineIO](https://opentimelineio.readthedocs.io/en/latest/index.html#)
-3. Kdenlive is compatible with OpenTimelineIO. REF: https://kdenlive.org/en/2020/04/kdenlive-20-04-is-out/
+### equilize
 
-### TimelineSlicer - WIP
+TODO doc
 
-Use audio with silence to create cuts in vídeos on kdenlive timeline.
+### kdenlive
 
-#### Possible solution
+TODO doc
 
-Apply the same cuts with audio silences in vídeo.
+### cut-video
+
+TODO doc
+
+### transcribe
+
+Transcribes an audio file into subtitles.
+
+Usage:
+`vmh transcribe <audio_path>`

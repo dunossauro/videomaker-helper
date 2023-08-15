@@ -1,3 +1,4 @@
+from enum import Enum
 from pathlib import Path
 from shutil import rmtree
 from typing import Annotated
@@ -17,6 +18,13 @@ app = Typer()
 console = Console()
 
 db = TinyDB(str(settings.cache_db_path))
+
+
+class TranscribeModes(str, Enum):
+    print = 'print'
+    text = 'text'
+    json = 'json'
+    srt = 'srt'
 
 
 @app.command()
@@ -96,3 +104,13 @@ def cut_video(
 ):
     """Corta um vídeo usando os silêncios como base."""
     video.cut_video(str(video_file), str(output_path), audio_path)
+
+
+@app.command()
+def transcribe(
+    audio_path: str = Argument(),
+    mode: TranscribeModes = TranscribeModes.srt,
+    output_path: str = Argument(default='output.srt'),
+):
+    """Transcribes an audio file into subtitles."""
+    console.print(audio.transcribe_audio(audio_path, mode, output_path))
