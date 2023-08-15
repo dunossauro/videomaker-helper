@@ -37,11 +37,11 @@ def extract_audio(
     eq: bool = Option(True),
 ):
     """Extrai o audio de um vídeo."""
-    console.print(audio.extract_audio(str(audio_file), str(output_file)))
+    console.print(audio.extract_audio(str(audio_file), str(output_file), eq))
 
 
 @app.command()
-def silences(audio_file: path_arg):
+def silences(audio_file: list[path_arg]):
     """Verifica os silencios em um arquivo.
 
     As verificações são armazenadas em cache

@@ -27,5 +27,5 @@ def cut_video(input_file: str, output_file: str, audio_file: str = ''):
 
     logger.info(f'Writing {output_file}')
     final_video.write_videofile(
-        output_file, codec='mpeg4'
+        output_file, codec='png'
     )  # , codec='rawvideo')
