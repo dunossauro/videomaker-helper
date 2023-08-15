@@ -39,24 +39,9 @@ def transcribe_audio(audio_path: str, mode: str, output_path: str):
             raise NotImplementedError()
 
         case 'srt':
-            segments: list[Seguiment] = result['segments']
-            rst_segments: list[str] = []
+            from whisper.utils import get_writer
 
-            for segment in segments:
-                start = f'0{str(timedelta(seconds=int(segment["start"])))},000'
-                end = f'0{str(timedelta(seconds=int(segment["end"])))},000'
-                text = segment['text']
-                seg_id = segment['id'] + 1
-
-                rst_segments.append(
-                    f"{seg_id}\n{start} --> {end}\n{text[1:] if text[0] == ' ' else text}\n\n"
-                )
-
-            with open(output_path, 'w', encoding='utf-8') as srt:
-                for s in rst_segments:
-                    srt.write(s)
-
-                return f'Write {output_path}'
+            get_writer('srt', output_path)
 
         case 'text':
             return result['text']
