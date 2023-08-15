@@ -2,6 +2,8 @@ from enum import Enum
 from pathlib import Path
 from shutil import rmtree
 from typing import Annotated
+import warnings
+
 
 from loguru import logger
 from rich.console import Console
@@ -12,8 +14,9 @@ from vmh import audio, settings, video
 from vmh.equalize import process_audio
 from vmh.kdenlive import cut
 
-path_arg = Annotated[Path, Argument()]
+warnings.filterwarnings('ignore')
 
+path_arg = Annotated[Path, Argument()]
 app = Typer()
 console = Console()
 
