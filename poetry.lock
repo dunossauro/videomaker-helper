@@ -376,6 +376,21 @@ files = [
 ]
 
 [[package]]
+name = "language-tool-python"
+version = "2.7.1"
+description = "Checks grammar using LanguageTool."
+optional = false
+python-versions = "*"
+files = [
+    {file = "language_tool_python-2.7.1-py3-none-any.whl", hash = "sha256:ea9e93c261fbc1ec8bd52353c1b22fadba597cd4d65153d7c8f86fe499c719e7"},
+    {file = "language_tool_python-2.7.1.tar.gz", hash = "sha256:753bb6d9a5a8c810bfa96b9029531cfc147fa84822b035e882ff4b3e7c686dae"},
+]
+
+[package.dependencies]
+requests = "*"
+tqdm = "*"
+
+[[package]]
 name = "lit"
 version = "16.0.6"
 description = "A Software Testing Tool"
@@ -871,59 +886,59 @@ files = [
 
 [[package]]
 name = "pedalboard"
-version = "0.7.7"
+version = "0.7.8"
 description = "A Python library for adding effects to audio."
 optional = false
 python-versions = "*"
 files = [
-    {file = "pedalboard-0.7.7-cp310-cp310-macosx_10_13_universal2.whl", hash = "sha256:b353228fbda03f3515809e7b20b886426816eae7b0f16e1923a2e260d7d19a69"},
-    {file = "pedalboard-0.7.7-cp310-cp310-macosx_10_13_x86_64.whl", hash = "sha256:2abbb13dc33e0edc6f810de9a8b776970900ded34b5b2a18c44c9e3bdf2f54e1"},
-    {file = "pedalboard-0.7.7-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:8d51d91e269f14d056e57ed07068bf067dee35ca94ba0846d3186ff118c50de8"},
-    {file = "pedalboard-0.7.7-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:3779b9de1d5764ee828553264faea14e8034938bac2d692add4443be31d4ed08"},
-    {file = "pedalboard-0.7.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e5ce2287c3ec053410cce1e7dd12d442bf8f03e683ddbff8f650350ea30f193c"},
-    {file = "pedalboard-0.7.7-cp310-cp310-musllinux_1_1_aarch64.whl", hash = "sha256:888d8f5c41ae0af859db39cbabe8311c24db963c51eb1bf8c8d8903d491f24fb"},
-    {file = "pedalboard-0.7.7-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:93e055b4669f06d82fc8a00532421581215010d26a1f0e39219f2cd5cb30e572"},
-    {file = "pedalboard-0.7.7-cp310-cp310-win_amd64.whl", hash = "sha256:a1ef9a3a366a954f1fe3ff15fb9301a6889783b77cbcb042cbdd87432efae5db"},
-    {file = "pedalboard-0.7.7-cp311-cp311-macosx_10_13_universal2.whl", hash = "sha256:c0bfaf7418464ba6c0c5c1890130fc94d75509e4b167ba705f63cec9f8b44813"},
-    {file = "pedalboard-0.7.7-cp311-cp311-macosx_10_13_x86_64.whl", hash = "sha256:94718c8bec7399afea3abd9f9c4c8ba526bb9b435439de81f7fcb76450d16f79"},
-    {file = "pedalboard-0.7.7-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:4696b8c3df90244382794dfc16b13944036400322b715092b8be130052f27ae7"},
-    {file = "pedalboard-0.7.7-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b9853b2d17f2f9329d7a90f1b43f7d04374e1a1ed5a8f51eadbbf558db358210"},
-    {file = "pedalboard-0.7.7-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d8d9707eb7fd91d5a0204d390e0c11b76501106269d2ff23fd7ab4a8140c3191"},
-    {file = "pedalboard-0.7.7-cp311-cp311-musllinux_1_1_aarch64.whl", hash = "sha256:1948f31733426f53caedccc10d156e275e83538fb9381a051afb16cddf6508a4"},
-    {file = "pedalboard-0.7.7-cp311-cp311-musllinux_1_1_x86_64.whl", hash = "sha256:0a3ddac609feeba6d18599262c151b234dd703684eddd6d25571fd6bc92be2c3"},
-    {file = "pedalboard-0.7.7-cp311-cp311-win_amd64.whl", hash = "sha256:fb086b8002b06f0bc4fb8f07b44b6ec3e75db3fe2cf5b028eba63bec887f3b86"},
-    {file = "pedalboard-0.7.7-cp36-cp36m-macosx_10_13_x86_64.whl", hash = "sha256:7c27054bb6710b3a4ff412aec7e1eb045c44b117b09038cda7242a5b920c9573"},
-    {file = "pedalboard-0.7.7-cp36-cp36m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:03ccdfed8f42febe5608e6d3b03449815d896670561cd13990d4a7091343f9d7"},
-    {file = "pedalboard-0.7.7-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:2458767d35018577bf0c768bb3b993a630985ef9a452244cc18ee0d8b8eb1f58"},
-    {file = "pedalboard-0.7.7-cp36-cp36m-win_amd64.whl", hash = "sha256:1191da265f8bbf23c4c32c06b05c9a673b27e9d3545a4cdec9ee9c0a3e8a187a"},
-    {file = "pedalboard-0.7.7-cp37-cp37m-macosx_10_13_x86_64.whl", hash = "sha256:72738f0d2c00c203a7831a5c9e2a0652731f58b6242d6487cea9c4d2f7e15b37"},
-    {file = "pedalboard-0.7.7-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:2689abc413a132ef45be2f44a4e14d9cea25e8b89b38507c61b7d19da7913e62"},
-    {file = "pedalboard-0.7.7-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:4331eca245febbc0ab259b14993f15f87ec652cddc6a9ecee7b2e0cf57b4ce50"},
-    {file = "pedalboard-0.7.7-cp37-cp37m-win_amd64.whl", hash = "sha256:96a88729dd93402525d60bd157387a88b54b966795a1cacb663489cdfc11b045"},
-    {file = "pedalboard-0.7.7-cp38-cp38-macosx_10_13_universal2.whl", hash = "sha256:34c6132d0f0fa656d5429acbeeac4f8292cfe0e4d5d0400b1f179409a7fca1c8"},
-    {file = "pedalboard-0.7.7-cp38-cp38-macosx_10_13_x86_64.whl", hash = "sha256:df72e60091a6b38e90d034eb78fb101a0d0556a79bb785a4e1b91f29a6cc4be0"},
-    {file = "pedalboard-0.7.7-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:7857531fc7d7cef6dd7aa103a3dc1b24eb2271abafe349a9e3951f0ac82e33ca"},
-    {file = "pedalboard-0.7.7-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:46db1e8102b9d74389086e6d46a8ed2eaf2e3538eedfa7d973a48c4f6431a7ff"},
-    {file = "pedalboard-0.7.7-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:292d9049fd55ac549cd8f8800636a44e3d5435e31689efe66dba506121b658f6"},
-    {file = "pedalboard-0.7.7-cp38-cp38-win_amd64.whl", hash = "sha256:c509bf7ebc5cacbe9d4c96fc94f42d84a2cc44fa10afbae79bc806a79d4db4b6"},
-    {file = "pedalboard-0.7.7-cp39-cp39-macosx_10_13_universal2.whl", hash = "sha256:70c15164e6c51c52a52af8d1763fb85ae7ace4b5e7c2264edf8ce332fb8fa0e7"},
-    {file = "pedalboard-0.7.7-cp39-cp39-macosx_10_13_x86_64.whl", hash = "sha256:eb3ffa47b0543efbf206b144691c23043d4b3da5a1d706245c1102d17260fcfc"},
-    {file = "pedalboard-0.7.7-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:6c5ebb6ef46e46a9d5861596244a9736a5fd86311c6006cfda9dc5c2cfaed1b1"},
-    {file = "pedalboard-0.7.7-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:dff4b5456510029c4f6f7edbb7c189def14a7adc8045b31fb2e4abea177bfe0b"},
-    {file = "pedalboard-0.7.7-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:46a908dbfd74ce66b4a4b1c2adb17a3644024c6ff6ca288f0676b1a56c3a0403"},
-    {file = "pedalboard-0.7.7-cp39-cp39-win_amd64.whl", hash = "sha256:4be1d17297e0bfa7162ce9e92bc13e6066c73253f1e9ad133b9433c348380cd0"},
-    {file = "pedalboard-0.7.7-pp37-pypy37_pp73-macosx_10_13_x86_64.whl", hash = "sha256:4b461bbd71429bb9b43d755b51efed25185281a6db86b79e1be418d6a7f22c5b"},
-    {file = "pedalboard-0.7.7-pp37-pypy37_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:37cba6c08dfe8b596e64b6d51f87f7c069e87f9e2da575d02e6bb179da87d716"},
-    {file = "pedalboard-0.7.7-pp37-pypy37_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:216f87298871c881c62562049bca85248a16bbb9c9d97c3c84c75707e4ef1572"},
-    {file = "pedalboard-0.7.7-pp37-pypy37_pp73-win_amd64.whl", hash = "sha256:036ce873e6cf5e2ea4ee96153171acfe9811aeb9a24c7c3c0b3d7a884f9b3c13"},
-    {file = "pedalboard-0.7.7-pp38-pypy38_pp73-macosx_10_13_x86_64.whl", hash = "sha256:c2ab8dcd687f560d7bc2c224f310ca7d921c52317bffde73813d5062efa51411"},
-    {file = "pedalboard-0.7.7-pp38-pypy38_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d93a8f61e36ff6f042d55b0848e16aa52a7e7f3996aaf4215cfba8711e8e1da7"},
-    {file = "pedalboard-0.7.7-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c3a3bcd0ebfdcf7c3303bb489793068081b6281623e96f04fd5d56699f22d935"},
-    {file = "pedalboard-0.7.7-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:6137fcde32dc4a80467309b7a17faa2cda0528cb26e7c5ce5c259dca9353695c"},
-    {file = "pedalboard-0.7.7-pp39-pypy39_pp73-macosx_10_13_x86_64.whl", hash = "sha256:ca4ef147b3a6275dcccc406e2e21962ac7f8d4b61c645f6f39b4274fbe353ae4"},
-    {file = "pedalboard-0.7.7-pp39-pypy39_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:4d0ea9b569a046489bd8dc4252fbd4f2a2747655381ed32af5b45da5b9b16162"},
-    {file = "pedalboard-0.7.7-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:064229d3a302f3b6c45d6ef8d4a7b5ca3bc6843a757499ddbb4f954070ae92af"},
-    {file = "pedalboard-0.7.7-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:144a00737e45618beb8182ec0b7c5ea41ce0a110b962a93bf2a3d249e75abfd2"},
+    {file = "pedalboard-0.7.8-cp310-cp310-macosx_10_13_universal2.whl", hash = "sha256:b3f141fa15d2d5677bb68087583bb9f09b0c071e9848935f7866074f28da1234"},
+    {file = "pedalboard-0.7.8-cp310-cp310-macosx_10_13_x86_64.whl", hash = "sha256:3ced035bdeaaa8b27ffc0ecd480f584f6e21c1ad037a881f965513bde3a571f6"},
+    {file = "pedalboard-0.7.8-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:475526b96423ddaedb26237e76248597dec72967d6ca23c2f7ed72337c104ba5"},
+    {file = "pedalboard-0.7.8-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:c2e144e5446970e6a5bf97b22195ac0fbb177346b8ce726e008c70cbcf2417a2"},
+    {file = "pedalboard-0.7.8-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:49cfe44dcd61a14da8e6ce1aff6537fcbe47c7d33f6b9eb864c96a9427b92468"},
+    {file = "pedalboard-0.7.8-cp310-cp310-musllinux_1_1_aarch64.whl", hash = "sha256:202395e3f858f9625d1d2c236bb2c469fb5014c4117aaab7a524e0864d68a6cb"},
+    {file = "pedalboard-0.7.8-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:409c23aff70e1e3fe77fbcc76b0d4a001db8fd0e1af3e31a1effd4047655270b"},
+    {file = "pedalboard-0.7.8-cp310-cp310-win_amd64.whl", hash = "sha256:ca7a58476af51fb9173fb515b949f25fd4a4fa1664eeb10078f0e39dc0dd552d"},
+    {file = "pedalboard-0.7.8-cp311-cp311-macosx_10_13_universal2.whl", hash = "sha256:2d4ff175c028b103856c080e8025d718b46e397c71200987caa5a4c51d9f1bfd"},
+    {file = "pedalboard-0.7.8-cp311-cp311-macosx_10_13_x86_64.whl", hash = "sha256:617011dac8a7b2e0355f9bb751cc367ca98adf905acb62119a6039c5ff45fecf"},
+    {file = "pedalboard-0.7.8-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:2999f316f0ec6df0de407520213686ac46a284f65b76ec00bdc80269c2df5688"},
+    {file = "pedalboard-0.7.8-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:0270b3497d7828efb67a29cdb4c821e13d15937c99875c3a8209957ffaea4e96"},
+    {file = "pedalboard-0.7.8-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b13bb9e227c7328705e282b2c3baea4e26e321dcf06451c9f24b15b20419900e"},
+    {file = "pedalboard-0.7.8-cp311-cp311-musllinux_1_1_aarch64.whl", hash = "sha256:99ab806319699883a9368a91c4abac33aa26760788a08c02a2b57aa3bbf6af84"},
+    {file = "pedalboard-0.7.8-cp311-cp311-musllinux_1_1_x86_64.whl", hash = "sha256:8985b47faa5892a8e9137dd2d8aba8f74368c481b59aaa3ffe28ed75465d4a5c"},
+    {file = "pedalboard-0.7.8-cp311-cp311-win_amd64.whl", hash = "sha256:e9d0bc87515602d4eebaa2d3b411a681a5daceed64045ee2317429f182e4f45f"},
+    {file = "pedalboard-0.7.8-cp36-cp36m-macosx_10_13_x86_64.whl", hash = "sha256:1b30ffe8153203904dd93e25e2ea59193922bee596c0d5b6d3e0d42ed905feb0"},
+    {file = "pedalboard-0.7.8-cp36-cp36m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:e8bf616caa65c9b671cc692f0c558a7a4d65e34fdf4fdc9f4fa3e84ff106c0c0"},
+    {file = "pedalboard-0.7.8-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:7f776e417bd3231008dcf144fc7297b8fa1a5ddba149548d2052737edddab2e1"},
+    {file = "pedalboard-0.7.8-cp36-cp36m-win_amd64.whl", hash = "sha256:216301f3672215bf40b5bae6bb9c788f99457471e068b137f07e6757a2d45614"},
+    {file = "pedalboard-0.7.8-cp37-cp37m-macosx_10_13_x86_64.whl", hash = "sha256:a690b238a868aa1044fde09263ab8173097a33e3860911b63444436bba925b8b"},
+    {file = "pedalboard-0.7.8-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:fad366f0b434dc71f7a27c4b98d1a657492b9012ae6fecc162621dbe8c1ab5f4"},
+    {file = "pedalboard-0.7.8-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0b382167aee6a2ad967f2bf34026e71d2a2d77268cbf051ff251e4268623cf19"},
+    {file = "pedalboard-0.7.8-cp37-cp37m-win_amd64.whl", hash = "sha256:29586118fdcb38208db8abdba7f10e2d3ad6827805036d4be3757355e0b4e40c"},
+    {file = "pedalboard-0.7.8-cp38-cp38-macosx_10_13_universal2.whl", hash = "sha256:3a1d1b493faf5cd44a8954fd9119b5fdcc92d0b03dc5e59e2c022022aa280c4d"},
+    {file = "pedalboard-0.7.8-cp38-cp38-macosx_10_13_x86_64.whl", hash = "sha256:4178e4f689486d31823b8e6b2b9591aa2bc80c9913783c435212cfc1aaae1c02"},
+    {file = "pedalboard-0.7.8-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:9ff6445b93fba96962dfbcdb9167bba97241828f5fd506246cafe6ee8e3ef5f8"},
+    {file = "pedalboard-0.7.8-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:06494424109a0300ca42ba1c2954b29d1650f297851723db544a0eab29246c23"},
+    {file = "pedalboard-0.7.8-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:6909e07282ebb81de8f639b77f7e899cbf98709d399706b007beeeff8b902076"},
+    {file = "pedalboard-0.7.8-cp38-cp38-win_amd64.whl", hash = "sha256:74e9e8b4e8deaaf5ba7db1abe65a83a4e33227947e38d23ef9f3cda81c25e154"},
+    {file = "pedalboard-0.7.8-cp39-cp39-macosx_10_13_universal2.whl", hash = "sha256:9ee9e7e5e17b499b7ad2f1ba0c5f8c120e759423dd531ca7c77a8a00027279e5"},
+    {file = "pedalboard-0.7.8-cp39-cp39-macosx_10_13_x86_64.whl", hash = "sha256:b4d8719ae25957211a935198a0154f822c5df23527f9ec14f17e23f2eeb30acf"},
+    {file = "pedalboard-0.7.8-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:2bb36950f62501d8cde553309b8640f9dea6b25275f2f8349a4443d0a2618114"},
+    {file = "pedalboard-0.7.8-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:e0c118d577d0086c78454bdbec8b59cf8f6b63469d9b4267e86d6414614b9203"},
+    {file = "pedalboard-0.7.8-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:5c57862047ccb60e437a35ab673fc82cb0abeec4f62d6d9b051c750257d06842"},
+    {file = "pedalboard-0.7.8-cp39-cp39-win_amd64.whl", hash = "sha256:8bc642d7dfe6793d96b16dbdf6bae2fd0c8c37b3feff864972fb19be55bc4755"},
+    {file = "pedalboard-0.7.8-pp37-pypy37_pp73-macosx_10_13_x86_64.whl", hash = "sha256:6d866b3993a735caba25ef38eee5916c2bfb172046f2f84c85090538747a4fb7"},
+    {file = "pedalboard-0.7.8-pp37-pypy37_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:decccbb0acfd8f070009185b60bf6728386dfd4d7feeda0d47a9b791241af19e"},
+    {file = "pedalboard-0.7.8-pp37-pypy37_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:86a098438c4f346c56dd1f1ef319aa126a6cb9c0104da958b09dfc9c6586d6ec"},
+    {file = "pedalboard-0.7.8-pp37-pypy37_pp73-win_amd64.whl", hash = "sha256:799df6c393d0192019c8242ae238ea0622619c36e57eca136e80155f20ccb923"},
+    {file = "pedalboard-0.7.8-pp38-pypy38_pp73-macosx_10_13_x86_64.whl", hash = "sha256:ce45165401f8d69dc775e95acfe5bdc2ae13aebe85a8e6aeb2d918300d58c63e"},
+    {file = "pedalboard-0.7.8-pp38-pypy38_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a22f791189698341e238ed1f951064c0a8ae1f5c1585bdcb3681d130f0e22888"},
+    {file = "pedalboard-0.7.8-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:20dadf452b435cda8936cea679b563f8d2337ed3d7d9171b95e88bdfe4c72a9c"},
+    {file = "pedalboard-0.7.8-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:72708a4ce9c28230aaf1b78a35e2c51cdccb8dd2384c8ce8baea26c88ce9c755"},
+    {file = "pedalboard-0.7.8-pp39-pypy39_pp73-macosx_10_13_x86_64.whl", hash = "sha256:edc864e5d10e4bb9591a5985085583158c379c6d1a3e061d4777987e8d56ba07"},
+    {file = "pedalboard-0.7.8-pp39-pypy39_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:00ebdfa4787e9f63f95c0245180a443483d865d5ec449bddbef20af5172cd586"},
+    {file = "pedalboard-0.7.8-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:afb95251179cd02ba982f839ae6715f377789efa4c5b6f44096d288a0bf39821"},
+    {file = "pedalboard-0.7.8-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:b5a8e96c49c68f6605004e334d19fe3d5f3e82a13cd414c6fdd90d74e018db8d"},
 ]
 
 [package.dependencies]
@@ -1358,7 +1373,7 @@ opt-einsum = ["opt-einsum (>=3.3)"]
 [package.source]
 type = "legacy"
 url = "https://download.pytorch.org/whl/cpu"
-reference = "pytorch-cpu"
+reference = "pytorch"
 
 [[package]]
 name = "torchaudio"
@@ -1383,7 +1398,7 @@ torch = "2.0.1"
 [package.source]
 type = "legacy"
 url = "https://download.pytorch.org/whl/cpu"
-reference = "pytorch-cpu"
+reference = "pytorch"
 
 [[package]]
 name = "torchvision"
@@ -1414,7 +1429,7 @@ scipy = ["scipy"]
 [package.source]
 type = "legacy"
 url = "https://download.pytorch.org/whl/cpu"
-reference = "pytorch-cpu"
+reference = "pytorch"
 
 [[package]]
 name = "tqdm"
@@ -1563,4 +1578,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "20eafc370f52a5c4b47390e1ce791572c228ffb27752e02517f717e95a1eaffa"
+content-hash = "767f6a2c8dac6ae893e7c5a14b379a045118f5c4da606a32e6cae17dd5e5ce87"

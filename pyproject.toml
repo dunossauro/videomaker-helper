@@ -20,13 +20,13 @@ pedalboard = "^0.7.7"
 parsel = "^1.8.1"
 moviepy = "v2.0.0.dev2"
 appdirs = "^1.4.4"
+language-tool-python = "^2.7.1"
 whisper = "^1.1.10"
-llvmlite = "^0.40.1"
 numba = "^0.57.1"
 openai-whisper = {git = "https://github.com/openai/whisper.git"}
-torch = "^2.0.1+cpu"
-torchvision = "^0.15.2+cpu"
-torchaudio = "^2.0.2+cpu"
+torch = { version = "^2.0.1+cpu", source = "pytorch" }
+torchvision = { version = "^0.15.2+cpu", source = "pytorch" }
+torchaudio = { version = "^2.0.2+cpu", source = "pytorch" }
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.12.0"
@@ -43,3 +43,8 @@ vmh = "vmh.cli:app"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "pytorch"
+priority = "supplemental"
+url = "https://download.pytorch.org/whl/cpu"
