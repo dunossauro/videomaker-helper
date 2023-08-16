@@ -1,6 +1,6 @@
 # VideoMaker Helper
 
-Micro tools to help content creators!
+Micro tools for content creators!
 
 
 ## Install
@@ -59,14 +59,15 @@ vmh --help
 
 Usage: vmh [OPTIONS] COMMAND [ARGS]...
 
-╭─ Commands ───────────────────────────────────────────────────────────────────────╮
-│ cut-silences             Corta todos os silêncios de um arquivo de áudio         │
-│ cut-video                Corta um vídeo usando os silêncios como base.           │
-│ equalize                 Adiciona compressão, 10db de ganho                      │
-│ extract-audio            Extrai o audio de um vídeo.                             │
-│ kdenlive                 Gera um xml compatível com a configuração do kdenlive.  │
-│ list-cache               Mostra o cache.                                         │
-│ silences                 Verifica os silencios em um arquivo.                    │
-│ transcribe               Transcribes an audio file into subtitles.               │
-╰──────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ──────────────────────────────────────────────────────────────────╮
+│ cut-silences           Removes all silences from an audio file.             │
+│ cut-video              Edits a video using silences as reference.           │
+│ equalize               Adds compression and 10db gain.                      │
+│ extract-audio          Extracts the audio from a video.                     │
+│ grammar-check          Check grammar in a tex tfile.                        │
+│ kdenlive               Generates an XML compatible with kdenlive settings.  │
+│ list-cache             Displays cache.                                      │
+│ silences               Checks for silences in a audio file.                 │
+│ transcribe             Transcribes an audio file into subtitles.            │
+╰─────────────────────────────────────────────────────────────────────────────╯
 ```

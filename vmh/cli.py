@@ -1,10 +1,10 @@
+import warnings
 from enum import Enum
 from pathlib import Path
 from shutil import rmtree
 from typing import Annotated
-import warnings
 
-
+from language_tool_python import LanguageTool
 from loguru import logger
 from rich.console import Console
 from tinydb import TinyDB
@@ -36,13 +36,13 @@ def extract_audio(
     output_file: Path = Argument(default='output.wav'),
     eq: bool = Option(True),
 ):
-    """Extrai o audio de um vídeo."""
+    """Extracts the audio from a video."""
     console.print(audio.extract_audio(str(audio_file), str(output_file), eq))
 
 
 @app.command()
 def silences(audio_file: list[path_arg]):
-    """Verifica os silencios em um arquivo.
+    """Checks for silences in a audio file.
 
     As verificações são armazenadas em cache
         caso o arquivo já tenha sido analisado, retornará o cache.
@@ -52,7 +52,7 @@ def silences(audio_file: list[path_arg]):
 
 @app.command()
 def cut_silences(audio_file: path_arg, output_file: path_arg):
-    """Corta todos os silêncios de um arquivo de áudio
+    """Removes all silences from an audio file.
 
     As verificações são armazenadas em cache
         caso o arquivo já tenha sido analisado, retornará o cache.
@@ -62,7 +62,7 @@ def cut_silences(audio_file: path_arg, output_file: path_arg):
 
 @app.command()
 def list_cache():
-    """Mostra o cache."""
+    """Displays cache."""
     console.print(db.all())
 
 
@@ -71,7 +71,7 @@ def equalize(
     audio_file: path_arg,
     output_file: Path = Argument(default='output.wav'),
 ):
-    """Adiciona compressão, 10db de ganho"""
+    """Adds compression and 10db gain."""
     process_audio(str(audio_file.resolve()), str(output_file))
 
     console.print(f'{output_file} Created')
@@ -84,7 +84,7 @@ def kdenlive(
     input_xml: path_arg,
     output_path: Path = Argument(default='timelines'),
 ):
-    """Gera um xml compatível com a configuração do kdenlive.
+    """Generates an XML compatible with kdenlive settings.
 
     Ele não aplica ao arquivo do kdenlive, somente gera o conteúdo da timeline,
         você deve adicionar manualmente.
@@ -105,7 +105,7 @@ def cut_video(
     audio_path: str = Argument(default=''),
     output_path: Path = Argument(default='result.mov'),
 ):
-    """Corta um vídeo usando os silêncios como base."""
+    """Edits a video using silences as reference."""
     video.cut_video(str(video_file), str(output_path), audio_path)
 
 
@@ -117,3 +117,12 @@ def transcribe(
 ):
     """Transcribes an audio file into subtitles."""
     console.print(audio.transcribe_audio(audio_path, mode, output_path))
+
+
+@app.command()
+def grammar_check(file: path_arg, lang: str = Argument(default='pt-BR')):
+    """Check grammar in a tex tfile."""
+    tool = LanguageTool(lang)
+
+    with open(file) as f:
+        console.print(tool.check(f.read()))
