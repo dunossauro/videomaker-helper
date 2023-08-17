@@ -37,7 +37,7 @@ class Seguiment(TypedDict):
 
 def transcribe_audio(audio_path: Path, mode: str, output_path: str):
     cache = db.search(
-        (where('file_name') == audio_path) & (where('type') == 'transcribe')
+        (where('file_name') == str(audio_path)) & (where('type') == 'transcribe')
     )
 
     if not cache:
@@ -50,8 +50,8 @@ def transcribe_audio(audio_path: Path, mode: str, output_path: str):
                 'data': result,
             }
         )
-
-    result = cache[0]
+    else:
+        result = cache[0]['data']
 
     match mode:
         # TODO: Eliminar essas repetições
