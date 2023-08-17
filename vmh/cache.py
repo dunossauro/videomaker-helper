@@ -1,6 +1,6 @@
 from rich.console import Console
 from tinydb import TinyDB
-from typer import Typer, confirm, Abort
+from typer import Abort, Typer, confirm
 
 from vmh import settings
 
@@ -18,7 +18,7 @@ def list():
 @cache.command()
 def clear():
     """Clear cache."""
-    delete = confirm("Are you sure you want to delete it cache?")
+    delete = confirm('Are you sure you want to delete it cache?')
     if not delete:
         raise Abort()
 

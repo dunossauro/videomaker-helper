@@ -1,17 +1,25 @@
-from datetime import timedelta
+from enum import Enum
 from itertools import chain
 from pathlib import Path
 from typing import TypedDict
 
-import whisper
 from loguru import logger
 from pydub import AudioSegment, silence
 from tinydb import TinyDB, where
+from whisper import load_model
+from whisper.utils import get_writer
 
 from .equalize import process_audio
 from .settings import cache_db_path
 
 db = TinyDB(str(cache_db_path))
+
+
+class TranscribeModes(str, Enum):
+    print = 'print'
+    txt = 'txt'
+    json = 'json'
+    srt = 'srt'
 
 
 class Seguiment(TypedDict):
@@ -27,24 +35,66 @@ class Seguiment(TypedDict):
     no_speech_prob: float
 
 
-def transcribe_audio(audio_path: str, mode: str, output_path: str):
-    model = whisper.load_model('base')
-    result = model.transcribe(audio_path)
+def transcribe_audio(audio_path: Path, mode: str, output_path: str):
+    cache = db.search(
+        (where('file_name') == audio_path) & (where('type') == 'transcribe')
+    )
+
+    if not cache:
+        model = load_model('base')
+        result = model.transcribe(str(audio_path))
+        db.insert(
+            {
+                'type': 'transcribe',
+                'file_name': str(audio_path),
+                'data': result,
+            }
+        )
+
+    result = cache[0]
 
     match mode:
-        case 'print':
+        # TODO: Eliminar essas repetições
+        case TranscribeModes.print:
             return result
 
-        case 'json':
-            raise NotImplementedError()
+        case TranscribeModes.json:
+            writter = get_writer('json', '.')
+            writter(
+                result,
+                output_path,
+                {
+                    'max_line_width': 50,
+                    'max_line_count': 1,
+                    'highlight_words': False,
+                },
+            )
 
-        case 'srt':
-            from whisper.utils import get_writer
+        case TranscribeModes.srt:
+            writter = get_writer('srt', '.')
+            writter(
+                result,
+                output_path,
+                {
+                    'max_line_width': 50,
+                    'max_line_count': 1,
+                    'highlight_words': False,
+                },
+            )
 
-            get_writer('srt', output_path)
+        case TranscribeModes.txt:
+            writter = get_writer('txt', '.')
+            writter(
+                result,
+                output_path,
+                {
+                    'max_line_width': 50,
+                    'max_line_count': 1,
+                    'highlight_words': False,
+                },
+            )
 
-        case 'text':
-            return result['text']
+    return output_path
 
 
 def extract_audio(
@@ -60,13 +110,18 @@ def extract_audio(
     return Path(output_file)
 
 
-def cut_silences(audio_file: str, output_file: str) -> Path:
+def cut_silences(
+    audio_file: str,
+    output_file: str,
+    silence_time: int = 400,
+    threshold: int = -65,
+) -> Path:
     logger.info(f'Reading file: {audio_file}')
     audio = AudioSegment.from_file(audio_file)
     logger.info(f'File read: {audio_file}')
 
     silences = silence.split_on_silence(
-        audio, min_silence_len=400, silence_thresh=-65
+        audio, min_silence_len=silence_time, silence_thresh=threshold
     )
 
     combined = AudioSegment.empty()
@@ -78,8 +133,16 @@ def cut_silences(audio_file: str, output_file: str) -> Path:
     return Path(output_file)
 
 
-def detect_silences(audio_file: str, *, force: bool = False):
-    times = db.search(where('file_name') == audio_file)
+def detect_silences(
+    audio_file: str,
+    silence_time: int = 400,
+    threshold: int = -65,
+    *,
+    force: bool = False,
+):
+    times = db.search(
+        (where('file_name') == audio_file) & (where('type') == 'silence')
+    )
 
     if not times or force:
         logger.info(f'Reading file: {audio_file}')
@@ -88,7 +151,7 @@ def detect_silences(audio_file: str, *, force: bool = False):
 
         logger.info(f'Analize silences in {audio_file}')
         silences = silence.detect_silence(
-            audio, min_silence_len=400, silence_thresh=-65
+            audio, min_silence_len=silence_time, silence_thresh=threshold
         )
         logger.info(f'Finalized analysis: {audio_file}')
 
@@ -101,6 +164,7 @@ def detect_silences(audio_file: str, *, force: bool = False):
 
         db.insert(
             {
+                'type': 'silence',
                 'file_name': str(audio_file),
                 'times': times,
             }

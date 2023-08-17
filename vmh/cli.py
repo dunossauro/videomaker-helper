@@ -1,5 +1,4 @@
 import warnings
-from enum import Enum
 from pathlib import Path
 from shutil import rmtree
 from typing import Annotated
@@ -24,47 +23,62 @@ console = Console()
 db = TinyDB(str(settings.cache_db_path))
 
 
-class TranscribeModes(str, Enum):
-    print = 'print'
-    text = 'text'
-    json = 'json'
-    srt = 'srt'
-
-
 @app.command()
 def extract_audio(
     audio_file: path_arg,
     output_file: Path = Argument(default='output.wav'),
-    eq: bool = Option(True),
+    eq: bool = Option(
+        True, help='Add compression and 10db of extracted audio'
+    ),
 ):
     """Extracts the audio from a video."""
     console.print(audio.extract_audio(str(audio_file), str(output_file), eq))
 
 
 @app.command()
-def silences(audio_file: list[path_arg]):
+def silences(
+    audio_file: list[path_arg],
+    silence_time: int = Option(
+        400, help='Minimal time in ms for configure a silence'
+    ),
+    threshold: int = Option(-65, help='Value in db for detect silence'),
+    force: bool = Option(False, help='Ignore cache'),
+):
     """Checks for silences in a audio file.
 
     As verificações são armazenadas em cache
         caso o arquivo já tenha sido analisado, retornará o cache.
     """
-    console.print(list(audio.detect_silences(str(audio_file))))
+    console.print(
+        list(
+            audio.detect_silences(
+                str(audio_file),
+                silence_time=silence_time,
+                threshold=threshold,
+                force=force,
+            )
+        )
+    )
 
 
 @app.command()
-def cut_silences(audio_file: path_arg, output_file: path_arg):
-    """Removes all silences from an audio file.
-
-    As verificações são armazenadas em cache
-        caso o arquivo já tenha sido analisado, retornará o cache.
-    """
-    console.print(audio.cut_silences(str(audio_file), str(output_file)))
-
-
-@app.command()
-def list_cache():
-    """Displays cache."""
-    console.print(db.all())
+def cut_silences(
+    audio_file: path_arg,
+    output_file: path_arg,
+    silence_time: int = Option(
+        400, help='Minimal time in ms for configure a silence'
+    ),
+    threshold: int = Option(-65, help='Value in db for detect silence'),
+):
+    """Removes all silences from an audio file."""
+    console.print(
+        audio.cut_silences(
+            str(audio_file),
+            str(output_file),
+            silence_time=silence_time,
+            threshold=threshold,
+        )
+    )
 
 
 @app.command()
@@ -111,8 +125,8 @@ def cut_video(
 
 @app.command()
 def transcribe(
-    audio_path: str = Argument(),
-    mode: TranscribeModes = TranscribeModes.srt,
+    audio_path: Path = Argument(),
+    mode: audio.TranscribeModes = audio.TranscribeModes.srt,
     output_path: str = Argument(default='output.srt'),
 ):
     """Transcribes an audio file into subtitles."""
