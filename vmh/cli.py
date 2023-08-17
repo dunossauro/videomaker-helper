@@ -10,14 +10,15 @@ from rich.console import Console
 from tinydb import TinyDB
 from typer import Argument, Option, Typer
 
-from vmh import audio, settings, video
+from vmh import audio, cache, settings, video
 from vmh.equalize import process_audio
 from vmh.kdenlive import cut
 
 warnings.filterwarnings('ignore')
 
 path_arg = Annotated[Path, Argument()]
-app = Typer()
+app = Typer(help='Videomaker Helper!')
+app.add_typer(cache.cache, name='cache', help='Cache tools.')
 console = Console()
 
 db = TinyDB(str(settings.cache_db_path))
@@ -91,7 +92,6 @@ def kdenlive(
     """
     if output_path.exists():
         logger.info(f'Deleting {output_path}')
-        # output_path.rmdir()
         rmtree(output_path)
 
     output_path.mkdir()
