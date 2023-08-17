@@ -60,13 +60,13 @@ vmh --help
 Usage: vmh [OPTIONS] COMMAND [ARGS]...
 
 ╭─ Commands ──────────────────────────────────────────────────────────────────╮
+│ cache                  Cache tools.                                         │
 │ cut-silences           Removes all silences from an audio file.             │
 │ cut-video              Edits a video using silences as reference.           │
 │ equalize               Adds compression and 10db gain.                      │
 │ extract-audio          Extracts the audio from a video.                     │
 │ grammar-check          Check grammar in a tex tfile.                        │
 │ kdenlive               Generates an XML compatible with kdenlive settings.  │
-│ list-cache             Displays cache.                                      │
 │ silences               Checks for silences in a audio file.                 │
 │ transcribe             Transcribes an audio file into subtitles.            │
 ╰─────────────────────────────────────────────────────────────────────────────╯
