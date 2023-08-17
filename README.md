@@ -20,11 +20,20 @@ Usage:
 
 ### silences
 
-TODO doc
+Detect silences in an audio file and save in cache
+
+Basic usage:
+
+`vmh silences <audio_path>`
+
+Advanced usage:
+
+`vmh silences <audio_path> --silence-time 500 --threshold -30`
+
 
 ### cut-silences
 
-TODO doc
+Cut an audio file using silences
 
 ### equilize
 
