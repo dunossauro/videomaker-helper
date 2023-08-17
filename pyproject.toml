@@ -24,9 +24,9 @@ language-tool-python = "^2.7.1"
 whisper = "^1.1.10"
 numba = "^0.57.1"
 openai-whisper = {git = "https://github.com/openai/whisper.git"}
-torch = { version = "^2.0.1+cpu", source = "pytorch" }
-torchvision = { version = "^0.15.2+cpu", source = "pytorch" }
-torchaudio = { version = "^2.0.2+cpu", source = "pytorch" }
+torch = { version = "^2.0.1", source = "pytorch" }
+torchvision = { version = "^0.15.2", source = "pytorch" }
+torchaudio = { version = "^2.0.2", source = "pytorch" }
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.12.0"
