@@ -5,19 +5,43 @@ from typing import Annotated
 
 from loguru import logger
 from rich.console import Console
-from typer import Argument, Option, Typer
+from typer import Argument, Context, Exit, Option, Typer
 
 from vmh import audio, cache, video
 from vmh.equalize import process_audio
 from vmh.kdenlive import cut
+from vmh.settings import __version__
 
 warnings.filterwarnings('ignore')
 
 path_arg = Annotated[Path, Argument()]
 console = Console()
 
-app = Typer(help='Videomaker Helper!')
+app = Typer(help='Videomaker Helper!', no_args_is_help=True)
 app.add_typer(cache.cache, name='cache', help='Cache tools.')
+
+
+def version(arg):
+    if arg:
+        print(__version__)
+        raise Exit(code=0)
+
+
+@app.callback(invoke_without_command=True)
+def callcaback(
+    ctx: Context,
+    version: bool = Option(
+        False,
+        '--version',
+        '-v',
+        callback=version,
+        is_eager=True,
+        is_flag=True,
+        case_sensitive=False,
+        help='Show VMH version',
+    ),
+):
+    ...
 
 
 @app.command()
