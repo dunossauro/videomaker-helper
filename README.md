@@ -68,6 +68,30 @@ vmh cut-video --help
 
 ### transcribe
 
+The `transcribe` command is a powerful tool designed to convert audio content from video or standalone audio files into readable text, producing subtitles for the given content.
+
+- **Input Types**: This command can process both video and audio files.
+
+- **Output Modes**: With the `--mode` flag, users can specify the desired output format for the transcriptions:
+  - `txt`: Produces a `.txt` file with the transcription.
+  - `json`: Generates a structured `.json` file containing the transcription data.
+  - `srt`: Creates a `.srt` subtitle file, commonly used with video players.
+  - `print`: Instead of saving to a file, this mode displays the transcription result directly in the console.
+
+- **Optional Output Path**: While you can specify an `output_path` to determine where the generated file (txt, json, or srt) will be saved, it's not mandatory. If not provided, the default filename will be `output.srt`.
+
+Example Usage:
+
+To transcribe an audio file named `audio.mp3` and get the transcription result in a JSON format, use:
+
+```
+vmh transcribe audio.mp3 --mode json
+```
+
+`--help` Flag Output:
+
+The following shows the output you'd receive when using the `--help` flag with the `transcribe` command:
+
 ```
 vmh transcribe --help
 
