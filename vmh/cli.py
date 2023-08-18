@@ -136,7 +136,13 @@ def transcribe(
 @app.command()
 def grammar_check(file: path_arg, lang: str = Argument(default='pt-BR')):
     """Check grammar in a tex tfile."""
+    from language_tool_python import LanguageTool  # lazy load
+
     tool = LanguageTool(lang)
 
     with open(file) as f:
         console.print(tool.check(f.read()))
+
+
+if __name__ == '__main__':
+    app()

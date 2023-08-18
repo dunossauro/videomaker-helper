@@ -1,13 +1,11 @@
 from enum import Enum
 from itertools import chain
 from pathlib import Path
-from typing import TypedDict
+from typing import Literal, TypedDict
 
 from loguru import logger
 from pydub import AudioSegment, silence
 from tinydb import TinyDB, where
-from whisper import load_model
-from whisper.utils import get_writer
 
 from .equalize import process_audio
 from .settings import cache_db_path
@@ -36,8 +34,12 @@ class Seguiment(TypedDict):
 
 
 def transcribe_audio(audio_path: Path, mode: str, output_path: str):
+    from whisper import load_model  # Lazy load 2secs to start
+    from whisper.utils import get_writer # Lazy load
+
     cache = db.search(
-        (where('file_name') == str(audio_path)) & (where('type') == 'transcribe')
+        (where('file_name') == str(audio_path))
+        & (where('type') == 'transcribe')
     )
 
     if not cache:
