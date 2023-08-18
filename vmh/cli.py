@@ -44,8 +44,7 @@ def silences(
 ):
     """Checks for silences in a audio file.
 
-    As verificações são armazenadas em cache
-        caso o arquivo já tenha sido analisado, retornará o cache.
+    The checks are cached, so if the file has already been analyzed, it will return the cache.
     """
     console.print(
         list(

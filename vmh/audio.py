@@ -42,7 +42,7 @@ class Seguiment(TypedDict):
 
 def transcribe_audio(audio_path: Path, mode: str, output_path: str):
     from whisper import load_model  # Lazy load 2secs to start
-    from whisper.utils import get_writer # Lazy load
+    from whisper.utils import get_writer   # Lazy load
 
     cache = db.search(
         (where('file_name') == str(audio_path))
