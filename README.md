@@ -358,6 +358,26 @@ vmh transcribe --help
 ╰───────────────────────────────────────────────────────────────────────────────────╯
 ```
 
+### `grammar-check`
+
+TODO doc
+
+```
+vmh grammar-check --help
+
+Usage: vmh grammar-check [OPTIONS] FILE [LANG]
+
+  Check grammar in a tex tfile.
+
+╭─ Arguments ───────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    file      PATH    [default: None] [required]                                                     │
+│      lang      [LANG]  [default: pt-BR]                                                               │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
 ## Distance Flag
 
 The `distance` flag is an integral aspect of the VMH's tools, providing users with the ability to adjust the "padding" or extra duration added to the silence sections, thereby refining the cut points in the audio or video. This is especially critical when relying on silence durations as a guiding metric for edits. By adjusting the distance, you can prevent abrupt truncations and allow for smoother transitions, ensuring that the content feels more natural even after cuts.
