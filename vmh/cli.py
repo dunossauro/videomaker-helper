@@ -84,8 +84,9 @@ def cut_silences(
 def equalize(
     audio_file: path_arg,
     output_file: Path = Argument(default='output.wav'),
+    gain: int = Option(10, help='Add dbs in audio'),
 ):
-    """Adds compression and 10db gain."""
+    """Add Compression and Gain dor audio file."""
     process_audio(str(audio_file.resolve()), str(output_file))
 
     console.print(f'{output_file} Created')

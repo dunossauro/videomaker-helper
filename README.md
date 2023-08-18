@@ -76,9 +76,46 @@ vmh cut-silences --help
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
 
-### equilize
+### `equalize`
 
-TODO doc
+The `equalize` command serves as an audio enhancer, providing users the ability to infuse both compression and gain into their audio files. Whether you're refining a podcast, optimizing an interview recording, or leveling the audio of a music track, this tool offers a quick and efficient way to elevate the quality of the sound output.
+
+#### Features:
+
+- **Audio Enhancement**: The primary purpose of the command is to improve audio clarity by automatically applying compression and amplifying the gain, making the audio more consistent and pleasant to the ears.
+
+- **Default Output**: If an `output_file` is not specified, the processed audio is saved as `output.wav` by default.
+
+- **Adjustable Gain**: With the `--gain` option, users can customize the amount of decibel increase they want to apply to the audio.
+
+#### Example Usage:
+
+To equalize an audio file named `interview.mp3` and enhance its gain by 15 decibels, use:
+
+```
+vmh equalize interview.mp3 --gain 15
+```
+
+#### `--help` Flag Output:
+
+For those seeking a comprehensive overview of available options and arguments for the `equalize` command:
+
+```
+vmh equalize --help
+
+ Usage: vmh equalize [OPTIONS] AUDIO_FILE [OUTPUT_FILE]
+
+ Add Compression and Gain for audio file.
+
+╭─ Arguments ──────────────────────────────────────────────────────────────────╮
+│ *    audio_file       PATH           [default: None] [required]              │
+│      output_file      [OUTPUT_FILE]  [default: output.wav]                   │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ --gain        INTEGER  Add dbs in audio [default: 10]                        │
+│ --help                 Show this message and exit.                           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+```
 
 ### kdenlive
 
