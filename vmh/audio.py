@@ -20,6 +20,13 @@ class TranscribeModes(str, Enum):
     srt = 'srt'
 
 
+class Distance(str, Enum):
+    short = 'short'
+    mid = 'mid'
+    long = 'long'
+    sec = 'sec'
+
+
 class Seguiment(TypedDict):
     id: int
     seek: int
@@ -135,10 +142,14 @@ def cut_silences(
     return Path(output_file)
 
 
+threshold_distance = {'short': 0.100, 'mid': 0.250, 'long': 0.500, 'sec': 1}
+
+
 def detect_silences(
     audio_file: str,
     silence_time: int = 400,
     threshold: int = -65,
+    distance: Literal['short', 'mid', 'long', 'sec'] = 'short',
     *,
     force: bool = False,
 ):
@@ -159,7 +170,10 @@ def detect_silences(
 
         times = list(
             chain.from_iterable(
-                [(start / 1000) + 0.100, (stop / 1000) - 0.100]
+                [
+                    (start / 1000) + threshold_distance[distance],
+                    (stop / 1000) - threshold_distance[distance],
+                ]
                 for start, stop in silences
             )
         )
@@ -172,6 +186,7 @@ def detect_silences(
             }
         )
 
+        logger.info(f'Found {len(times)} silences in audio')
         return times
 
     else:

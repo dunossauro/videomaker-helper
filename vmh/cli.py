@@ -3,24 +3,21 @@ from pathlib import Path
 from shutil import rmtree
 from typing import Annotated
 
-from language_tool_python import LanguageTool
 from loguru import logger
 from rich.console import Console
-from tinydb import TinyDB
 from typer import Argument, Option, Typer
 
-from vmh import audio, cache, settings, video
+from vmh import audio, cache, video
 from vmh.equalize import process_audio
 from vmh.kdenlive import cut
 
 warnings.filterwarnings('ignore')
 
 path_arg = Annotated[Path, Argument()]
-app = Typer(help='Videomaker Helper!')
-app.add_typer(cache.cache, name='cache', help='Cache tools.')
 console = Console()
 
-db = TinyDB(str(settings.cache_db_path))
+app = Typer(help='Videomaker Helper!')
+app.add_typer(cache.cache, name='cache', help='Cache tools.')
 
 
 @app.command()
@@ -42,6 +39,7 @@ def silences(
         400, help='Minimal time in ms for configure a silence'
     ),
     threshold: int = Option(-65, help='Value in db for detect silence'),
+    distance: audio.Distance = Option(audio.Distance.short),
     force: bool = Option(False, help='Ignore cache'),
 ):
     """Checks for silences in a audio file.
@@ -55,6 +53,7 @@ def silences(
                 str(audio_file),
                 silence_time=silence_time,
                 threshold=threshold,
+                distance=distance.value,
                 force=force,
             )
         )
@@ -116,11 +115,25 @@ def kdenlive(
 @app.command()
 def cut_video(
     video_file: path_arg,
-    audio_path: str = Argument(default=''),
-    output_path: Path = Argument(default='result.mov'),
+    audio_file: str = Argument(default=''),
+    output_path: Path = Argument(default='result.mp4'),
+    silence_time: int = Option(
+        400, help='Minimal time in ms for configure a silence'
+    ),
+    threshold: int = Option(-65, help='Value in db for detect silence'),
+    distance: audio.Distance = Option(audio.Distance.short),
+    codec: video.Codec = Option(video.Codec.mpeg4),
 ):
     """Edits a video using silences as reference."""
-    video.cut_video(str(video_file), str(output_path), audio_path)
+    video.cut_video(
+        str(video_file),
+        str(output_path),
+        threshold=threshold,
+        silence_time=silence_time,
+        distance=distance.value,
+        audio_file=audio_file,
+        codec=codec.value,
+    )
 
 
 @app.command()
