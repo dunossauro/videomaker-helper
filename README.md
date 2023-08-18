@@ -378,6 +378,41 @@ Usage: vmh grammar-check [OPTIONS] FILE [LANG]
 ╰───────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
+### All options
+
+TODO doc
+
+```
+vmh
+
+  Usage: vmh [OPTIONS] COMMAND [ARGS]...
+
+  Videomaker Helper!
+
+  ╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────╮
+  │ --version             -v                                       Show VMH version                       │
+  │ --install-completion          [bash|zsh|fish|powershell|pwsh]  Install completion for the specified   │
+  │                                                                shell.                                 │
+  │                                                                [default: None]                        │
+  │ --show-completion             [bash|zsh|fish|powershell|pwsh]  Show completion for the specified      │
+  │                                                                shell, to copy it or customize the     │
+  │                                                                installation.                          │
+  │                                                                [default: None]                        │
+  │ --help                                                         Show this message and exit.            │
+  ╰───────────────────────────────────────────────────────────────────────────────────────────────────────╯
+  ╭─ Commands ────────────────────────────────────────────────────────────────────────────────────────────╮
+  │ cache                  Cache tools.                                                                   │
+  │ cut-silences           Removes all silences from an audio file.                                       │
+  │ cut-video              Edits a video using silences as reference.                                     │
+  │ equalize               Add Compression and Gain dor audio file.                                       │
+  │ extract-audio          Extracts the audio from a video.                                               │
+  │ grammar-check          Check grammar in a tex tfile.                                                  │
+  │ kdenlive               Generates an XML compatible with kdenlive settings.                            │
+  │ silences               Checks for silences in a audio file.                                           │
+  │ transcribe             Transcribes an audio file into subtitles.                                      │
+  ╰───────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
 ## Distance Flag
 
 The `distance` flag is an integral aspect of the VMH's tools, providing users with the ability to adjust the "padding" or extra duration added to the silence sections, thereby refining the cut points in the audio or video. This is especially critical when relying on silence durations as a guiding metric for edits. By adjusting the distance, you can prevent abrupt truncations and allow for smoother transitions, ensuring that the content feels more natural even after cuts.
