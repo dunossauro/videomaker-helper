@@ -43,7 +43,36 @@ TODO doc
 
 TODO doc
 
-### cut-video
+### `cut-video`
+
+The `cut-video` command offers content creators a streamlined way to automatically edit videos based on silence detection. By analyzing the audio content within the video, this function trims away portions of the video deemed as "silence", making it particularly useful for removing unintended pauses, long gaps, or any unwanted quiet segments.
+
+#### Features:
+
+- **Input Options**: This command takes a video file as its primary input. An additional audio file can also be provided if desired.
+
+- **Automatic Editing**: By leveraging silence detection, the video can be automatically edited without the need for manual intervention.
+
+- **Customizable Parameters**: Users can fine-tune the editing process using several parameters:
+  - `silence-time`: Specifies the minimum duration of silence (in milliseconds) that should be considered for trimming.
+  - `threshold`: Sets the decibel level to detect silence in the audio.
+  - `distance`: Choose the gap between the silences. Options range from short to sec.
+  - `codec`: Specifies the codec to be used when generating the edited video.
+
+- **Default Output**: If no `output_path` is provided, the edited video will be saved as `result.mp4`.
+
+#### Example Usage:
+
+To edit a video named `sample.mp4` using default parameters, use:
+
+```
+vmh cut-video sample.mp4
+```
+
+#### `--help` Flag Output:
+
+The following provides an overview of the available options and arguments for the `cut-video` command:
+
 ```
 vmh cut-video --help
 
@@ -66,7 +95,8 @@ vmh cut-video --help
 ╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
-### transcribe
+
+### `Transcribe`
 
 The `transcribe` command is a powerful tool designed to convert audio content from video or standalone audio files into readable text, producing subtitles for the given content.
 
