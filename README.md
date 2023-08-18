@@ -1,14 +1,31 @@
 # VideoMaker Helper
 
-Micro tools for content creators!
+VideoMaker Helper is a collection of command-line utilities designed to simplify common tasks for video and audio content creators. These tools aim to automate specific aspects of the video-making process, reducing manual work and enhancing overall efficiency.
 
+## Core Features:
 
-## Install
+- **Silence Detection**: Automatically detect silent segments in audio files. Useful for determining parts to edit or skip.
 
-`pipx install git+https://github.com/dunossauro/videomaker-helper.git`
+- **Audio Equalization**: Adjust the audio to a consistent level across a file. This tool can add compression and gain to improve the listening experience.
+
+- **Audio Extraction**: Pull audio content from video files. With an option to receive both the raw extracted audio and an equalized version.
+
+- **Video Editing**: Based on silence detection, automatically cut portions of a video, providing a streamlined content experience.
+
+## Installation:
+
+To install VideoMaker Helper, simply use the following command:
+
+```bash
+pipx install git+https://github.com/dunossauro/videomaker-helper.git
+```
+
+With VideoMaker Helper installed, you can easily run any of the included tools from your terminal. It's a practical toolset for anyone looking to expedite their content creation process.
 
 
 ## Tools
+
+VideoMaker Helper comes with an array of specialized utilities tailored for video and audio content editing. These tools have been crafted keeping the needs of content creators in mind, ensuring each task is done with precision while saving valuable time.
 
 ### `extract-audio`
 
@@ -221,9 +238,30 @@ vmh equalize --help
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
 
-### kdenlive
+### `kdenlive`
+
+> ⚠ Instable interface
 
 TODO doc
+
+
+```
+vmh kdenlive --help
+
+ Usage: vmh kdenlive [OPTIONS] AUDIO_FILE VIDEO_FILE INPUT_XML [OUTPUT_PATH]
+
+ Generates an XML compatible with kdenlive settings.
+
+╭─ Arguments ─────────────────────────────────────────────────────────────────────────────╮
+│ *    audio_file       PATH           [default: None] [required]                         │
+│ *    video_file       PATH           [default: None] [required]                         │
+│ *    input_xml        PATH           [default: None] [required]                         │
+│      output_path      [OUTPUT_PATH]  [default: timelines]                               │
+╰─────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                             │
+╰─────────────────────────────────────────────────────────────────────────────────────────╯
+```
 
 ### `cut-video`
 
@@ -360,3 +398,34 @@ In essence, the right choice of distance will depend on the nature of the conten
 
 ## Cache system
 TODO doc
+
+## Future Vision
+
+VideoMaker Helper is continually evolving, built with the aim to be an indispensable tool for content creators. As we look ahead, there are several enhancements and features that we dream of incorporating into the tool. Here's a glimpse into the exciting roadmap we envision for VideoMaker Helper:
+
+### Package Distribution
+- **Publish Package**: In our ongoing efforts to make VideoMaker Helper accessible to everyone, we plan to publish the package for easier installation and updates. This will streamline the user experience, ensuring that the tool is just a command away.
+
+### Advanced Audio Enhancements
+- **VST3 and Lv2 Support for Equalization**: Our goal is to provide users with advanced audio processing capabilities. By integrating VST3 and Lv2 support, VideoMaker Helper will offer a wider array of audio effects and enhancements, ensuring top-notch audio output.
+
+- **Extract Multi-channel Audio**: We recognize the growing demand for multi-channel audio extraction. Soon, VideoMaker Helper will be equipped to extract 5.1 and 7.1 audio into separate files, catering to professional audio processing needs.
+
+### Seamless Video Editing Integration
+- **Transparent `kdenlive` Command**: Our vision extends to creating a tool that works seamlessly with popular video editing software. The plan is to refine the `kdenlive` command, making it not just transparent but also incredibly useful for users.
+
+- **Support Other Video Editors with OTIO**: Recognizing the diverse tools content creators employ, we aim to support various video editors by leveraging OpenTimelineIO (OTIO). This will expand the horizons of VideoMaker Helper, making it a universally compatible tool.
+
+## Powered by Python: Project Dependencies
+
+VideoMaker Helper is a testament to the dynamic capabilities of the Python ecosystem. Crafted with passion in Brazil, this CLI stands tall on the shoulders of some exceptional Python projects. Here are the primary libraries and frameworks that make VideoMaker Helper tick:
+
+- **[pydub](https://github.com/jiaaro/pydub)**: An intuitive library that simplifies audio processing, allowing us to manipulate and analyze sound effortlessly.
+
+- **[moviepy](https://github.com/Zulko/moviepy)**: A versatile tool that empowers us to edit videos with a Pythonic touch, making complex video manipulations a breeze.
+
+- **[Whisper](https://openai.com/research/publications/whisper-an-automatic-speech-recognition-system-for-conversational-speech/)**: OpenAI's automatic speech recognition (ASR) system. It's designed to convert spoken language into written text, making audio transcription efficient and accurate.
+
+- **[pedalboard](https://github.com/spotify/pedalboard)**: Developed by Spotify, this library provides a robust platform for audio effects, further enhancing the audio capabilities of VideoMaker Helper.
+
+These dependencies, among others, form the backbone of our tool, and we express our deepest gratitude to the developers and communities behind these projects. Their commitment to open-source innovation drives tools like VideoMaker Helper to push boundaries and redefine content creation.
