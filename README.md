@@ -31,9 +31,50 @@ Advanced usage:
 `vmh silences <audio_path> --silence-time 500 --threshold -30`
 
 
-### cut-silences
+### `cut-silences`
 
-Cut an audio file using silences
+The `cut-silences` command is an essential utility for audio editors, podcasters, and content creators who wish to refine the auditory experience of their content. It meticulously scans the provided audio file and removes all the detected silent portions, ensuring the end result is a continuous and engaging audio piece without abrupt or prolonged gaps.
+
+#### Features:
+
+- **Simple Input**: The command needs just the source `audio_file` and the desired `output_file` where the processed audio will be saved.
+
+- **Efficient Silence Removal**: Leveraging advanced algorithms, this tool efficiently detects and eliminates silences, making the audio flow more natural.
+
+- **Customizable Detection**: Users have the flexibility to define what constitutes a 'silence' in their audio:
+  - `silence-time`: Determines the minimum duration of a silence (measured in milliseconds) before it's considered for removal.
+  - `threshold`: Sets the decibel level below which an audio segment is considered silent.
+
+#### Example Usage:
+
+To remove silences from an audio file named `podcast.mp3` and save the processed audio as `podcast_no_silences.mp3`, use:
+
+```
+vmh cut-silences podcast.mp3 podcast_no_silences.mp3
+```
+
+#### `--help` Flag Output:
+
+For those seeking a quick reference of available options and arguments for the `cut-silences` command:
+
+```
+vmh cut-silences --help
+
+ Usage: vmh cut-silences [OPTIONS] AUDIO_FILE OUTPUT_FILE
+
+ Removes all silences from an audio file.
+
+╭─ Arguments ──────────────────────────────────────────────────────────────────╮
+│ *    audio_file       PATH  [default: None] [required]                       │
+│ *    output_file      PATH  [default: None] [required]                       │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ --silence-time        INTEGER  Minimal time in ms for configure a silence    │
+│                                [default: 400]                                │
+│ --threshold           INTEGER  Value in db for detect silence [default: -65] │
+│ --help                         Show this message and exit.                   │
+╰──────────────────────────────────────────────────────────────────────────────╯
+```
 
 ### equilize
 
