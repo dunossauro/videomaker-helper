@@ -5,7 +5,7 @@ Micro tools for content creators!
 
 ## Install
 
-`pipx install https://github.com/dunossauro/videomaker-helper.git`
+`pipx install git+https://github.com/dunossauro/videomaker-helper.git`
 
 
 ## Tools
