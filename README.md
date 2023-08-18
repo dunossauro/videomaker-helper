@@ -10,25 +10,129 @@ Micro tools for content creators!
 
 ## Tools
 
-### extract-audio
+### `extract-audio`
 
-Extracts the audio from a video file.
+The `extract-audio` command is designed to detach the audio component from a video file. Whether you're repurposing the audio content of videos for podcasts, transcription, or other audio-centric endeavors, this tool provides a seamless experience.
 
-Usage:
+#### Features:
 
-`vmh extract-audio <audio_path>`
+- **Dual Audio Extraction with `--eq` Flag**: 
+  - When you use the `--eq` flag, the command produces two distinct audio files:
+    1. A pure audio file extracted directly from the video.
+    2. An enhanced audio file where compression is applied, and the volume is amplified by 10 decibels.
+  - This gives users the flexibility to have both the raw and enhanced versions for various applications.
 
-### silences
+- **Default Output**: If an `output_file` isn't specified, the extracted audio will default to `output.wav`. If `--eq` is used, the enhanced version might have a suffix or different naming to differentiate it from the raw audio.
 
-Detect silences in an audio file and save in cache
+- **Opt-Out of Audio Enhancement**: If you only want the raw, unaltered audio without the enhanced version, simply use the `--no-eq` flag.
 
-Basic usage:
+#### Example Usage:
 
-`vmh silences <audio_path>`
+To extract both raw and enhanced audio from a video named `presentation.mp4`:
 
-Advanced usage:
+```
+vmh extract-audio presentation.mp4 --eq
+```
 
-`vmh silences <audio_path> --silence-time 500 --threshold -30`
+For raw audio extraction without any enhancement:
+
+```
+vmh extract-audio presentation.mp4 --no-eq
+```
+
+#### `--help` Flag Output:
+
+For a detailed breakdown of the available options and arguments for the `extract-audio` command:
+
+```
+vmh extract-audio --help
+
+ Usage: vmh extract-audio [OPTIONS] AUDIO_FILE [OUTPUT_FILE]
+
+ Extracts the audio from a video.
+
+╭─ Arguments ──────────────────────────────────────────────────────────────────╮
+│ *    audio_file       PATH           [default: None] [required]              │
+│      output_file      [OUTPUT_FILE]  [default: output.wav]                   │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ --eq      --no-eq      Add compression and 10db of extracted audio           │
+│                        [default: eq]                                         │
+│ --help                 Show this message and exit.                           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+```
+
+### `silences`
+
+**Command Purpose**: The `silences` command is primarily designed for analyzing audio files to detect silent portions. Such functionality is invaluable for content creators, sound engineers, and anyone else needing to identify and potentially edit the silent intervals within their audio assets.
+
+#### Main Features:
+
+- **Efficient Caching System**: If an audio file has already been scrutinized using the `silences` command, the results are stored in a cache. When the same file is subjected to another silence check, the command fetches and returns the cached results rather than re-analyzing the entire file. This ensures quicker results and reduced computational overhead.
+
+- **Bypassing Cache with `--force` Option**: In situations where the audio file might have undergone changes and needs a fresh evaluation, the `--force` flag can be used to bypass the cache and conduct a new analysis.
+
+- **Customizable Silence Detection**: The command offers multiple parameters to finetune silence detection:
+  - `--silence-time`: Designates the minimum duration, in milliseconds, to be categorized as silence.
+  - `--threshold`: Specifies the decibel threshold to determine silence.
+  - `--distance`: Enables users to set the precision of silence detection — be it short, mid, long, or exact (sec) intervals.
+
+#### Sample Commands:
+
+1. For identifying silent segments in an audio file named `music.wav`:
+```
+vmh silences music.wav
+```
+
+2. To conduct a new evaluation, overriding cached results:
+```
+vmh silences music.wav --force
+```
+
+#### `--help` Option Display:
+
+For a comprehensive list of available options and arguments for the `silences` command:
+
+```
+vmh silences --help
+ Usage: vmh silences [OPTIONS] AUDIO_FILE...
+
+ Checks for silences in an audio file.
+ The checks are cached, so if the file has already been analyzed, it will return the
+ cache.
+
+╭─ Arguments ─────────────────────────────────────────────────────────────────────────────╮
+│ *    audio_file      AUDIO_FILE...  [default: None] [required]                          │
+╰─────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────────────────╮
+│ --silence-time                  INTEGER               Minimal time in ms for configure  │
+│                                                       a silence                         │
+│                                                       [default: 400]                    │
+│ --threshold                     INTEGER               Value in db for detect silence    │
+│                                                       [default: -65]                    │
+│ --distance                      [short|mid|long|sec]  [default: Distance.short]         │
+│ --force           --no-force                          Ignore cache [default: no-force]  │
+│ --help                                                Show this message and exit.       │
+╰─────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+#### Advanced Command Sample:
+
+Suppose you have an audio file, `<audio_path>`, and you want to identify silent segments with a stricter definition of silence. For this, you might want the silent interval to be at least half a second (500 milliseconds) long, and the sound level to be below -30 decibels to be considered silent.
+
+You can achieve this advanced silence detection using the command:
+
+```
+vmh silences <audio_path> --silence-time 500 --threshold -30
+```
+
+#### Explanation:
+
+- `--silence-time 500`: This option sets the minimal duration for a segment to be recognized as silence to 500 milliseconds. Any quiet interval shorter than this will not be flagged.
+
+- `--threshold -30`: With this option, any segment of the audio that falls below -30 decibels will be categorized as silent. This is a higher threshold compared to the default of -65 decibels, implying a stricter definition of what is considered silent.
+
+Using these parameters, the command will return only those portions of `<audio_path>` that are both longer than 500 milliseconds and quieter than -30 decibels, allowing for a more specific and refined detection of silent segments.
 
 
 ### `cut-silences`
@@ -173,7 +277,6 @@ vmh cut-video --help
 ╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
-
 ### `Transcribe`
 
 The `transcribe` command is a powerful tool designed to convert audio content from video or standalone audio files into readable text, producing subtitles for the given content.
@@ -217,23 +320,43 @@ vmh transcribe --help
 ╰───────────────────────────────────────────────────────────────────────────────────╯
 ```
 
+## Distance Flag
 
-### Usage
+The `distance` flag is an integral aspect of the VMH's tools, providing users with the ability to adjust the "padding" or extra duration added to the silence sections, thereby refining the cut points in the audio or video. This is especially critical when relying on silence durations as a guiding metric for edits. By adjusting the distance, you can prevent abrupt truncations and allow for smoother transitions, ensuring that the content feels more natural even after cuts.
 
-```bash
-vmh --help
+### Options:
 
-Usage: vmh [OPTIONS] COMMAND [ARGS]...
+The `distance` flag offers four distinct options, represented in the `Distance` Enum:
 
-╭─ Commands ────────────────────────────────────────────────────────────────────────╮
-│ cache              Cache tools.                                                   │
-│ cut-silences       Removes all silences from an audio file.                       │
-│ cut-video          Edits a video using silences as reference.                     │
-│ equalize           Adds compression and 10db gain.                                │
-│ extract-audio      Extracts the audio from a video.                               │
-│ grammar-check      Check grammar in a tex tfile.                                  │
-│ kdenlive           Generates an XML compatible with kdenlive settings.            │
-│ silences           Checks for silences in a audio file.                           │
-│ transcribe         Transcribes an audio file into subtitles.                      │
-╰───────────────────────────────────────────────────────────────────────────────────╯
+```python
+class Distance(str, Enum):
+    short = 'short'
+    mid = 'mid'
+    long = 'long'
+    sec = 'sec'
 ```
+
+Each option corresponds to a specific padding duration, as outlined in the `threshold_distance` dictionary:
+
+```python
+threshold_distance = {'short': 0.100, 'mid': 0.250, 'long': 0.500, 'sec': 1}
+```
+
+Here's a breakdown of each option:
+
+- **short**: Adds a padding of 0.100 seconds (or 100 milliseconds) to the detected silences.
+- **mid**: Introduces a more noticeable padding of 0.250 seconds (or 250 milliseconds).
+- **long**: Provides an even longer padding, extending the silence by 0.500 seconds (or 500 milliseconds).
+- **sec**: Offers the most extended padding option, adding a full second (1 second) to the silences.
+
+
+### Practical Implications:
+
+By default, using silences as the sole guide for cuts can occasionally result in the "truncation" of segments, making the content appear abruptly cut. Increasing the distance ensures the cuts are more fluid and seamless. 
+
+However, a trade-off exists. As you increase the distance, the final content might become lengthier, but it offers a smoother, more polished finish. On the other hand, shorter distances might lead to a more concise output but at the risk of it seeming abruptly edited.
+
+In essence, the right choice of distance will depend on the nature of the content, the target audience, and the desired final product's length and feel. It's a balance between conciseness and fluidity.
+
+## Cache system
+TODO doc
