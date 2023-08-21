@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Simples tools to help video makers"
 authors = ["dunossauro <mendesxeduardo@gmail.com>"]
 readme = "README.md"
+license = "GPL-3.0-or-later"
 packages = [{include = "vmh"}]
 classifiers = [
     "Environment :: Console",
