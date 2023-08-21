@@ -89,10 +89,10 @@ vmh extract-audio --help
 
 - **Bypassing Cache with `--force` Option**: In situations where the audio file might have undergone changes and needs a fresh evaluation, the `--force` flag can be used to bypass the cache and conduct a new analysis.
 
-- **Customizable Silence Detection**: The command offers multiple parameters to finetune silence detection:
-  - `--silence-time`: Designates the minimum duration, in milliseconds, to be categorized as silence.
-  - `--threshold`: Specifies the decibel threshold to determine silence.
-  - `--distance`: Enables users to set the precision of silence detection — be it short, mid, long, or exact (sec) intervals.
+- **Tailored Silence Detection**: Users are empowered to adapt the silence detection criteria using various parameters:
+  - `--silence-time` (or `-s`): Defines the minimal duration, in milliseconds, required for an interval to be classified as silence.
+  - `--threshold` (or `-t`): Determines the decibel threshold that demarcates silent portions.
+  - `--distance` (or `-d`): Helps in stipulating how silences are grouped, with options ranging from short to exact (sec) intervals.
 
 #### Sample Commands:
 
@@ -240,46 +240,90 @@ vmh equalize --help
 
 ### `kdenlive`
 
-> ⚠ Instable interface
+**Command Purpose**: The `kdenlive` command facilitates video editors by generating XML files compatible with kdenlive settings, focusing specifically on automating the process of cutting silences from video timelines. This utility is especially designed to expedite the editing workflow, allowing users to jumpstart their projects with silences already trimmed, effectively eliminating one of the most time-consuming and tedious aspects of video editing.
 
-TODO doc
+> ⚠ **Instability Alert**: The interface for the `kdenlive` command is currently unstable. Users should anticipate potential modifications in future updates.
 
+#### Main Features:
+
+- **Automatic Silence-Cut Generation**: VMH harnesses the `silences` command's capabilities to detect silent portions in your audio file. These detected silences are then converted into kdenlive-compatible XML cut instructions, effectively pre-empting the need for manual audio silence trimming.
+
+- **Efficient XML Creation for Kdenlive**: This command abstracts away the complexities of kdenlive's XML structure. Instead of fumbling with XML details, users can generate the required XML content for their timelines swiftly and effortlessly.
+
+- **Fine-Tuned Silence Detection**: Video editors can customize the silence detection parameters to suit their specific requirements:
+  - `--silence-time`: Sets the minimum duration for a segment to be recognized as silence.
+  - `--threshold`: Determines the decibel level to qualify a segment as silent.
+  - `--distance`: Adjusts the granularity of silence detection, with options from short intervals to exact durations.
+
+- **Manual XML Integration**: For now, this command doesn’t directly alter existing kdenlive XML files. Instead, it generates standalone XML files with the necessary cut instructions. To incorporate these cuts into the main project, users must manually integrate this XML content into their primary kdenlive XML files. Seamless integration is a planned feature for future updates.
+
+#### Sample Commands:
+
+1. For an automated silence-trimmed XML setup using `audio.wav`, `video.mp4`, and `project.xml`:
+```
+vmh kdenlive audio.wav video.mp4 project.xml
+```
+
+2. Customizing silence detection parameters for the XML generation:
+```
+vmh kdenlive audio.wav video.mp4 project.xml --silence-time 500 --threshold -30
+```
+
+#### `--help` Option Display:
+
+A snapshot of available options and arguments for the `kdenlive` command:
 
 ```
 vmh kdenlive --help
 
  Usage: vmh kdenlive [OPTIONS] AUDIO_FILE VIDEO_FILE INPUT_XML [OUTPUT_PATH]
 
- Generates an XML compatible with kdenlive settings.
+ Generates XML tailored to kdenlive settings, emphasizing automated silence cuts.
+ Note: It doesn’t directly modify kdenlive files. It creates timeline instructions which you must manually integrate.
 
-╭─ Arguments ─────────────────────────────────────────────────────────────────────────────╮
-│ *    audio_file       PATH           [default: None] [required]                         │
-│ *    video_file       PATH           [default: None] [required]                         │
-│ *    input_xml        PATH           [default: None] [required]                         │
-│      output_path      [OUTPUT_PATH]  [default: timelines]                               │
-╰─────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ───────────────────────────────────────────────────────────────────────────────╮
-│ --help          Show this message and exit.                                             │
-╰─────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    audio_file       PATH           [default: None] [required]                                          │
+│ *    video_file       PATH           [default: None] [required]                                          │
+│ *    input_xml        PATH           [default: None] [required]                                          │
+│      output_path      [OUTPUT_PATH]  [default: timelines]                                                │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --silence-time  -s      INTEGER               Minimal time in ms for configure a silence [default: 400]  │
+│ --threshold     -t      INTEGER               Value in db for detect silence [default: -65]              │
+│ --distance      -d      [short|mid|long|sec]  Distance betweet silences [default: Distance.short]        │
+│ --help                                        Show this message and exit.                                │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
+
+#### Integration Instructions:
+
+To weave the XML content generated by the `kdenlive` command into your kdenlive project:
+
+1. Retrieve the produced XML from the designated output path (default: `timelines`).
+2. Copy its entire content.
+3. Open your primary kdenlive project XML file.
+4. Find the section dedicated to timeline data.
+5. Manually integrate the copied XML content.
+6. Store the changes to the kdenlive project XML file. Open it within the kdenlive software to inspect the implemented trims.
+
+**Coming Soon**: A future update aims to offer direct modifications to the kdenlive XML file, making the integration process smoother and more intuitive.
 
 ### `cut-video`
 
-The `cut-video` command offers content creators a streamlined way to automatically edit videos based on silence detection. By analyzing the audio content within the video, this function trims away portions of the video deemed as "silence", making it particularly useful for removing unintended pauses, long gaps, or any unwanted quiet segments.
-
 #### Features:
 
-- **Input Options**: This command takes a video file as its primary input. An additional audio file can also be provided if desired.
+- **Input Options**: This command primarily requires a video file for its operation. Additionally, an optional audio file can be provided if the user wants to use an equalized audio file.
 
-- **Automatic Editing**: By leveraging silence detection, the video can be automatically edited without the need for manual intervention.
+- **Automatic Editing**: Using silence detection, videos are auto-edited, removing the need for manual trims.
 
-- **Customizable Parameters**: Users can fine-tune the editing process using several parameters:
-  - `silence-time`: Specifies the minimum duration of silence (in milliseconds) that should be considered for trimming.
-  - `threshold`: Sets the decibel level to detect silence in the audio.
-  - `distance`: Choose the gap between the silences. Options range from short to sec.
-  - `codec`: Specifies the codec to be used when generating the edited video.
+- **Customizable Parameters**: The editing process is highly customizable through several parameters:
+  - `silence-time`: Designate the minimum duration (in milliseconds) of silence that will be eligible for trimming.
+  - `threshold`: Define the decibel level which the tool will use to identify silent sections in the audio.
+  - `distance`: Determine the spacing between detected silences. Options include 'short', 'mid', 'long', and 'sec'.
+  - `codec`: Designate the codec for rendering the edited video. For an exhaustive list of supported codecs, see [Moviepy specs](https://moviepy.readthedocs.io/en/latest/ref/videotools.html#moviepy.video.tools.credits.CreditsClip.write_videofile).
+  - `bitrate`: Designate the video's bitrate. For recommendations on bitrates based on resolutions, refer to the [Youtube table](https://support.google.com/youtube/answer/1722171?hl=en#zippy=%2Cbitrate).
 
-- **Default Output**: If no `output_path` is provided, the edited video will be saved as `result.mp4`.
+- **Default Output**: In the absence of an `output_path`, the edited video is stored as `result.mp4`.
 
 #### Example Usage:
 
@@ -360,23 +404,57 @@ vmh transcribe --help
 
 ### `grammar-check`
 
-TODO doc
+**Command Purpose**: The `grammar-check` command offers users a powerful utility to analyze text files for grammatical inaccuracies. By harnessing the capabilities of LanguageTool, this command spotlights potential grammatical pitfalls within the text, ensuring textual fidelity and precision.
+
+This tool, though broadly applicable for any textual evaluation, finds its niche within the VMH suite for inspecting generated subtitles. Given the inherent challenges of transcribing speech—like unnatural phrasings, the integration of foreign terms, or hurried articulations—the `grammar-check` ensures that your subtitles not only convey the right message but do so with grammatical accuracy.
+
+#### Main Features:
+
+- **LanguageTool Integration**: Relying on the robust LanguageTool system, the `grammar-check` command evaluates textual content against an extensive database of grammatical rules, pinpointing areas that might benefit from corrections or reconsideration.
+
+- **Tailored for Subtitle Inspection**: While general grammar checks can be performed using this tool, its inclusion within VMH emphasizes its role in auditing subtitles. It becomes instrumental in ensuring that automated transcriptions are not just accurate in content but also in their grammatical construct.
+
+- **Support for Multiple Languages**: The command allows users to specify a language using the `lang` argument, catering to multilingual subtitle generation. By default, it assumes the language to be Brazilian Portuguese (`pt-BR`).
+
+#### Sample Commands:
+
+1. Performing a grammar check on `document.txt` in the default language (Brazilian Portuguese):
+```
+vmh grammar-check document.txt
+```
+
+2. Conducting a grammar check for content in English:
+```
+vmh grammar-check document.txt en-US
+```
+
+#### `--help` Option Display:
+
+A brief overview of available options and arguments for the `grammar-check` command:
 
 ```
 vmh grammar-check --help
 
 Usage: vmh grammar-check [OPTIONS] FILE [LANG]
 
-  Check grammar in a tex tfile.
+  Check grammar in a text file using LanguageTool.
 
-╭─ Arguments ───────────────────────────────────────────────────────────────────────────────────────────╮
-│ *    file      PATH    [default: None] [required]                                                     │
-│      lang      [LANG]  [default: pt-BR]                                                               │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --help          Show this message and exit.                                                           │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Arguments ────────────────────────────────────────────────╮
+│ *    file      PATH    [default: None] [required]          │
+│      lang      [LANG]  [default: pt-BR]                    │
+╰────────────────────────────────────────────────────────────╯
+╭─ Options ──────────────────────────────────────────────────╮
+│ --help          Display this help message.                 │
+╰────────────────────────────────────────────────────────────╯
 ```
+
+#### Usage Tips:
+
+1. **Consider the Context**: While automated grammar checks are a boon, it's essential to remember that subtleties in speech, especially in transcriptions or subtitles, might lead to flagged areas that are contextually accurate. Always review the suggestions with the context in mind.
+
+2. **Foreign Terms and Phrases**: If your subtitles or text include terms or phrases from different languages, anticipate potential flags from the grammar-check, especially if the specified language for checking is different.
+
+3. **Regular Audits**: For long projects with vast subtitle files, consider periodic grammar checks. This will not only help maintain the quality of your content but also ensure that any corrections can be integrated without revisiting large portions of your work.
 
 ### All options
 
@@ -462,6 +540,8 @@ VideoMaker Helper is continually evolving, built with the aim to be an indispens
 - **Publish Package**: In our ongoing efforts to make VideoMaker Helper accessible to everyone, we plan to publish the package for easier installation and updates. This will streamline the user experience, ensuring that the tool is just a command away.
 
 ### Advanced Audio Enhancements
+- **Equalize System Overhaul**: Our aspiration is to magnify the capabilities of our equalize system. With the integration of [librosa](https://librosa.org/doc/latest/index.html#), we aim to detect volume disparities within audio files to engineer a crisp and harmonious audio output. The resultant audio will gracefully dance between -9 and -6 dB, striking a perfect balance between clarity and intensity.
+
 - **VST3 and Lv2 Support for Equalization**: Our goal is to provide users with advanced audio processing capabilities. By integrating VST3 and Lv2 support, VideoMaker Helper will offer a wider array of audio effects and enhancements, ensuring top-notch audio output.
 
 - **Extract Multi-channel Audio**: We recognize the growing demand for multi-channel audio extraction. Soon, VideoMaker Helper will be equipped to extract 5.1 and 7.1 audio into separate files, catering to professional audio processing needs.
@@ -470,6 +550,15 @@ VideoMaker Helper is continually evolving, built with the aim to be an indispens
 - **Transparent `kdenlive` Command**: Our vision extends to creating a tool that works seamlessly with popular video editing software. The plan is to refine the `kdenlive` command, making it not just transparent but also incredibly useful for users.
 
 - **Support Other Video Editors with OTIO**: Recognizing the diverse tools content creators employ, we aim to support various video editors by leveraging OpenTimelineIO (OTIO). This will expand the horizons of VideoMaker Helper, making it a universally compatible tool.
+
+With every envisioned enhancement, our foremost commitment remains to empower content creators, enabling them to weave stories with finesse, clarity, and flair. Your feedback, as always, remains instrumental in shaping the trajectory of VideoMaker Helper.
+
+### Comprehensive Documentation and Accessibility
+- **Full Project Documentation**: Recognizing the necessity for clear and detailed guidelines, our roadmap involves developing a comprehensive documentation for VideoMaker Helper. From installation to intricate functionalities, every aspect of the tool will be meticulously detailed, ensuring users have a seamless experience.
+
+- **Mkdocs Deployment**: To further elevate the accessibility and user experience, we plan to deploy our documentation using `mkdocs`. With its responsive design and interactive features, this will enable users to easily navigate, search, and explore the various facets of VideoMaker Helper. The documentation will be regularly updated, ensuring it remains in tandem with the tool's evolutions.
+
+Guided by our commitment to serve the community, we endeavor to make VideoMaker Helper not just a tool but a companion for content creators. As we forge ahead, we continually seek feedback and suggestions, ensuring our tool resonates with the evolving needs of our users.
 
 ## Powered by Python: Project Dependencies
 
