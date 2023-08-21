@@ -527,6 +527,50 @@ However, a trade-off exists. As you increase the distance, the final content mig
 
 In essence, the right choice of distance will depend on the nature of the content, the target audience, and the desired final product's length and feel. It's a balance between conciseness and fluidity.
 
+## Understanding Audio Threshold and Silence Duration
+
+To use VideoMaker Helper effectively, it's essential to understand two key parameters: **Audio Threshold** and **Silence Duration**. These parameters determine which parts of an audio track are considered speech (and therefore kept) and which are regarded as silence or noise (and hence removed).
+
+### Audio Waveform
+
+Imagine your audio as a line graph:
+- The vertical axis represents volume (loudness).
+- The horizontal axis represents time.
+
+When you speak or make a sound, the line (or waveform) rises and falls, representing the loudness of that sound over time.
+
+### Threshold
+
+The **threshold** is like a horizontal line on this graph, set at a specific volume level. Here's how it works:
+- Any sound louder than this line is considered "audio" that we want to keep.
+- Any sound quieter than this line is a potential candidate for removal.
+
+By default, the threshold is often set at -65 dBs. However, based on the recording environment and specific requirements, you might need to adjust this level. For instance, in a noisy environment, the threshold might need to be higher.
+
+### Silence Duration
+
+Even if the sound dips below our threshold, it doesn't automatically qualify for removal. This is where **silence duration** comes into play. Here's the breakdown:
+- It specifies how long the sound must be below the threshold before being considered "true silence."
+- For instance, with a default of 400ms, any quiet moment below the threshold that's shorter than 400ms will be retained. This ensures we don't remove natural pauses in speech.
+
+### How to Choose What to Keep and What to Cut
+
+With these two parameters in place:
+1. Audio louder than the threshold is always retained.
+2. Audio quieter than the threshold gets removed only if its duration exceeds the specified silence duration.
+
+This approach ensures the final audio sounds as natural as possible, without unnecessary noise or lengthy silences. 
+
+### Practical Application
+
+When using VideoMaker Helper commands, you'll often see parameters like `--threshold` or `--silence-time`. These directly relate to the principles discussed above. Adjusting them allows you to tailor the audio processing to your specific needs.
+
+For instance, the `vmh kdenlive` command offers the ability to adjust the threshold and silence duration, allowing for customized audio trimming based on the user's preferences.
+
+---
+
+With a clear understanding of these principles, you'll be better equipped to use VideoMaker Helper to its full potential, ensuring your videos have crisp, clean audio that's free of distracting silences or noise.
+
 ## Cache system
 TODO doc
 
@@ -557,6 +601,28 @@ With every envisioned enhancement, our foremost commitment remains to empower co
 - **Mkdocs Deployment**: To further elevate the accessibility and user experience, we plan to deploy our documentation using `mkdocs`. With its responsive design and interactive features, this will enable users to easily navigate, search, and explore the various facets of VideoMaker Helper. The documentation will be regularly updated, ensuring it remains in tandem with the tool's evolutions.
 
 Guided by our commitment to serve the community, we endeavor to make VideoMaker Helper not just a tool but a companion for content creators. As we forge ahead, we continually seek feedback and suggestions, ensuring our tool resonates with the evolving needs of our users.
+
+Certainly! Extensive testing is a cornerstone for ensuring software reliability and trustworthiness. Let's add that to the "Future Vision" section:
+
+### Robust Testing for Reliability
+- **Comprehensive Testing Suite**: As VideoMaker Helper continues to grow and evolve, we understand the paramount importance of ensuring its stability and reliability. Our vision includes developing an exhaustive suite of tests that cover every conceivable scenario, functionality, and edge case. This will not only provide a safeguard against potential issues but will also serve as a testament to our commitment to quality.
+
+- **Continuous Integration and Delivery (CI/CD)**: Beyond just developing tests, we aim to implement a robust CI/CD pipeline. This will ensure that every update or addition to the tool undergoes rigorous testing before it reaches our users. This approach guarantees that the tool remains bug-free and operates at its optimal level at all times.
+
+- **Feedback-Driven Testing**: We believe in the power of community feedback. We plan to incorporate a system that allows users to report issues and suggest test scenarios. This community-driven approach will further bolster our testing efforts, ensuring the tool is vetted from multiple perspectives.
+
+By placing a strong emphasis on testing, we aim to provide our users with a tool that they can trust implicitly, knowing that it's been rigorously vetted and refined to offer a seamless experience.
+
+### User-Focused Configurations
+- **Global Parameter Configuration**: We recognize that different creators have unique preferences and production setups. With that in mind, we envision introducing a global configuration system. This will allow users to set default parameters for aspects like "distance", "threshold", and "silence-time", streamlining the command execution process. This means, rather than repeatedly entering their preferred parameters for each command, users can set them once and have the system use those defaults for all subsequent actions.
+
+- **Config Command**: To facilitate this, the implementation will likely introduce a `config` command. This will be the gateway for users to set, modify, or view their global preferences.
+
+- **Storage with Appdirs**: By utilizing "appdirs", we plan to ensure that the configurations are stored in appropriate, OS-specific directories. This ensures compatibility, organization, and ease of access.
+
+- **Use of TOML Format**: Embracing the clarity and human-friendliness of TOML, the configuration settings will be saved in this format. This ensures that, if users need to manually inspect or modify the configuration file, they are met with a format that's intuitive and easy to understand.
+
+Incorporating this user-focused configuration system is our way of personalizing VideoMaker Helper. We want our users to feel that the tool is tailored for them, adapting to their specific needs and preferences, making video production a breeze.
 
 ## Powered by Python: Project Dependencies
 
