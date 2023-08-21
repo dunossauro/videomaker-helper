@@ -21,6 +21,26 @@ app = Typer(help='Videomaker Helper!', no_args_is_help=True)
 app.add_typer(cache.cache, name='cache', help='Cache tools.')
 
 
+# Options
+silence_option = Option(
+    400,
+    '--silence-time',
+    '-s',
+    help='Minimal time in ms for configure a silence',
+)
+
+threshold_option = Option(
+    -65, '--threshold', '-t', help='Value in db for detect silence'
+)
+
+distance_option = Option(
+    audio.Distance.short,
+    '--distance',
+    '-d',
+    help='Distance betweet silences',
+)
+
+
 def version(arg):
     if arg:
         print(__version__)
@@ -59,11 +79,9 @@ def extract_audio(
 @app.command()
 def silences(
     audio_file: list[path_arg],
-    silence_time: int = Option(
-        400, help='Minimal time in ms for configure a silence'
-    ),
-    threshold: int = Option(-65, help='Value in db for detect silence'),
-    distance: audio.Distance = Option(audio.Distance.short),
+    silence_time: int = silence_option,
+    threshold: int = threshold_option,
+    distance: audio.Distance = distance_option,
     force: bool = Option(False, help='Ignore cache'),
 ):
     """Checks for silences in a audio file.
@@ -87,10 +105,8 @@ def silences(
 def cut_silences(
     audio_file: path_arg,
     output_file: path_arg,
-    silence_time: int = Option(
-        400, help='Minimal time in ms for configure a silence'
-    ),
-    threshold: int = Option(-65, help='Value in db for detect silence'),
+    silence_time: int = silence_option,
+    threshold: int = threshold_option,
 ):
     """Removes all silences from an audio file."""
     console.print(
@@ -107,10 +123,10 @@ def cut_silences(
 def equalize(
     audio_file: path_arg,
     output_file: Path = Argument(default='output.wav'),
-    gain: int = Option(10, help='Add dbs in audio'),
+    gain: int = Option(10, '--gain', '-g', help='Add dbs in audio'),
 ):
     """Add Compression and Gain dor audio file."""
-    process_audio(str(audio_file.resolve()), str(output_file))
+    process_audio(str(audio_file.resolve()), str(output_file), gain)
 
     console.print(f'{output_file} Created')
 
@@ -121,11 +137,13 @@ def kdenlive(
     video_file: path_arg,
     input_xml: path_arg,
     output_path: Path = Argument(default='timelines'),
+    silence_time: int = silence_option,
+    threshold: int = threshold_option,
+    distance: audio.Distance = distance_option,
 ):
     """Generates an XML compatible with kdenlive settings.
 
-    Ele não aplica ao arquivo do kdenlive, somente gera o conteúdo da timeline,
-        você deve adicionar manualmente.
+    Note: It doesn’t directly modify kdenlive files. It creates timeline instructions which you must manually integrate.
     """
     if output_path.exists():
         logger.info(f'Deleting {output_path}')
@@ -133,20 +151,30 @@ def kdenlive(
 
     output_path.mkdir()
 
-    cut(audio_file, video_file, input_xml, output_path)
+    cut(
+        audio_file,
+        video_file,
+        input_xml,
+        output_path,
+        silence_time,
+        threshold,
+        distance.value,
+    )
 
 
 @app.command()
 def cut_video(
     video_file: path_arg,
-    audio_file: str = Argument(default=''),
-    output_path: Path = Argument(default='result.mp4'),
-    silence_time: int = Option(
-        400, help='Minimal time in ms for configure a silence'
+    audio_file: str = Argument(
+        default='', help='Optional audio equilized audio file'
     ),
-    threshold: int = Option(-65, help='Value in db for detect silence'),
-    distance: audio.Distance = Option(audio.Distance.short),
-    codec: video.Codec = Option(video.Codec.mpeg4),
+    output_path: Path = Argument(default='result.mp4'),
+    silence_time: int = silence_option,
+    threshold: int = threshold_option,
+    distance: audio.Distance = distance_option,
+    codec: video.Codec = Option(video.Codec.mpeg4, '--codec', '-c'),
+    preset: video.Preset = Option(video.Preset.medium, '--preset', '-p'),
+    bitrare: str = Option('15M', '--bitrate', '-b'),
 ):
     """Edits a video using silences as reference."""
     video.cut_video(
@@ -156,7 +184,9 @@ def cut_video(
         silence_time=silence_time,
         distance=distance.value,
         audio_file=audio_file,
-        codec=codec.value,
+        codec=codec,
+        preset=preset,
+        bitrate=bitrare,
     )
 
 

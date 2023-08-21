@@ -106,33 +106,6 @@ vmh silences music.wav
 vmh silences music.wav --force
 ```
 
-#### `--help` Option Display:
-
-For a comprehensive list of available options and arguments for the `silences` command:
-
-```
-vmh silences --help
- Usage: vmh silences [OPTIONS] AUDIO_FILE...
-
- Checks for silences in an audio file.
- The checks are cached, so if the file has already been analyzed, it will return the
- cache.
-
-╭─ Arguments ─────────────────────────────────────────────────────────────────────────────╮
-│ *    audio_file      AUDIO_FILE...  [default: None] [required]                          │
-╰─────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ───────────────────────────────────────────────────────────────────────────────╮
-│ --silence-time                  INTEGER               Minimal time in ms for configure  │
-│                                                       a silence                         │
-│                                                       [default: 400]                    │
-│ --threshold                     INTEGER               Value in db for detect silence    │
-│                                                       [default: -65]                    │
-│ --distance                      [short|mid|long|sec]  [default: Distance.short]         │
-│ --force           --no-force                          Ignore cache [default: no-force]  │
-│ --help                                                Show this message and exit.       │
-╰─────────────────────────────────────────────────────────────────────────────────────────╯
-```
-
 #### Advanced Command Sample:
 
 Suppose you have an audio file, `<audio_path>`, and you want to identify silent segments with a stricter definition of silence. For this, you might want the silent interval to be at least half a second (500 milliseconds) long, and the sound level to be below -30 decibels to be considered silent.
@@ -151,6 +124,29 @@ vmh silences <audio_path> --silence-time 500 --threshold -30
 
 Using these parameters, the command will return only those portions of `<audio_path>` that are both longer than 500 milliseconds and quieter than -30 decibels, allowing for a more specific and refined detection of silent segments.
 
+#### `--help` Option Display:
+
+For a comprehensive list of available options and arguments for the `silences` command:
+
+```
+vmh silences --help
+
+ Usage: vmh silences [OPTIONS] AUDIO_FILE...
+
+ Checks for silences in a audio file.
+ The checks are cached, so if the file has already been analyzed, it will return the cache.
+
+╭─ Arguments ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    audio_file      AUDIO_FILE...  [default: None] [required]                                                                                                             │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --silence-time  -s                INTEGER               Minimal time in ms for configure a silence [default: 400]                                                          │
+│ --threshold     -t                INTEGER               Value in db for detect silence [default: -65]                                                                      │
+│ --distance      -d                [short|mid|long|sec]  Distance betweet silences [default: Distance.short]                                                                │
+│ --force             --no-force                          Ignore cache [default: no-force]                                                                                   │
+│ --help                                                  Show this message and exit.                                                                                        │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
 
 ### `cut-silences`
 
@@ -163,8 +159,8 @@ The `cut-silences` command is an essential utility for audio editors, podcasters
 - **Efficient Silence Removal**: Leveraging advanced algorithms, this tool efficiently detects and eliminates silences, making the audio flow more natural.
 
 - **Customizable Detection**: Users have the flexibility to define what constitutes a 'silence' in their audio:
-  - `silence-time`: Determines the minimum duration of a silence (measured in milliseconds) before it's considered for removal.
-  - `threshold`: Sets the decibel level below which an audio segment is considered silent.
+  - `silence-time` (or `-s`): Determines the minimum duration of a silence (measured in milliseconds) before it's considered for removal.
+  - `threshold` (or `-t`): Sets the decibel level below which an audio segment is considered silent.
 
 #### Example Usage:
 
@@ -185,16 +181,17 @@ vmh cut-silences --help
 
  Removes all silences from an audio file.
 
-╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    audio_file       PATH  [default: None] [required]                       │
-│ *    output_file      PATH  [default: None] [required]                       │
-╰──────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ────────────────────────────────────────────────────────────────────╮
-│ --silence-time        INTEGER  Minimal time in ms for configure a silence    │
-│                                [default: 400]                                │
-│ --threshold           INTEGER  Value in db for detect silence [default: -65] │
-│ --help                         Show this message and exit.                   │
-╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────╮
+│ *    audio_file       PATH  [default: None] [required]                                       │
+│ *    output_file      PATH  [default: None] [required]                                       │
+╰──────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────╮
+│ --silence-time  -s      INTEGER  Minimal time in ms for configure a silence [default: 400]   │
+│ --threshold     -t      INTEGER  Value in db for detect silence [default: -65]               │
+│ --help                           Show this message and exit.                                 │
+╰──────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
 ```
 
 ### `equalize`
@@ -344,19 +341,20 @@ vmh cut-video --help
 
  Edits a video using silences as reference.
 
-╭─ Arguments ───────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ *    video_file       PATH           [default: None] [required]                                                       │
-│      audio_file       [AUDIO_FILE]                                                                                    │
-│      output_path      [OUTPUT_PATH]  [default: result.mp4]                                                            │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --silence-time        INTEGER                                        Minimal time in ms for configure a silence       │
-│                                                                      [default: 400]                                   │
-│ --threshold           INTEGER                                        Value in db for detect silence [default: -65]    │
-│ --distance            [short|mid|long|sec]                           [default: Distance.short]                        │
-│ --codec               [libx264|mpeg4|rawvideo|png|libvorbis|libvpx]  [default: Codec.mpeg4]                           │
-│ --help                                                               Show this message and exit.                      │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Arguments ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    video_file       PATH           [default: None] [required]                                                                                                            │
+│      audio_file       [AUDIO_FILE]   Optional audio equilized audio file                                                                                                   │
+│      output_path      [OUTPUT_PATH]  [default: result.mp4]                                                                                                                 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --silence-time  -s      INTEGER                                                                 Minimal time in ms for configure a silence [default: 400]                  │
+│ --threshold     -t      INTEGER                                                                 Value in db for detect silence [default: -65]                              │
+│ --distance      -d      [short|mid|long|sec]                                                    Distance betweet silences [default: Distance.short]                        │
+│ --codec         -c      [libx264|mpeg4|rawvideo|png|libvorbis|libvpx]                           [default: Codec.mpeg4]                                                     │
+│ --preset        -p      [ultrafast|superfast|veryfast|faster|fast|medium|slow|slower|veryslow]  [default: Preset.medium]                                                   │
+│ --bitrate       -b      TEXT                                                                    [default: 15M]                                                             │
+│ --help                                                                                          Show this message and exit.                                                │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ### `Transcribe`

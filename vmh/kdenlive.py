@@ -1,5 +1,6 @@
 from itertools import islice, pairwise
 from pathlib import Path
+from typing import Literal
 
 from loguru import logger
 from parsel.selector import Selector
@@ -57,8 +58,16 @@ def write_file(silences, filename, chain, _id):
     logger.info('End file', filename)
 
 
-def cut(audio_file, video_file, input_file, output_path: Path):
-    times = detect_silences(str(audio_file))
+def cut(
+    audio_file,
+    video_file,
+    input_file,
+    output_path: Path,
+    silence_time,
+    threshold: int,
+    distance: Literal['short', 'mid', 'long', 'sec'] = 'short',
+):
+    times = detect_silences(str(audio_file), silence_time, threshold, distance)
 
     logger.info('Start video-video chain')
     chain_id, file_id, playlist = check_chain(video_file, input_file, 1)
