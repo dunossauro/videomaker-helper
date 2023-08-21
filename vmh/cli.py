@@ -175,6 +175,7 @@ def cut_video(
     codec: video.Codec = Option(video.Codec.mpeg4, '--codec', '-c'),
     preset: video.Preset = Option(video.Preset.medium, '--preset', '-p'),
     bitrare: str = Option('15M', '--bitrate', '-b'),
+    force: bool = Option(default=False, help='Ignore cache'),
 ):
     """Edits a video using silences as reference."""
     video.cut_video(
@@ -184,6 +185,7 @@ def cut_video(
         silence_time=silence_time,
         distance=distance.value,
         audio_file=audio_file,
+        force=force,
         codec=codec,
         preset=preset,
         bitrate=bitrare,

@@ -48,12 +48,13 @@ def cut_video(
     codec: Codec = Codec.mpeg4,
     audio_file: str = '',
     preset: Preset = Preset.medium,
+    force: bool = True,
 ):
     logger.info(f'Detecting silences on {input_file}')
     if audio_file:
         silences = detect_silences(
             audio_file,
-            force=True,
+            force=force,
             threshold=threshold,
             silence_time=silence_time,
             distance=distance,
@@ -62,7 +63,7 @@ def cut_video(
         paudio = AudioFileClip(str(audio_file))
         video.audio = paudio
     else:
-        silences = detect_silences(input_file)
+        silences = detect_silences(input_file, force=force)
         video = VideoFileClip(input_file)
 
     logger.info(f'Creating subclips on {input_file}')
