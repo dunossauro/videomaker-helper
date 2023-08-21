@@ -78,7 +78,7 @@ def extract_audio(
 
 @app.command()
 def silences(
-    audio_file: list[path_arg],
+    audio_file: path_arg,
     silence_time: int = silence_option,
     threshold: int = threshold_option,
     distance: audio.Distance = distance_option,

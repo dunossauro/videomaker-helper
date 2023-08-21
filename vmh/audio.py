@@ -142,7 +142,7 @@ def cut_silences(
     return Path(output_file)
 
 
-threshold_distance = {'short': 0.100, 'mid': 0.250, 'long': 0.500, 'sec': 1}
+threshold_distance: dict[str, float] = {'short': 0.100, 'mid': 0.250, 'long': 0.500, 'sec': 1}
 
 
 def detect_silences(
@@ -177,6 +177,7 @@ def detect_silences(
                 for start, stop in silences
             )
         )
+        logger.debug(f'first 20 cuts {times[:20]}')
 
         db.insert(
             {
