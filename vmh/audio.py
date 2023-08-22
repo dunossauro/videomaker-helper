@@ -21,10 +21,20 @@ class TranscribeModes(str, Enum):
 
 
 class Distance(str, Enum):
-    short = 'short'
-    mid = 'mid'
-    long = 'long'
-    sec = 'sec'
+    tiny = 'tiny'
+    small = 'small'
+    medium = 'medium'
+    large = 'large'
+    huge = 'huge'
+
+
+threshold_distance: dict[str, float] = {
+    'tiny': 0,
+    'small': 0.100,
+    'medium': 0.250,
+    'large': 0.500,
+    'huge': 1,
+}
 
 
 class Seguiment(TypedDict):
@@ -140,14 +150,6 @@ def cut_silences(
     combined.export(output_file, format='mp3')
 
     return Path(output_file)
-
-
-threshold_distance: dict[str, float] = {
-    'short': 0.100,
-    'mid': 0.250,
-    'long': 0.500,
-    'sec': 1,
-}
 
 
 def detect_silences(

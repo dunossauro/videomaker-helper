@@ -34,7 +34,7 @@ threshold_option = Option(
 )
 
 distance_option = Option(
-    audio.Distance.short,
+    audio.Distance.tiny,
     '--distance',
     '-d',
     help='Distance betweet silences',

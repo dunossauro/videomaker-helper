@@ -136,16 +136,16 @@ vmh silences --help
  Checks for silences in a audio file.
  The checks are cached, so if the file has already been analyzed, it will return the cache.
 
-╭─ Arguments ────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ *    audio_file      AUDIO_FILE...  [default: None] [required]                                                     │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --silence-time  -s                INTEGER               Minimal time in ms for configure a silence [default: 400]  │
-│ --threshold     -t                INTEGER               Value in db for detect silence [default: -65]              │
-│ --distance      -d                [short|mid|long|sec]  Distance betweet silences [default: Distance.short]        │
-│ --force             --no-force                          Ignore cache [default: no-force]                           │
-│ --help                                                  Show this message and exit.                                │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Arguments ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    audio_file      PATH  [default: None] [required]                                                                       │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --silence-time  -s                INTEGER                         Minimal time in ms for configure a silence [default: 400] │
+│ --threshold     -t                INTEGER                         Value in db for detect silence [default: -65]             │
+│ --distance      -d                [tiny|small|medium|large|huge]  Distance betweet silences [default: Distance.tiny]        │
+│ --force             --no-force                                    Ignore cache [default: no-force]                          │
+│ --help                                                            Show this message and exit.                               │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ### `cut-silences`
@@ -276,18 +276,18 @@ vmh kdenlive --help
  Generates XML tailored to kdenlive settings, emphasizing automated silence cuts.
  Note: It doesn’t directly modify kdenlive files. It creates timeline instructions which you must manually integrate.
 
-╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────────────╮
-│ *    audio_file       PATH           [default: None] [required]                                          │
-│ *    video_file       PATH           [default: None] [required]                                          │
-│ *    input_xml        PATH           [default: None] [required]                                          │
-│      output_path      [OUTPUT_PATH]  [default: timelines]                                                │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --silence-time  -s      INTEGER               Minimal time in ms for configure a silence [default: 400]  │
-│ --threshold     -t      INTEGER               Value in db for detect silence [default: -65]              │
-│ --distance      -d      [short|mid|long|sec]  Distance betweet silences [default: Distance.short]        │
-│ --help                                        Show this message and exit.                                │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Arguments ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    audio_file       PATH           [default: None] [required]                                                             │
+│ *    video_file       PATH           [default: None] [required]                                                             │
+│ *    input_xml        PATH           [default: None] [required]                                                             │
+│      output_path      [OUTPUT_PATH]  [default: timelines]                                                                   │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --silence-time  -s      INTEGER                         Minimal time in ms for configure a silence [default: 400]           │
+│ --threshold     -t      INTEGER                         Value in db for detect silence [default: -65]                       │
+│ --distance      -d      [tiny|small|medium|large|huge]  Distance betweet silences [default: Distance.tiny]                  │
+│ --help                                                  Show this message and exit.                                         │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 #### Integration Instructions:
@@ -339,20 +339,21 @@ vmh cut-video --help
 
  Edits a video using silences as reference.
 
-╭─ Arguments ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ *    video_file       PATH           [default: None] [required]                                                                                            │
-│      audio_file       [AUDIO_FILE]   Optional audio equilized audio file                                                                                   │
-│      output_path      [OUTPUT_PATH]  [default: result.mp4]                                                                                                 │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --silence-time  -s      INTEGER                                                                 Minimal time in ms for configure a silence [default: 400]  │
-│ --threshold     -t      INTEGER                                                                 Value in db for detect silence [default: -65]              │
-│ --distance      -d      [short|mid|long|sec]                                                    Distance betweet silences [default: Distance.short]        │
-│ --codec         -c      [libx264|mpeg4|rawvideo|png|libvorbis|libvpx]                           [default: Codec.mpeg4]                                     │
-│ --preset        -p      [ultrafast|superfast|veryfast|faster|fast|medium|slow|slower|veryslow]  [default: Preset.medium]                                   │
-│ --bitrate       -b      TEXT                                                                    [default: 15M]                                             │
-│ --help                                                                                          Show this message and exit.                                │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Arguments ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    video_file       PATH           [default: None] [required]                                                                                                     │
+│      audio_file       [AUDIO_FILE]   Optional audio equilized audio file                                                                                            │
+│      output_path      [OUTPUT_PATH]  [default: result.mp4]                                                                                                          │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --silence-time  -s                INTEGER                                                                 Minimal time in ms for configure a silence [default: 400] │
+│ --threshold     -t                INTEGER                                                                 Value in db for detect silence [default: -65]             │
+│ --distance      -d                [tiny|small|medium|large|huge]                                          Distance betweet silences [default: Distance.tiny]        │
+│ --codec         -c                [libx264|mpeg4|rawvideo|png|libvorbis|libvpx]                           [default: Codec.mpeg4]                                    │
+│ --preset        -p                [ultrafast|superfast|veryfast|faster|fast|medium|slow|slower|veryslow]  [default: Preset.medium]                                  │
+│ --bitrate       -b                TEXT                                                                    [default: 15M]                                            │
+│ --force             --no-force                                                                            Ignore cache [default: no-force]                          │
+│ --help                                                                                                    Show this message and exit.                               │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ### `Transcribe`
@@ -497,24 +498,26 @@ The `distance` flag offers four distinct options, represented in the `Distance` 
 
 ```python
 class Distance(str, Enum):
-    short = 'short'
-    mid = 'mid'
-    long = 'long'
-    sec = 'sec'
+    tiny = 'tiny'
+    small = 'small'
+    medium = 'medium'
+    large = 'large'
+    huge = 'huge'
 ```
 
 Each option corresponds to a specific padding duration, as outlined in the `threshold_distance` dictionary:
 
 ```python
-threshold_distance = {'short': 0.100, 'mid': 0.250, 'long': 0.500, 'sec': 1}
+threshold_distance = {'tiny': 0, 'small': 0.100, 'medium': 0.250, 'large': 0.500, 'huge': 1}
 ```
 
 Here's a breakdown of each option:
 
-- **short**: Adds a padding of 0.100 seconds (or 100 milliseconds) to the detected silences.
-- **mid**: Introduces a more noticeable padding of 0.250 seconds (or 250 milliseconds).
-- **long**: Provides an even longer padding, extending the silence by 0.500 seconds (or 500 milliseconds).
-- **sec**: Offers the most extended padding option, adding a full second (1 second) to the silences.
+- **tiny**: don't add a padding.
+- **small**: Adds a padding of 0.100 seconds (or 100 milliseconds) to the detected silences.
+- **medium**: Introduces a more noticeable padding of 0.250 seconds (or 250 milliseconds).
+- **large**: Provides an even longer padding, extending the silence by 0.500 seconds (or 500 milliseconds).
+- **huge**: Offers the most extended padding option, adding a full second (1 second) to the silences.
 
 
 ### Practical Implications:
