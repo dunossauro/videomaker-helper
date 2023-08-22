@@ -617,8 +617,6 @@ By placing a strong emphasis on testing, we aim to provide our users with a tool
 
 - **Config Command**: To facilitate this, the implementation will likely introduce a `config` command. This will be the gateway for users to set, modify, or view their global preferences.
 
-- **Storage with Appdirs**: By utilizing "appdirs", we plan to ensure that the configurations are stored in appropriate, OS-specific directories. This ensures compatibility, organization, and ease of access.
-
 - **Use of TOML Format**: Embracing the clarity and human-friendliness of TOML, the configuration settings will be saved in this format. This ensures that, if users need to manually inspect or modify the configuration file, they are met with a format that's intuitive and easy to understand.
 
 Incorporating this user-focused configuration system is our way of personalizing VideoMaker Helper. We want our users to feel that the tool is tailored for them, adapting to their specific needs and preferences, making video production a breeze.
