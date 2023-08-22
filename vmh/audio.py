@@ -142,7 +142,12 @@ def cut_silences(
     return Path(output_file)
 
 
-threshold_distance: dict[str, float] = {'short': 0.100, 'mid': 0.250, 'long': 0.500, 'sec': 1}
+threshold_distance: dict[str, float] = {
+    'short': 0.100,
+    'mid': 0.250,
+    'long': 0.500,
+    'sec': 1,
+}
 
 
 def detect_silences(
@@ -152,7 +157,7 @@ def detect_silences(
     distance: Literal['short', 'mid', 'long', 'sec'] = 'short',
     *,
     force: bool = False,
-):
+) -> list[float]:
     times = db.search(
         (where('file_name') == audio_file) & (where('type') == 'silence')
     )
