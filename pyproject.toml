@@ -34,6 +34,9 @@ isort = "^5.12.0"
 blue = "^0.9.1"
 ruff = "^0.0.282"
 pyinstrument = "^4.5.1"
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+taskipy = "^1.12.0"
 
 [tool.isort]
 profile = "black"
@@ -41,6 +44,20 @@ line_length = 79
 
 [tool.poetry.scripts]
 vmh = "vmh.cli:app"
+
+[tool.pytest.ini_options]
+pythonpath = "."
+filterwarnings = 'ignore'
+
+[tool.ruff]
+ignore = ['E501']
+
+[tool.taskipy.tasks]
+format = 'blue . && isort .'
+lint = 'blue . --check --diff && isort . --check --diff && ruff .'
+pre_test = 'task lint'
+test = 'pytest . --cov=vmh/ -vv -x -s'
+post_test = 'coverage html'
 
 [build-system]
 requires = ["poetry-core"]
