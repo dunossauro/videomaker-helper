@@ -620,6 +620,20 @@ By placing a strong emphasis on testing, we aim to provide our users with a tool
 
 Incorporating this user-focused configuration system is our way of personalizing VideoMaker Helper. We want our users to feel that the tool is tailored for them, adapting to their specific needs and preferences, making video production a breeze.
 
+### Precision-Based Video and Audio Splits
+
+- **Time-Stamped Splits**: Venturing into enhancing the editing capabilities of VideoMaker Helper, we aspire to introduce a feature allowing users to make precision cuts based on timestamps. Whether it's slicing an audio from 12:05 to 13:07 or snipping a video segment, this functionality will cater both to podcasters and YouTube content creators. Not only can this be a powerful editing tool, but it will also allow users to extract specific segments to better acquaint themselves with the nuances of VMH.
+
+### Automated Video Montage Creation
+
+- **Ambient Music Looping in Montages**: Understanding the profound impact of music on a video's ambiance, we aim to introduce an `--ambient-music` parameter. When users are crafting their video montages, this feature will enable them to provide a path to a desired music track. VideoMaker Helper will seamlessly loop this track as a background score throughout the video. The tool will also take care of adjusting the music volume to ensure it subtly complements the main content, providing an enhanced auditory experience. This not only enriches the emotional depth of the video but also offers creators an easy way to elevate their content.
+
+- **Narrative Video Assembly**: Pushing the boundaries of automation and creativity, we envision a feature where users can supply images, video clips, and narration to automatically generate a comprehensive video montage. This would be a boon for creators who specialize in 'Dark channels' or those who prefer not to appear on camera. By feeding in the appropriate media elements and a voiceover, VMH could potentially stitch together narrative videos, akin to audiobooks or documentaries. This feature aims to reduce the manual labor of arranging media elements in sync with the narration, providing a seamless and efficient content creation process.
+
+---
+
+With these additions, the VideoMaker Helper continues to push its boundaries, ensuring it remains at the forefront of content creation tools. Whether you're a seasoned content creator or just getting started, VMH aspires to offer features that streamline the production process, letting creators focus on what they do best: tell captivating stories.
+
 ## Powered by Python: Project Dependencies
 
 VideoMaker Helper is a testament to the dynamic capabilities of the Python ecosystem. Crafted with passion in Brazil, this CLI stands tall on the shoulders of some exceptional Python projects. Here are the primary libraries and frameworks that make VideoMaker Helper tick:
