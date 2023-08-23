@@ -135,13 +135,16 @@ def equalize(
 
 @app.command()
 def kdenlive(
-    audio_file: path_arg,
-    video_file: path_arg,
     input_xml: path_arg,
+    video_file: path_arg,
     output_path: Path = Argument(default='timelines'),
+    audio_file: Path = Argument(
+        default='', help='Optional audio equilized audio file'
+    ),
     silence_time: int = silence_option,
     threshold: int = threshold_option,
     distance: audio.Distance = distance_option,
+    force: bool = force_option,
 ):
     """Generates an XML compatible with kdenlive settings.
 
@@ -154,12 +157,13 @@ def kdenlive(
     output_path.mkdir()
 
     cut(
-        audio_file,
-        video_file,
-        input_xml,
-        output_path,
+        audio_file.resolve(),
+        video_file.resolve(),
+        input_xml.resolve(),
+        output_path.resolve(),
         silence_time,
         threshold,
+        force,
         distance.value,
     )
 

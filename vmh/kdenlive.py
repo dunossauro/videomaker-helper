@@ -1,4 +1,5 @@
 from itertools import islice, pairwise
+from os import getcwd
 from pathlib import Path
 from typing import Literal
 
@@ -59,29 +60,35 @@ def write_file(silences, filename, chain, _id):
 
 
 def cut(
-    audio_file,
-    video_file,
-    input_file,
+    audio_file: Path,
+    video_file: Path,
+    input_file: Path,
     output_path: Path,
     silence_time,
     threshold: int,
+    force: bool,
     distance: Literal[
         'negative', 'tiny', 'small', 'medium', 'large', 'huge'
     ] = 'tiny',
-):
-    times = detect_silences(str(audio_file), silence_time, threshold, distance)
+) -> None:
+    if audio_file != Path(getcwd()):  # Typer don't support Path | None
+        times = detect_silences(
+            str(audio_file), silence_time, threshold, distance, force=force
+        )
+    else:
+        times = detect_silences(
+            str(video_file), silence_time, threshold, distance, force=force
+        )
 
-    logger.info('Start video-video chain')
     chain_id, file_id, playlist = check_chain(video_file, input_file, 1)
     write_file(times, output_path / 'video.xml', chain_id, file_id)
     logger.info(f'Video playlist {playlist}')
 
-    logger.info('Start video-audio chain')
     chain_id, file_id, playlist = check_chain(video_file, input_file, 0)
     write_file(times, output_path / 'video_audio.xml', chain_id, file_id)
     logger.info(f'Video playlist {playlist}')
 
-    logger.info('Start audio chain')
-    chain_id, file_id, playlist = check_chain(audio_file, input_file)
-    write_file(times, output_path / 'audio.xml', chain_id, file_id)
-    logger.info(f'Audio playlist {playlist}')
+    if audio_file != Path(getcwd()):  # Typer don't support Path | None
+        chain_id, file_id, playlist = check_chain(audio_file, input_file)
+        write_file(times, output_path / 'audio.xml', chain_id, file_id)
+        logger.info(f'Audio playlist {playlist}')
