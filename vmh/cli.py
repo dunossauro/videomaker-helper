@@ -171,10 +171,10 @@ def kdenlive(
 @app.command()
 def cut_video(
     video_file: path_arg,
+    output_path: Path = Argument(default='result.mp4'),
     audio_file: str = Argument(
         default='', help='Optional audio equilized audio file'
     ),
-    output_path: Path = Argument(default='result.mp4'),
     silence_time: int = silence_option,
     threshold: int = threshold_option,
     distance: audio.Distance = distance_option,
@@ -211,7 +211,8 @@ def transcribe(
 @app.command()
 def grammar_check(file: path_arg, lang: str = Argument(default='pt-BR')):
     """Check grammar in a tex tfile."""
-    from language_tool_python import LanguageTool  # lazy load
+    # lazy load, takes 2 secs to import
+    from language_tool_python import LanguageTool
 
     tool = LanguageTool(lang)
 
