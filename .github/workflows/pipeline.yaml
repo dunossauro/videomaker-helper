@@ -1,5 +1,5 @@
 name: Pipeline
-on: [push, pull_request]
+on: [tag]
 
 jobs:
   test:
