@@ -10,7 +10,7 @@ VideoMaker Helper is a collection of command-line utilities designed to simplify
 
 - **Audio Extraction**: Pull audio content from video files. With an option to receive both the raw extracted audio and an equalized version.
 
-- **Video Editing**: Based on silence detection, automatically cut portions of a video, providing a streamlined content experience.
+- **Video Editing**: Based on silence detection, automatically cut portions of a video, providing a streamlined content experience. See the examples at [**video-cut examples**](https://github.com/dunossauro/videomaker-helper/tree/main/examples/cut-video)
 
 ## Installation:
 
@@ -491,6 +491,8 @@ vmh
 ## Distance Flag
 
 The `distance` flag is an integral aspect of the VMH's tools, providing users with the ability to adjust the "padding" or extra duration added to the silence sections, thereby refining the cut points in the audio or video. This is especially critical when relying on silence durations as a guiding metric for edits. By adjusting the distance, you can prevent abrupt truncations and allow for smoother transitions, ensuring that the content feels more natural even after cuts.
+
+To visually understand the distance, see: [**video-cut examples**](https://github.com/dunossauro/videomaker-helper/tree/main/examples/cut-video)
 
 ### Options:
 
