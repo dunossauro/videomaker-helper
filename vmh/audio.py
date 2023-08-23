@@ -181,7 +181,9 @@ def detect_silences(
     force: bool = False,
 ) -> list[float]:
     times = db.search(
-        (where('file_name') == audio_file) & (where('type') == 'silence')
+        (where('file_name') == audio_file)
+        & (where('type') == 'silence')
+        & (where('distance') == distance)
     )
 
     if not times or force:
@@ -204,6 +206,7 @@ def detect_silences(
                 'type': 'silence',
                 'file_name': str(audio_file),
                 'times': times,
+                'distance': distance,
             }
         )
 
