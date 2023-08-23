@@ -502,6 +502,7 @@ The `distance` flag offers four distinct options, represented in the `Distance` 
 
 ```python
 class Distance(str, Enum):
+    negative = 'negative'
     tiny = 'tiny'
     small = 'small'
     medium = 'medium'
@@ -512,16 +513,26 @@ class Distance(str, Enum):
 Each option corresponds to a specific padding duration, as outlined in the `threshold_distance` dictionary:
 
 ```python
-threshold_distance = {'tiny': 0, 'small': 0.100, 'medium': 0.250, 'large': 0.500, 'huge': 1}
+threshold_distance = {
+    'negative': -0.100,
+    'tiny': 0,
+    'small': 0.100,
+    'medium': 0.250,
+    'large': 0.500,
+    'huge': 1,
+}
 ```
 
 Here's a breakdown of each option:
 
+- **negative**: Truncate more 0.100 ms.
 - **tiny**: don't add a padding.
 - **small**: Adds a padding of 0.100 seconds (or 100 milliseconds) to the detected silences.
 - **medium**: Introduces a more noticeable padding of 0.250 seconds (or 250 milliseconds).
 - **large**: Provides an even longer padding, extending the silence by 0.500 seconds (or 500 milliseconds).
 - **huge**: Offers the most extended padding option, adding a full second (1 second) to the silences.
+
+To visually understand the distance, see: [**video-cut examples**](https://github.com/dunossauro/videomaker-helper/tree/main/examples/cut-video)
 
 
 ### Practical Implications:
