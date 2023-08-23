@@ -65,7 +65,13 @@ def cut_video(
         paudio = AudioFileClip(str(audio_file))
         video.audio = paudio
     else:
-        silences = detect_silences(input_file, force=force)
+        silences = detect_silences(
+            input_file,
+            force=force,
+            threshold=threshold,
+            silence_time=silence_time,
+            distance=distance,
+        )
         video = VideoFileClip(input_file)
 
     logger.info(f'Creating subclips on {input_file}')
