@@ -65,7 +65,9 @@ def cut(
     output_path: Path,
     silence_time,
     threshold: int,
-    distance: Literal['short', 'mid', 'long', 'sec'] = 'short',
+    distance: Literal[
+        'negative', 'tiny', 'small', 'medium', 'large', 'huge'
+    ] = 'tiny',
 ):
     times = detect_silences(str(audio_file), silence_time, threshold, distance)
 
