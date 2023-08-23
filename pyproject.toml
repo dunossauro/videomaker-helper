@@ -56,7 +56,7 @@ ignore = ['E501']
 format = 'blue . && isort .'
 lint = 'blue . --check --diff && isort . --check --diff && ruff .'
 pre_test = 'task lint'
-test = 'pytest . --cov=vmh/ -vv -x -s'
+test = 'pytest --cov=vmh/ -vv -x'
 post_test = 'coverage html'
 
 [build-system]

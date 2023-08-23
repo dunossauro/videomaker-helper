@@ -21,6 +21,7 @@ class TranscribeModes(str, Enum):
 
 
 class Distance(str, Enum):
+    negative = 'negative'
     tiny = 'tiny'
     small = 'small'
     medium = 'medium'
@@ -29,6 +30,7 @@ class Distance(str, Enum):
 
 
 threshold_distance: dict[str, float] = {
+    'negative': -0.100,
     'tiny': 0,
     'small': 0.100,
     'medium': 0.250,
@@ -50,7 +52,11 @@ class Seguiment(TypedDict):
     no_speech_prob: float
 
 
-def transcribe_audio(audio_path: Path, mode: str, output_path: str):
+def transcribe_audio(
+    audio_path: Path,
+    mode: Literal['print', 'json', 'txt', 'srt'],
+    output_path: str,
+):
     from whisper import load_model  # Lazy load 2secs to start
     from whisper.utils import get_writer  # Lazy load
 
@@ -74,10 +80,10 @@ def transcribe_audio(audio_path: Path, mode: str, output_path: str):
 
     match mode:
         # TODO: Eliminar essas repetições
-        case TranscribeModes.print:
+        case 'print':
             return result
 
-        case TranscribeModes.json:
+        case 'json':
             writter = get_writer('json', '.')
             writter(
                 result,
@@ -89,7 +95,7 @@ def transcribe_audio(audio_path: Path, mode: str, output_path: str):
                 },
             )
 
-        case TranscribeModes.srt:
+        case 'srt':
             writter = get_writer('srt', '.')
             writter(
                 result,
@@ -101,7 +107,7 @@ def transcribe_audio(audio_path: Path, mode: str, output_path: str):
                 },
             )
 
-        case TranscribeModes.txt:
+        case 'txt':
             writter = get_writer('txt', '.')
             writter(
                 result,
@@ -152,11 +158,25 @@ def cut_silences(
     return Path(output_file)
 
 
+def _audio_chain(silences, distance):
+    return list(
+        chain.from_iterable(
+            [
+                (start / 1000) + threshold_distance[distance],
+                (stop / 1000) - threshold_distance[distance],
+            ]
+            for start, stop in silences
+        )
+    )
+
+
 def detect_silences(
     audio_file: str,
     silence_time: int = 400,
     threshold: int = -65,
-    distance: Literal['short', 'mid', 'long', 'sec'] = 'short',
+    distance: Literal[
+        'negative', 'tiny', 'small', 'medium', 'large', 'huge'
+    ] = 'tiny',
     *,
     force: bool = False,
 ) -> list[float]:
@@ -173,17 +193,10 @@ def detect_silences(
         silences = silence.detect_silence(
             audio, min_silence_len=silence_time, silence_thresh=threshold
         )
+
         logger.info(f'Finalized analysis: {audio_file}')
 
-        times = list(
-            chain.from_iterable(
-                [
-                    (start / 1000) + threshold_distance[distance],
-                    (stop / 1000) - threshold_distance[distance],
-                ]
-                for start, stop in silences
-            )
-        )
+        times = _audio_chain(silences, distance)
         logger.debug(f'first 20 cuts {times[:20]}')
 
         db.insert(

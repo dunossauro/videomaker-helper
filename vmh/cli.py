@@ -199,7 +199,7 @@ def transcribe(
     output_path: str = Argument(default='output.srt'),
 ):
     """Transcribes an audio file into subtitles."""
-    console.print(audio.transcribe_audio(audio_path, mode, output_path))
+    console.print(audio.transcribe_audio(audio_path, mode.value, output_path))
 
 
 @app.command()
