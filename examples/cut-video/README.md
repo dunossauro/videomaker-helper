@@ -12,3 +12,9 @@ Some examples, changing the `distance` parameter.
 All these examples using defaults parameters to `threshold`, `silence-time`, `bitrate` and `codec`.
 
 The `--preset` used is `ultrafast`
+
+Example command:
+
+```bash
+vmh cut-video default.mkv result_large.mp4 -p ultrafast -d large
+```
