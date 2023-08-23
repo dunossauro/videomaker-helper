@@ -40,6 +40,8 @@ distance_option = Option(
     help='Distance betweet silences',
 )
 
+force_option = Option(False, help='Ignore cache')
+
 
 def version(arg):
     if arg:
@@ -82,7 +84,7 @@ def silences(
     silence_time: int = silence_option,
     threshold: int = threshold_option,
     distance: audio.Distance = distance_option,
-    force: bool = Option(False, help='Ignore cache'),
+    force: bool = force_option,
 ):
     """Checks for silences in a audio file.
 
@@ -175,7 +177,7 @@ def cut_video(
     codec: video.Codec = Option(video.Codec.mpeg4, '--codec', '-c'),
     preset: video.Preset = Option(video.Preset.medium, '--preset', '-p'),
     bitrare: str = Option('15M', '--bitrate', '-b'),
-    force: bool = Option(default=False, help='Ignore cache'),
+    force: bool = force_option,
 ):
     """Edits a video using silences as reference."""
     video.cut_video(
