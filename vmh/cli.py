@@ -137,7 +137,7 @@ def equalize(
 def kdenlive(
     input_xml: path_arg,
     video_file: path_arg,
-    output_path: Path = Argument(default='timelines'),
+    output_path: Path = Argument(default='cuts.kdenlive'),
     audio_file: Path = Argument(
         default='', help='Optional audio equilized audio file'
     ),
@@ -148,13 +148,13 @@ def kdenlive(
 ):
     """Generates an XML compatible with kdenlive settings.
 
-    Note: It doesn’t directly modify kdenlive files. It creates timeline instructions which you must manually integrate.
+    Note: It doesn’t directly modify kdenlive files. It new kdenlive file with [OUTPUT_FILE].
     """
+    # TODO: Ask if input_xml and output_path are same!
+    output_path = output_path.resolve()
     if output_path.exists():
         logger.info(f'Deleting {output_path}')
-        rmtree(output_path)
-
-    output_path.mkdir()
+        output_path.unlink()
 
     cut(
         audio_file.resolve(),

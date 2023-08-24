@@ -1,3 +1,4 @@
+import xml.etree.ElementTree as ET
 from itertools import islice, pairwise
 from os import getcwd
 from pathlib import Path
@@ -16,7 +17,7 @@ xml_template = """ <entry producer="{}" in="00:00:{:.3f}" out="00:00:{:.3f}">
 
 def check_chain(
     filename: Path, input_file: Path, property: int | None = None
-) -> tuple[str | None, ...]:
+) -> tuple[str, ...]:
     with open(input_file) as f:
         content = f.read()
         s = Selector(content)
@@ -47,16 +48,41 @@ def check_chain(
         return _chain, _id, playlist_id
 
 
-def write_file(silences, filename, chain, _id):
-    logger.info('Start file', filename)
+def kdenlive_xml(
+    path: str,
+    playlist_id: str,
+    property_id: str,
+    chain_id: str,
+    cuts: list[float],
+    output_path: str,
+    *,
+    overwrite: bool = False,
+) -> str:
 
-    with open(filename, 'w') as f:
-        for start, stop in islice(pairwise(silences), 1, None, 2):
-            if start < 0:
-                start = 0.0
-            f.write(xml_template.format(chain, start, stop, _id))
+    tree = ET.parse(path)
+    root = tree.getroot()
 
-    logger.info('End file', filename)
+    playlist: ET.Element = root.find(f'./playlist[@id="{playlist_id}"]')
+    playlist.clear()
+    playlist.attrib.update(id=playlist_id)
+
+    for _in, _out in islice(pairwise(cuts), 1, None, 2):
+        entry_attribs = {
+            'producer': chain_id,
+            'in': f'00:00:{_in:.3f}',
+            'out': f'00:00:{_out:.3f}',
+        }
+        entry = ET.SubElement(playlist, 'entry', attrib=entry_attribs)
+
+        # Property
+        ET.SubElement(entry, 'property', attrib={'name': 'kdenlive:id'}, text=property_id)
+
+    if overwrite:
+        tree.write(path)
+        return path
+
+    tree.write(output_path)
+    return output_path
 
 
 def cut(
@@ -80,15 +106,36 @@ def cut(
             str(video_file), silence_time, threshold, distance, force=force
         )
 
-    chain_id, file_id, playlist = check_chain(video_file, input_file, 1)
-    write_file(times, output_path / 'video.xml', chain_id, file_id)
+    chain_id, file_id, playlist = check_chain(video_file, input_file, 0)
+    _output_path: str = kdenlive_xml(
+        str(input_file),
+        playlist_id=playlist,
+        property_id=file_id,
+        chain_id=chain_id,
+        cuts=times,
+        output_path=str(output_path)
+    )
     logger.info(f'Video playlist {playlist}')
 
-    chain_id, file_id, playlist = check_chain(video_file, input_file, 0)
-    write_file(times, output_path / 'video_audio.xml', chain_id, file_id)
-    logger.info(f'Video playlist {playlist}')
+    chain_id, file_id, playlist = check_chain(video_file, input_file, 1)
+    kdenlive_xml(
+        _output_path,
+        playlist_id=playlist,
+        chain_id=chain_id,
+        property_id=file_id,
+        cuts=times,
+        output_path=_output_path,
+    )
+    logger.info(f'Audio playlist {playlist}')
 
     if audio_file != Path(getcwd()):  # Typer don't support Path | None
         chain_id, file_id, playlist = check_chain(audio_file, input_file)
-        write_file(times, output_path / 'audio.xml', chain_id, file_id)
+        kdenlive_xml(
+            _output_path,
+            playlist_id=playlist,
+            chain_id=chain_id,
+            property_id=file_id,
+            cuts=times,
+            output_path=_output_path,
+        )
         logger.info(f'Audio playlist {playlist}')

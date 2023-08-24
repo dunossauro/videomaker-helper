@@ -250,8 +250,6 @@ vmh equalize --help
   - `--threshold`: Determines the decibel level to qualify a segment as silent.
   - `--distance`: Adjusts the granularity of silence detection, with options from short intervals to exact durations.
 
-- **Manual XML Integration**: For now, this command doesn’t directly alter existing kdenlive XML files. Instead, it generates standalone XML files with the necessary cut instructions. To incorporate these cuts into the main project, users must manually integrate this XML content into their primary kdenlive XML files. Seamless integration is a planned feature for future updates.
-
 #### Sample Commands:
 
 1. For an automated silence-trimmed XML setup using `audio.wav`, `video.mp4`, and `project.xml`:
@@ -274,35 +272,23 @@ vmh kdenlive --help
  Usage: vmh kdenlive [OPTIONS] AUDIO_FILE VIDEO_FILE INPUT_XML [OUTPUT_PATH]
 
  Generates XML tailored to kdenlive settings, emphasizing automated silence cuts.
- Note: It doesn’t directly modify kdenlive files. It creates timeline instructions which you must manually integrate.
+ Note: It doesn’t directly modify kdenlive files. It new kdenlive file with [OUTPUT_FILE].
 
-╭─ Arguments ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ *    input_xml        PATH           [default: None] [required]                                                                                                            │
-│ *    video_file       PATH           [default: None] [required]                                                                                                            │
-│      output_path      [OUTPUT_PATH]  [default: timelines]                                                                                                                  │
-│      audio_file       [AUDIO_FILE]   Optional audio equilized audio file                                                                                                   │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --silence-time  -s                INTEGER                                  Minimal time in ms for configure a silence [default: 400]                                       │
-│ --threshold     -t                INTEGER                                  Value in db for detect silence [default: -65]                                                   │
-│ --distance      -d                [negative|tiny|small|medium|large|huge]  Distance betweet silences [default: Distance.tiny]                                              │
-│ --force             --no-force                                             Ignore cache [default: no-force]                                                                │
-│ --help                                                                     Show this message and exit.                                                                     │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Arguments ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    input_xml        PATH           [default: None] [required]                                                                         │
+│ *    video_file       PATH           [default: None] [required]                                                                         │
+│      output_path      [OUTPUT_PATH]  [default: cuts.kdenlive]                                                                           │
+│      audio_file       [AUDIO_FILE]   Optional audio equilized audio file                                                                │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --silence-time  -s                INTEGER                                  Minimal time in ms for configure a silence [default: 400]    │
+│ --threshold     -t                INTEGER                                  Value in db for detect silence [default: -65]                │
+│ --distance      -d                [negative|tiny|small|medium|large|huge]  Distance betweet silences [default: Distance.tiny]           │
+│ --force             --no-force                                             Ignore cache [default: no-force]                             │
+│ --help                                                                     Show this message and exit.                                  │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
-#### Integration Instructions:
-
-To weave the XML content generated by the `kdenlive` command into your kdenlive project:
-
-1. Retrieve the produced XML from the designated output path (default: `timelines`).
-2. Copy its entire content.
-3. Open your primary kdenlive project XML file.
-4. Find the section dedicated to timeline data.
-5. Manually integrate the copied XML content.
-6. Store the changes to the kdenlive project XML file. Open it within the kdenlive software to inspect the implemented trims.
-
-**Coming Soon**: A future update aims to offer direct modifications to the kdenlive XML file, making the integration process smoother and more intuitive.
 
 ### `cut-video`
 
@@ -605,8 +591,6 @@ VideoMaker Helper is continually evolving, built with the aim to be an indispens
 - **Extract Multi-channel Audio**: We recognize the growing demand for multi-channel audio extraction. Soon, VideoMaker Helper will be equipped to extract 5.1 and 7.1 audio into separate files, catering to professional audio processing needs.
 
 ### Seamless Video Editing Integration
-- **Transparent `kdenlive` Command**: Our vision extends to creating a tool that works seamlessly with popular video editing software. The plan is to refine the `kdenlive` command, making it not just transparent but also incredibly useful for users.
-
 - **Support Other Video Editors with OTIO**: Recognizing the diverse tools content creators employ, we aim to support various video editors by leveraging OpenTimelineIO (OTIO). This will expand the horizons of VideoMaker Helper, making it a universally compatible tool.
 
 With every envisioned enhancement, our foremost commitment remains to empower content creators, enabling them to weave stories with finesse, clarity, and flair. Your feedback, as always, remains instrumental in shaping the trajectory of VideoMaker Helper.
