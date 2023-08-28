@@ -253,14 +253,20 @@ vmh equalize --help
 #### Sample Commands:
 
 1. For an automated silence-trimmed XML setup using `audio.wav`, `video.mp4`, and `project.xml`:
-```
-vmh kdenlive audio.wav video.mp4 project.xml
+```bash
+vmh kdenlive project.kdenlive video.mp4
 ```
 
 2. Customizing silence detection parameters for the XML generation:
+```bash
+vmh kdenlive project.kdenlive video.mp4 --silence-time 500 --threshold -30
 ```
-vmh kdenlive audio.wav video.mp4 project.xml --silence-time 500 --threshold -30
+
+3. Using equilized audio
+```bash
+vmh kdenlive project.kdenlive video.mp4 audio.mp3
 ```
+
 
 #### `--help` Option Display:
 
