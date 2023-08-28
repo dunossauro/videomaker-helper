@@ -584,6 +584,9 @@ VideoMaker Helper is continually evolving, built with the aim to be an indispens
 - **Publish Package**: In our ongoing efforts to make VideoMaker Helper accessible to everyone, we plan to publish the package for easier installation and updates. This will streamline the user experience, ensuring that the tool is just a command away.
 
 ### Advanced Audio Enhancements
+
+- **Remove noise**: Pedalboard has a [noise gate plugin](https://spotify.github.io/pedalboard/reference/pedalboard.html#pedalboard.NoiseGate) we can use then.
+
 - **Equalize System Overhaul**: Our aspiration is to magnify the capabilities of our equalize system. With the integration of [librosa](https://librosa.org/doc/latest/index.html#), we aim to detect volume disparities within audio files to engineer a crisp and harmonious audio output. The resultant audio will gracefully dance between -9 and -6 dB, striking a perfect balance between clarity and intensity.
 
 - **VST3 and Lv2 Support for Equalization**: Our goal is to provide users with advanced audio processing capabilities. By integrating VST3 and Lv2 support, VideoMaker Helper will offer a wider array of audio effects and enhancements, ensuring top-notch audio output.
