@@ -84,8 +84,8 @@ def transcribe_audio(
             return result
 
         case 'json':
-            writter = get_writer('json', '.')
-            writter(
+            writer = get_writer('json', '.')
+            writer(
                 result,
                 output_path,
                 {
@@ -96,8 +96,8 @@ def transcribe_audio(
             )
 
         case 'srt':
-            writter = get_writer('srt', '.')
-            writter(
+            writer = get_writer('srt', '.')
+            writer(
                 result,
                 output_path,
                 {
@@ -108,8 +108,8 @@ def transcribe_audio(
             )
 
         case 'txt':
-            writter = get_writer('txt', '.')
-            writter(
+            writer = get_writer('txt', '.')
+            writer(
                 result,
                 output_path,
                 {
@@ -191,7 +191,7 @@ def detect_silences(
         audio = AudioSegment.from_file(audio_file)
         logger.info(f'File read: {audio_file}')
 
-        logger.info(f'Analize silences in {audio_file}')
+        logger.info(f'Analyze silences in {audio_file}')
         silences = silence.detect_silence(
             audio, min_silence_len=silence_time, silence_thresh=threshold
         )
