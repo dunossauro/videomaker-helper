@@ -74,8 +74,9 @@ def kdenlive_xml(
         }
         entry = ET.SubElement(playlist, 'entry', attrib=entry_attribs)
 
-        # Property
-        ET.SubElement(entry, 'property', attrib={'name': 'kdenlive:id'}, text=property_id)
+        ET.SubElement(
+            entry, 'property', attrib={'name': 'kdenlive:id'}, text=property_id
+        )
 
     if overwrite:
         tree.write(path)
@@ -96,7 +97,7 @@ def cut(
     distance: Literal[
         'negative', 'tiny', 'small', 'medium', 'large', 'huge'
     ] = 'tiny',
-) -> None:
+) -> Path:
     if audio_file != Path(getcwd()):  # Typer don't support Path | None
         times = detect_silences(
             str(audio_file), silence_time, threshold, distance, force=force
@@ -113,7 +114,7 @@ def cut(
         property_id=file_id,
         chain_id=chain_id,
         cuts=times,
-        output_path=str(output_path)
+        output_path=str(output_path),
     )
     logger.info(f'Video playlist {playlist}')
 
@@ -139,3 +140,5 @@ def cut(
             output_path=_output_path,
         )
         logger.info(f'Audio playlist {playlist}')
+
+    return Path(_output_path).resolve()

@@ -156,15 +156,17 @@ def kdenlive(
         logger.info(f'Deleting {output_path}')
         output_path.unlink()
 
-    cut(
-        audio_file.resolve(),
-        video_file.resolve(),
-        input_xml.resolve(),
-        output_path.resolve(),
-        silence_time,
-        threshold,
-        force,
-        distance.value,
+    console.print(
+        cut(
+            audio_file.resolve(),
+            video_file.resolve(),
+            input_xml.resolve(),
+            output_path.resolve(),
+            silence_time,
+            threshold,
+            force,
+            distance.value,
+        )
     )
 
 
