@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 from librosa import load
 from librosa.display import waveshow
-from typer import Typer, Argument
+from typer import Typer, Option
 
 plot = Typer(no_args_is_help=True)
 
@@ -20,7 +20,7 @@ def compare_waves(
     files: list[str],
     fig_name: str,
     fig_size: tuple[float, float] = (10, 12),
-    force_db: bool = Argument(True, help='Force to use 1 to -1 dbs in plot'),
+    force_db: bool = Option(True, help='Force to use 1 to -1 dbs in plot'),
 ) -> None:
     """Plot a figure with N audio waves for comparison."""
     _, ax = plt.subplots(

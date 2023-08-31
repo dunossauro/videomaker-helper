@@ -497,20 +497,20 @@ Create a comparative plot of multiple audio waves. Useful for comparing the effe
 
 ```
 vmh plot compare-waves --help
-                                                                                     
- Usage: vmh plot compare-waves [OPTIONS] FILES... FIG_NAME [FORCE_DB]
+
+ Usage: vmh plot compare-waves [OPTIONS] FILES... FIG_NAME
 
  Plot a figure with N audio waves for comparison.
 
-╭─ Arguments ───────────────────────────────────────────────────────────────────────╮
-│ *    files         FILES...    [default: None] [required]                         │
-│ *    fig_name      TEXT        [default: None] [required]                         │
-│      force_db      [FORCE_DB]  Force to use 1 to -1 dbs in plot [default: True]   │
-╰───────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ─────────────────────────────────────────────────────────────────────────╮
-│ --fig-size        <FLOAT FLOAT>...  [default: 10, 12]                             │
-│ --help                              Show this message and exit.                   │
-╰───────────────────────────────────────────────────────────────────────────────────╯
+╭─ Arguments ────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    files         FILES...  [default: None] [required]                                                │
+│ *    fig_name      TEXT      [default: None] [required]                                                │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --fig-size                     <FLOAT FLOAT>...  [default: 10, 12]                                     │
+│ --force-db    --no-force-db                      Force to use 1 to -1 dbs in plot [default: force-db]  │
+│ --help                                           Show this message and exit.                           │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ### All options

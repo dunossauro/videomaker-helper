@@ -17,6 +17,19 @@ Some examples, changing the `distance` parameter.
 
 ![example](./out.png)
 
+CLI to generate this image:
+```bash
+vmh plot compare-waves \
+  examples/cut-video/default.mkv \
+  examples/cut-video/result_large.mp4 \
+  examples/cut-video/result_medium.mp4 \
+  examples/cut-video/result_small.mp4 \
+  examples/cut-video/result_tiny.mp4 \
+  examples/cut-video/result_negative.mp4 \
+  examples/cut-video/out.png \
+  --no-force-db
+```
+
 All these examples using defaults parameters to `threshold`, `silence-time`, `bitrate` and `codec`.
 
 The `--preset` used is `ultrafast`
