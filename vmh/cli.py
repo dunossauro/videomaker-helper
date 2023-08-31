@@ -1,13 +1,12 @@
 import warnings
 from pathlib import Path
-from shutil import rmtree
 from typing import Annotated
 
 from loguru import logger
 from rich.console import Console
 from typer import Argument, Context, Exit, Option, Typer
 
-from vmh import audio, cache, video
+from vmh import audio, cache, plot, video
 from vmh.equalize import process_audio
 from vmh.kdenlive import cut
 from vmh.settings import __version__
@@ -19,6 +18,7 @@ console = Console()
 
 app = Typer(help='Videomaker Helper!', no_args_is_help=True)
 app.add_typer(cache.cache, name='cache', help='Cache tools.')
+app.add_typer(plot.plot, name='plot', help='Audio debug tools.')
 
 
 # Options
@@ -125,10 +125,9 @@ def cut_silences(
 def equalize(
     audio_file: path_arg,
     output_file: Path = Argument(default='output.wav'),
-    gain: int = Option(10, '--gain', '-g', help='Add dbs in audio'),
 ):
-    """Add Compression and Gain dor audio file."""
-    process_audio(str(audio_file.resolve()), str(output_file), gain)
+    """Add effects for audio file."""
+    process_audio(str(audio_file.resolve()), str(output_file))
 
     console.print(f'{output_file} Created')
 

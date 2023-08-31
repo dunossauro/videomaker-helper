@@ -447,39 +447,110 @@ Usage: vmh grammar-check [OPTIONS] FILE [LANG]
 
 3. **Regular Audits**: For long projects with vast subtitle files, consider periodic grammar checks. This will not only help maintain the quality of your content but also ensure that any corrections can be integrated without revisiting large portions of your work.
 
-### All options
+### Plot commands
 
-TODO doc
+Plotting commands offer tools to visualize audio files, facilitating debugging and comprehension of audio processing. Here's how to use them:
 
 ```
-vmh
+vmh plot
 
-  Usage: vmh [OPTIONS] COMMAND [ARGS]...
+ Usage: vmh plot [OPTIONS] COMMAND [ARGS]...
 
-  Videomaker Helper!
+ Audio debug tools.
 
-  ╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────╮
-  │ --version             -v                                       Show VMH version                       │
-  │ --install-completion          [bash|zsh|fish|powershell|pwsh]  Install completion for the specified   │
-  │                                                                shell.                                 │
-  │                                                                [default: None]                        │
-  │ --show-completion             [bash|zsh|fish|powershell|pwsh]  Show completion for the specified      │
-  │                                                                shell, to copy it or customize the     │
-  │                                                                installation.                          │
-  │                                                                [default: None]                        │
-  │ --help                                                         Show this message and exit.            │
-  ╰───────────────────────────────────────────────────────────────────────────────────────────────────────╯
-  ╭─ Commands ────────────────────────────────────────────────────────────────────────────────────────────╮
-  │ cache                  Cache tools.                                                                   │
-  │ cut-silences           Removes all silences from an audio file.                                       │
-  │ cut-video              Edits a video using silences as reference.                                     │
-  │ equalize               Add Compression and Gain dor audio file.                                       │
-  │ extract-audio          Extracts the audio from a video.                                               │
-  │ grammar-check          Check grammar in a tex tfile.                                                  │
-  │ kdenlive               Generates an XML compatible with kdenlive settings.                            │
-  │ silences               Checks for silences in a audio file.                                           │
-  │ transcribe             Transcribes an audio file into subtitles.                                      │
-  ╰───────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                             │
+╰─────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ──────────────────────────────────────────────────────────────────────────────╮
+│ compare-waves        Plot a figure with N audio waves for comparison.                   │
+│ plot-wave            Plot a figure with audio wave.                                     │
+╰─────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+#### `plot-wave`
+
+Visualize a single audio waveform to better understand its characteristics.
+
+##### `--help`
+
+```
+vmh plot plot-wave --help
+                                                                       
+ Usage: vmh plot plot-wave [OPTIONS] FILE FIG_NAME
+
+ Plot a figure with audio wave.
+
+╭─ Arguments ─────────────────────────────────────────────────────────╮
+│ *    file          TEXT  [default: None] [required]                 │
+│ *    fig_name      TEXT  [default: None] [required]                 │
+╰─────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                         │
+╰─────────────────────────────────────────────────────────────────────╯
+```
+
+#### `compare-waves`
+
+Create a comparative plot of multiple audio waves. Useful for comparing the effects of different audio processing steps or algorithms.
+
+##### `--help`
+
+```
+vmh plot compare-waves --help
+                                                                                     
+ Usage: vmh plot compare-waves [OPTIONS] FILES... FIG_NAME [FORCE_DB]
+
+ Plot a figure with N audio waves for comparison.
+
+╭─ Arguments ───────────────────────────────────────────────────────────────────────╮
+│ *    files         FILES...    [default: None] [required]                         │
+│ *    fig_name      TEXT        [default: None] [required]                         │
+│      force_db      [FORCE_DB]  Force to use 1 to -1 dbs in plot [default: True]   │
+╰───────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ─────────────────────────────────────────────────────────────────────────╮
+│ --fig-size        <FLOAT FLOAT>...  [default: 10, 12]                             │
+│ --help                              Show this message and exit.                   │
+╰───────────────────────────────────────────────────────────────────────────────────╯
+```
+
+### All options
+
+Below are all the available options and commands for Videomaker Helper (VMH):
+
+To get more details for each command, use vmh `<command> --help`.
+
+This condensed guide can serve as a quick reference for anyone using your tool, making it easier to understand at a glance all the capabilities it offers.
+
+```
+vmh --help
+                                                                                                          
+ Usage: vmh [OPTIONS] COMMAND [ARGS]...
+
+ Videomaker Helper!
+
+╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --version             -v                                       Show VMH version                        │
+│ --install-completion          [bash|zsh|fish|powershell|pwsh]  Install completion for the specified    │
+│                                                                shell.                                  │
+│                                                                [default: None]                         │
+│ --show-completion             [bash|zsh|fish|powershell|pwsh]  Show completion for the specified       │
+│                                                                shell, to copy it or customize the      │
+│                                                                installation.                           │
+│                                                                [default: None]                         │
+│ --help                                                         Show this message and exit.             │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ─────────────────────────────────────────────────────────────────────────────────────────────╮
+│ cache                  Cache tools.                                                                    │
+│ cut-silences           Removes all silences from an audio file.                                        │
+│ cut-video              Edits a video using silences as reference.                                      │
+│ equalize               Add effects for audio file.                                                     │
+│ extract-audio          Extracts the audio from a video.                                                │
+│ grammar-check          Check grammar in a tex tfile.                                                   │
+│ kdenlive               Generates an XML compatible with kdenlive settings.                             │
+│ plot                   Audio debug tools.                                                              │
+│ silences               Checks for silences in a audio file.                                            │
+│ transcribe             Transcribes an audio file into subtitles.                                       │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ## Distance Flag
