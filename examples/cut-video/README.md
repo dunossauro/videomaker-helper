@@ -14,8 +14,8 @@ Some examples, changing the `distance` parameter.
   - Duration: 11 secs
 - `result_large.mp4`: `-d large`
   - Duration: 16 secs
-  
-  ![example](./out.png)
+
+![example](./out.png)
 
 All these examples using defaults parameters to `threshold`, `silence-time`, `bitrate` and `codec`.
 
