@@ -28,6 +28,9 @@ openai-whisper = {git = "https://github.com/openai/whisper.git"}
 torch = { version = "^2.0.1", source = "pytorch" }
 torchvision = { version = "^0.15.2", source = "pytorch" }
 torchaudio = { version = "^2.0.2", source = "pytorch" }
+matplotlib = "^3.7.2"
+librosa = "^0.10.1"
+inquirerpy = "^0.3.4"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.12.0"
@@ -37,6 +40,7 @@ pyinstrument = "^4.5.1"
 pytest = "^7.4.0"
 pytest-cov = "^4.1.0"
 taskipy = "^1.12.0"
+mypy = "^1.5.1"
 
 [tool.isort]
 profile = "black"
@@ -55,13 +59,21 @@ ignore = ['E501']
 [tool.taskipy.tasks]
 format = 'blue . && isort .'
 lint = 'blue . --check --diff && isort . --check --diff && ruff .'
+types = 'mypy .'
 pre_test = 'task lint'
 test = 'pytest --cov=vmh/ -vv -x'
 post_test = 'coverage html'
 
+[tool.mypy]
+ignore_missing_imports = true
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "pypi"
+priority = "primary"
 
 [[tool.poetry.source]]
 name = "pytorch"
