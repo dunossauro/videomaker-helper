@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 from librosa import load
 from librosa.display import waveshow
-from typer import Typer, Option
+from typer import Option, Typer
 
 plot = Typer(no_args_is_help=True)
 
