@@ -1,0 +1,16 @@
+site_name: VideoMaker-Helper
+
+theme:
+  name: material
+
+plugins:
+  - mkdocs-video:
+      is_video: True
+      video_type: mp4
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [vmh]
+
+watch:
+   - vmh
