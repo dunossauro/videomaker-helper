@@ -89,4 +89,4 @@ priority = "primary"
 [[tool.poetry.source]]
 name = "pytorch"
 priority = "supplemental"
-url = "https://download.pytorch.org/whl/gpu"
+url = "https://download.pytorch.org/whl/"
