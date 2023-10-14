@@ -25,9 +25,9 @@ language-tool-python = "^2.7.1"
 whisper = "^1.1.10"
 numba = "^0.57.1"
 openai-whisper = {git = "https://github.com/openai/whisper.git"}
-torch = { version = "^2.0.1", source = "pytorch" }
-torchvision = { version = "^0.15.2", source = "pytorch" }
-torchaudio = { version = "^2.0.2", source = "pytorch" }
+torch = "^2.0.1"
+torchvision = "^0.15.2"
+torchaudio = "^2.0.2"
 matplotlib = "^3.7.2"
 librosa = "^0.10.1"
 inquirerpy = "^0.3.4"
@@ -42,7 +42,6 @@ pytest = "^7.4.0"
 pytest-cov = "^4.1.0"
 taskipy = "^1.12.0"
 mypy = "^1.5.1"
-
 
 [tool.poetry.group.doc.dependencies]
 mkdocs = "^1.5.2"
@@ -85,8 +84,3 @@ build-backend = "poetry.core.masonry.api"
 [[tool.poetry.source]]
 name = "pypi"
 priority = "primary"
-
-[[tool.poetry.source]]
-name = "pytorch"
-priority = "supplemental"
-url = "https://download.pytorch.org/whl/"
