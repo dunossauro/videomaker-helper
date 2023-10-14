@@ -27,3 +27,6 @@ jobs:
 
       - name: Mypy check
         run: poetry run mypy .
+
+      - name: Pytest
+        run: poetrun run pytest

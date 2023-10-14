@@ -1,5 +1,7 @@
 from itertools import chain
 
+import pytest
+
 from vmh.audio import _audio_chain, detect_silences, transcribe_audio
 
 audio_stub = {
@@ -83,6 +85,7 @@ def test_detect_silences_negative():
     assert silences == list(times)
 
 
+@pytest.mark.skip(reason='Need cuda to run this on CI')
 def test_transcribe_audio():
     segments = transcribe_audio(audio_stub['path'], 'print', '')['segments']
     for segment in segments:
