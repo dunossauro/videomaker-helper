@@ -26,9 +26,7 @@ class Preset(str, Enum):
 
 
 class Codec(str, Enum):
-    """
-    moviepy.readthedocs.io/en/latest/ref/videotools.html#moviepy.video.tools.credits.CreditsClip.write_videofile
-    """
+    """moviepy.readthedocs.io/en/latest/ref/videotools.html#moviepy.video.tools.credits.CreditsClip.write_videofile."""
 
     libx264 = 'libx264'
     mpeg4 = 'mpeg4'

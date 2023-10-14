@@ -127,7 +127,7 @@ def extract_audio(
 ) -> Path | tuple[Path, ...]:
     """Extract audio from vídeo.
 
-    args:
+    Args:
         video_file: Video to extract audio
         output_file:
         eq:
