@@ -2,15 +2,15 @@ import xml.etree.ElementTree as ET
 from itertools import islice, pairwise
 from os import getcwd
 from pathlib import Path
-from typing import Literal
+from typing import Literal, cast
 
 from loguru import logger
 from parsel.selector import Selector
 
-from .audio import detect_silences
+from vmh.audio import detect_silences
 
 xml_template = """ <entry producer="{}" in="00:00:{:.3f}" out="00:00:{:.3f}">
-   <property name="kdenlive:id">{}</property>
+   <property name=:id">{}</property>
   </entry>
 """
 
@@ -36,7 +36,9 @@ def check_chain(
             el = s.xpath(f'//chain/property[text() = "{filename.name}"]/..')
 
         _chain = el.css('chain::attr("id")').get()
+        _chain = cast(str, _chain)
         _id = el.css('property[name="kdenlive:id"]::text').get()
+        _id = cast(str, _id)
 
         playlists = s.xpath(
             f'//playlist/entry[@producer="{_chain}"]/..'
@@ -44,6 +46,7 @@ def check_chain(
 
         logger.debug(f'Playlists: {filename}-{playlists}')
         playlist_id = playlists.get()
+        playlist_id = cast(str, playlist_id)
 
         return _chain, _id, playlist_id
 
@@ -62,7 +65,9 @@ def kdenlive_xml(
     tree = ET.parse(path)
     root = tree.getroot()
 
-    playlist: ET.Element = root.find(f'./playlist[@id="{playlist_id}"]')
+    playlist = root.find(f'./playlist[@id="{playlist_id}"]')
+    playlist = cast(ET.Element, playlist)
+
     playlist.clear()
     playlist.attrib.update(id=playlist_id)
 
@@ -75,8 +80,8 @@ def kdenlive_xml(
         entry = ET.SubElement(playlist, 'entry', attrib=entry_attribs)
 
         ET.SubElement(
-            entry, 'property', attrib={'name': 'kdenlive:id'}, text=property_id
-        )
+            entry, 'property', attrib={'name': 'kdenlive:id'}
+        ).text=property_id
 
     if overwrite:
         tree.write(path)
@@ -108,6 +113,7 @@ def cut(
         )
 
     chain_id, file_id, playlist = check_chain(video_file, input_file, 0)
+
     _output_path: str = kdenlive_xml(
         str(input_file),
         playlist_id=playlist,

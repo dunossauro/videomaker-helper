@@ -7,8 +7,8 @@ from loguru import logger
 from pydub import AudioSegment, silence
 from tinydb import TinyDB, where
 
-from .equalize import process_audio
-from .settings import cache_db_path
+from vmh.equalize import process_audio
+from vmh.settings import cache_db_path
 
 db = TinyDB(str(cache_db_path))
 
