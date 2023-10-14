@@ -1,8 +1,8 @@
-import xml.etree.ElementTree as ET
 from itertools import islice, pairwise
 from os import getcwd
 from pathlib import Path
 from typing import Literal, cast
+from xml.etree import ElementTree
 
 from loguru import logger
 from parsel.selector import Selector
@@ -62,11 +62,11 @@ def kdenlive_xml(
     overwrite: bool = False,
 ) -> str:
 
-    tree = ET.parse(path)
+    tree = ElementTree.parse(path)
     root = tree.getroot()
 
     playlist = root.find(f'./playlist[@id="{playlist_id}"]')
-    playlist = cast(ET.Element, playlist)
+    playlist = cast(ElementTree.Element, playlist)
 
     playlist.clear()
     playlist.attrib.update(id=playlist_id)
@@ -77,11 +77,11 @@ def kdenlive_xml(
             'in': f'00:00:{_in:.3f}',
             'out': f'00:00:{_out:.3f}',
         }
-        entry = ET.SubElement(playlist, 'entry', attrib=entry_attribs)
+        entry = ElementTree.SubElement(playlist, 'entry', attrib=entry_attribs)
 
-        ET.SubElement(
+        ElementTree.SubElement(
             entry, 'property', attrib={'name': 'kdenlive:id'}
-        ).text=property_id
+        ).text = property_id
 
     if overwrite:
         tree.write(path)
