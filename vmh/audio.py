@@ -123,9 +123,19 @@ def transcribe_audio(
 
 
 def extract_audio(
-    audio_file: str, output_file: str, eq: bool = True
+    video_file: str, output_file: str, eq: bool = True
 ) -> Path | tuple[Path, ...]:
-    audio: AudioSegment = AudioSegment.from_file(audio_file)
+    """Extract audio from vídeo.
+
+    args:
+        video_file: Video to extract audio
+        output_file:
+        eq:
+
+    Returns:
+        A audio Path
+    """
+    audio: AudioSegment = AudioSegment.from_file(video_file)
     audio.export(output_file, format='wav')
 
     if eq:
