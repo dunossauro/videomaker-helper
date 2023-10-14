@@ -1,5 +1,7 @@
 name: Pipeline
-on: [tag]
+on:
+  push:
+    branches: "*"
 
 jobs:
   test:
