@@ -65,6 +65,9 @@ filterwarnings = 'ignore'
 ignore = ['E501']
 select = ['E', 'F', 'W', 'C', 'I', 'N']
 
+[tool.ruff.pydocstyle]
+convention = "google"
+
 [tool.taskipy.tasks]
 format = 'blue . && isort .'
 lint = 'blue . --check --diff && isort . --check --diff && ruff .'
