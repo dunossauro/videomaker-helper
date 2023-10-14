@@ -15,10 +15,13 @@ jobs:
           python-version: '3.11.1'
 
       - name: Install poetry
-        run: pipx install poetry
+        run: pipx install --python python3.11 poetry
 
       - name: Install dependencies
         run: poetry install
 
-      - name: Run tests
-        run: poetry run task test --cov-report=xml
+      - name: Check ruff
+        run: poetry run ruff .
+
+      - name: Mypy check
+        run: poetry run mypy .

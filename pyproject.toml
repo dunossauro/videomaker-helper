@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "videomaker-helper"
-version = "0.1.0"
+version = "0.2.2"
 description = "Simples tools to help video makers"
 authors = ["dunossauro <mendesxeduardo@gmail.com>"]
 readme = "README.md"
@@ -64,6 +64,7 @@ filterwarnings = 'ignore'
 
 [tool.ruff]
 ignore = ['E501']
+select = ['E', 'F', 'W', 'C', 'I', 'N']
 
 [tool.taskipy.tasks]
 format = 'blue . && isort .'
@@ -88,4 +89,4 @@ priority = "primary"
 [[tool.poetry.source]]
 name = "pytorch"
 priority = "supplemental"
-url = "https://download.pytorch.org/whl/cpu"
+url = "https://download.pytorch.org/whl/gpu"
