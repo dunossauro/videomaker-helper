@@ -31,6 +31,7 @@ torchaudio = { version = "^2.0.2", source = "pytorch" }
 matplotlib = "^3.7.2"
 librosa = "^0.10.1"
 inquirerpy = "^0.3.4"
+mkdocstrings = "^0.23.0"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.12.0"
@@ -41,6 +42,14 @@ pytest = "^7.4.0"
 pytest-cov = "^4.1.0"
 taskipy = "^1.12.0"
 mypy = "^1.5.1"
+
+
+[tool.poetry.group.doc.dependencies]
+mkdocs = "^1.5.2"
+mkdocs-material = "^9.2.7"
+mkdocs-video = "^1.5.0"
+mkdocstrings = "^0.23.0"
+mkdocstrings-python = "^1.6.0"
 
 [tool.isort]
 profile = "black"
@@ -63,6 +72,7 @@ types = 'mypy .'
 pre_test = 'task lint'
 test = 'pytest --cov=vmh/ -vv -x'
 post_test = 'coverage html'
+doc = 'mkdocs serve'
 
 [tool.mypy]
 ignore_missing_imports = true
