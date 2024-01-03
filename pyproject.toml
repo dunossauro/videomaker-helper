@@ -36,7 +36,7 @@ mkdocstrings = "^0.23.0"
 [tool.poetry.group.dev.dependencies]
 isort = "^5.12.0"
 blue = "^0.9.1"
-ruff = "^0.0.282"
+ruff = "^0.1.11"
 pyinstrument = "^4.5.1"
 pytest = "^7.4.0"
 pytest-cov = "^4.1.0"
@@ -61,12 +61,24 @@ vmh = "vmh.cli:app"
 pythonpath = "."
 filterwarnings = 'ignore'
 
-[tool.ruff]
-ignore = ['E501']
-select = ['E', 'F', 'W', 'C', 'I', 'N']
+[tool.ruff.lint]
+select = ['ALL']
+ignore = [
+    'D100',
+    'D103',
+    'D104',
+    'E501',
+]
+
+[tool.ruff.lint.per-file-ignores]
+'tests/*' = ['ANN201', 'S101']
 
 [tool.ruff.pydocstyle]
 convention = "google"
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = 'single'
+
 
 [tool.taskipy.tasks]
 format = 'blue . && isort .'
