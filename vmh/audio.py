@@ -172,8 +172,8 @@ def _audio_chain(silences, distance):
     return list(
         chain.from_iterable(
             [
-                (start / 1000) + threshold_distance[distance],
-                (stop / 1000) - threshold_distance[distance],
+                (start / 1_000) + threshold_distance[distance],
+                (stop / 1_000) - threshold_distance[distance],
             ]
             for start, stop in silences
         )
