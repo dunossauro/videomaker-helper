@@ -16,7 +16,7 @@ xml_template = """ <entry producer="{}" in="00:00:{:.3f}" out="00:00:{:.3f}">
 
 
 def check_chain(
-    filename: Path, input_file: Path, property: int | None = None
+    filename: Path, input_file: Path, property: int | None = None,
 ) -> tuple[str, ...]:
     with open(input_file) as f:
         content = f.read()
@@ -30,7 +30,7 @@ def check_chain(
         and
         (./property[(@name='set.test_audio' and ./text()='{property}')])
     )]
-"""
+""",
             )
         else:
             el = s.xpath(f'//chain/property[text() = "{filename.name}"]/..')
@@ -41,7 +41,7 @@ def check_chain(
         _id = cast(str, _id)
 
         playlists = s.xpath(
-            f'//playlist/entry[@producer="{_chain}"]/..'
+            f'//playlist/entry[@producer="{_chain}"]/..',
         ).xpath('@id')
 
         logger.debug(f'Playlists: {filename}-{playlists}')
@@ -80,7 +80,7 @@ def kdenlive_xml(
         entry = ElementTree.SubElement(playlist, 'entry', attrib=entry_attribs)
 
         ElementTree.SubElement(
-            entry, 'property', attrib={'name': 'kdenlive:id'}
+            entry, 'property', attrib={'name': 'kdenlive:id'},
         ).text = property_id
 
     if overwrite:
@@ -100,16 +100,16 @@ def cut(
     threshold: int,
     force: bool,
     distance: Literal[
-        'negative', 'tiny', 'small', 'medium', 'large', 'huge'
+        'negative', 'tiny', 'small', 'medium', 'large', 'huge',
     ] = 'tiny',
 ) -> Path:
     if audio_file != Path(getcwd()):  # Typer don't support Path | None
         times = detect_silences(
-            str(audio_file), silence_time, threshold, distance, force=force
+            str(audio_file), silence_time, threshold, distance, force=force,
         )
     else:
         times = detect_silences(
-            str(video_file), silence_time, threshold, distance, force=force
+            str(video_file), silence_time, threshold, distance, force=force,
         )
 
     chain_id, file_id, playlist = check_chain(video_file, input_file, 0)

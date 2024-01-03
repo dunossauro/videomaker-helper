@@ -53,7 +53,7 @@ def test_detect_silences_small():
     small_distance = 0.100
 
     silences = detect_silences(
-        audio_stub['path'], distance='small', force=True
+        audio_stub['path'], distance='small', force=True,
     )
 
     times = chain.from_iterable(
@@ -71,7 +71,7 @@ def test_detect_silences_negative():
     negative_distance = 0.100
 
     silences = detect_silences(
-        audio_stub['path'], distance='small', force=True
+        audio_stub['path'], distance='small', force=True,
     )
 
     times = chain.from_iterable(

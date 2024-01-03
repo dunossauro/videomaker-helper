@@ -24,7 +24,7 @@ def compare_waves(
 ) -> None:
     """Plot a figure with N audio waves for comparison."""
     _, ax = plt.subplots(
-        nrows=len(files), sharex=True, figsize=fig_size, tight_layout=True
+        nrows=len(files), sharex=True, figsize=fig_size, tight_layout=True,
     )
 
     for n, file in enumerate(files):

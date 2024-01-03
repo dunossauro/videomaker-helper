@@ -53,7 +53,7 @@ def process_audio(
 ) -> Path:
     with AudioFile(input_file, 'r') as ifile:
         with AudioFile(
-            output_file, 'w', ifile.samplerate, ifile.num_channels
+            output_file, 'w', ifile.samplerate, ifile.num_channels,
         ) as ofile:
             while ifile.tell() < ifile.frames:
                 chunk = ifile.read(ifile.samplerate)

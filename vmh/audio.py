@@ -62,7 +62,7 @@ def transcribe_audio(
 
     cache = db.search(
         (where('file_name') == str(audio_path))
-        & (where('type') == 'transcribe')
+        & (where('type') == 'transcribe'),
     )
 
     if not cache:
@@ -73,7 +73,7 @@ def transcribe_audio(
                 'type': 'transcribe',
                 'file_name': str(audio_path),
                 'data': result,
-            }
+            },
         )
     else:
         result = cache[0]['data']
@@ -123,7 +123,7 @@ def transcribe_audio(
 
 
 def extract_audio(
-    video_file: str, output_file: str, eq: bool = True
+    video_file: str, output_file: str, eq: bool = True,
 ) -> Path | tuple[Path, ...]:
     """Extract audio from vídeo.
 
@@ -156,7 +156,7 @@ def cut_silences(
     logger.info(f'File read: {audio_file}')
 
     silences = silence.split_on_silence(
-        audio, min_silence_len=silence_time, silence_thresh=threshold
+        audio, min_silence_len=silence_time, silence_thresh=threshold,
     )
 
     combined = AudioSegment.empty()
@@ -176,7 +176,7 @@ def _audio_chain(silences, distance):
                 (stop / 1_000) - threshold_distance[distance],
             ]
             for start, stop in silences
-        )
+        ),
     )
 
 
@@ -185,7 +185,7 @@ def detect_silences(
     silence_time: int = 400,
     threshold: int = -65,
     distance: Literal[
-        'negative', 'tiny', 'small', 'medium', 'large', 'huge'
+        'negative', 'tiny', 'small', 'medium', 'large', 'huge',
     ] = 'tiny',
     *,
     force: bool = False,
@@ -193,7 +193,7 @@ def detect_silences(
     times = db.search(
         (where('file_name') == audio_file)
         & (where('type') == 'silence')
-        & (where('distance') == distance)
+        & (where('distance') == distance),
     )
 
     if not times or force:
@@ -203,7 +203,7 @@ def detect_silences(
 
         logger.info(f'Analyze silences in {audio_file}')
         silences = silence.detect_silence(
-            audio, min_silence_len=silence_time, silence_thresh=threshold
+            audio, min_silence_len=silence_time, silence_thresh=threshold,
         )
 
         logger.info(f'Finalized analysis: {audio_file}')
@@ -217,7 +217,7 @@ def detect_silences(
                 'file_name': str(audio_file),
                 'times': times,
                 'distance': distance,
-            }
+            },
         )
 
         logger.info(f'Found {len(times)} silences in audio')

@@ -16,7 +16,7 @@ def test_cli_version():
 @pytest.mark.slow('LanguageTool take seconds to start!')
 def test_grammar_check():
     response = cli.invoke(
-        app, 'grammar-check tests/test_assets/grammar_file.txt'
+        app, 'grammar-check tests/test_assets/grammar_file.txt',
     )
 
     assert 'UPPERCASE_SENTENCE_START' in response.stdout

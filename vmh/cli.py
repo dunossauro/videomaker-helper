@@ -30,7 +30,7 @@ silence_option = Option(
 )
 
 threshold_option = Option(
-    -65, '--threshold', '-t', help='Value in db for detect silence'
+    -65, '--threshold', '-t', help='Value in db for detect silence',
 )
 
 distance_option = Option(
@@ -71,7 +71,7 @@ def extract_audio(
     audio_file: path_arg,
     output_file: Path = Argument(default='output.wav'),
     eq: bool = Option(
-        True, help='Add compression and 10db of extracted audio'
+        True, help='Add compression and 10db of extracted audio',
     ),
 ):
     """Extracts the audio from a video."""
@@ -98,8 +98,8 @@ def silences(
                 threshold=threshold,
                 distance=distance.value,
                 force=force,
-            )
-        )
+            ),
+        ),
     )
 
 
@@ -117,7 +117,7 @@ def cut_silences(
             str(output_file),
             silence_time=silence_time,
             threshold=threshold,
-        )
+        ),
     )
 
 
@@ -138,7 +138,7 @@ def kdenlive(
     video_file: path_arg,
     output_path: Path = Argument(default='cuts.kdenlive'),
     audio_file: Path = Argument(
-        default='', help='Optional audio equilized audio file'
+        default='', help='Optional audio equilized audio file',
     ),
     silence_time: int = silence_option,
     threshold: int = threshold_option,
@@ -165,7 +165,7 @@ def kdenlive(
             threshold,
             force,
             distance.value,
-        )
+        ),
     )
 
 
@@ -174,7 +174,7 @@ def cut_video(
     video_file: path_arg,
     output_path: Path = Argument(default='result.mp4'),
     audio_file: str = Argument(
-        default='', help='Optional audio equilized audio file'
+        default='', help='Optional audio equilized audio file',
     ),
     silence_time: int = silence_option,
     threshold: int = threshold_option,
