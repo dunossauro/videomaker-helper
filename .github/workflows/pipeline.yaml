@@ -23,10 +23,13 @@ jobs:
         run: poetry install
 
       - name: Check ruff
-        run: poetry run ruff .
+        run: poetry run task lint
 
       - name: Mypy check
-        run: poetry run mypy .
+        run: poetry run task types
+
+      - name: Typos check
+        run: poetry run task typos
 
       - name: Pytest
-        run: poetry run pytest
+        run: poetry run task test
