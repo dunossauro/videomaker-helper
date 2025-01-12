@@ -199,27 +199,5 @@ def cut_video(
     )
 
 
-@app.command()
-def transcribe(
-    audio_path: Path = Argument(),
-    mode: audio.TranscribeModes = audio.TranscribeModes.srt,
-    output_path: str = Argument(default='output.srt'),
-):
-    """Transcribes an audio file into subtitles."""
-    console.print(audio.transcribe_audio(audio_path, mode.value, output_path))
-
-
-@app.command()
-def grammar_check(file: path_arg, lang: str = Argument(default='pt-BR')):
-    """Check grammar in a tex tfile."""
-    # lazy load, takes 2 secs to import
-    from language_tool_python import LanguageTool
-
-    tool = LanguageTool(lang)
-
-    with open(file) as f:
-        console.print(tool.check(f.read()))
-
-
 if __name__ == '__main__':
     app()
