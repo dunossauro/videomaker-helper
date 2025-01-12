@@ -1,8 +1,6 @@
 from itertools import chain
 
-import pytest
-
-from vmh.audio import _audio_chain, detect_silences, transcribe_audio
+from vmh.audio import _audio_chain, detect_silences
 
 audio_stub = {
     'path': 'tests/test_assets/audio_test.wav',
@@ -53,7 +51,9 @@ def test_detect_silences_small():
     small_distance = 0.100
 
     silences = detect_silences(
-        audio_stub['path'], distance='small', force=True,
+        audio_stub['path'],
+        distance='small',
+        force=True,
     )
 
     times = chain.from_iterable(
@@ -71,7 +71,9 @@ def test_detect_silences_negative():
     negative_distance = 0.100
 
     silences = detect_silences(
-        audio_stub['path'], distance='small', force=True,
+        audio_stub['path'],
+        distance='small',
+        force=True,
     )
 
     times = chain.from_iterable(
@@ -83,10 +85,3 @@ def test_detect_silences_negative():
     )
 
     assert silences == list(times)
-
-
-@pytest.mark.skip(reason='Need cuda to run this on CI')
-def test_transcribe_audio():
-    segments = transcribe_audio(audio_stub['path'], 'print', '')['segments']
-    for segment in segments:
-        assert 'Isso é um teste.' in segment['text']

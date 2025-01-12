@@ -42,7 +42,12 @@ def cut_video(
     silence_time: int,
     threshold: int,
     distance: Literal[
-        'negative', 'tiny', 'small', 'medium', 'large', 'huge',
+        'negative',
+        'tiny',
+        'small',
+        'medium',
+        'large',
+        'huge',
     ] = 'tiny',
     bitrate: str = '15M',
     codec: Codec = Codec.mpeg4,

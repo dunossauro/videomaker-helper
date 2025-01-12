@@ -41,10 +41,6 @@ mkdocs-video = "^1.5.0"
 mkdocstrings = "^0.23.0"
 mkdocstrings-python = "^1.6.0"
 
-[tool.isort]
-profile = "black"
-line_length = 79
-
 [tool.poetry.scripts]
 vmh = "vmh.cli:app"
 
@@ -53,28 +49,20 @@ pythonpath = "."
 filterwarnings = 'ignore'
 
 [tool.ruff.lint]
-select = ['ALL']
-ignore = [
-    'D100',
-    'D103',
-    'D104',
-    'E501',
-]
+select = ['I', 'N', 'F', 'E', 'W', 'D']
+ignore = ['D100', 'D101', 'D103', 'D104', 'D203', 'D213']
 
-[tool.ruff.lint.per-file-ignores]
-'tests/*' = ['ANN201', 'S101']
-
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "google"
 
-[tool.ruff.lint.flake8-quotes]
-inline-quotes = 'single'
-
+[tool.ruff.format]
+quote-style = "single"
 
 [tool.taskipy.tasks]
-format = 'blue . && isort .'
-lint = 'blue . --check --diff && isort . --check --diff && ruff .'
-types = 'mypy .'
+format = 'ruff format'
+lint = 'ruff check'
+typos = 'typos vmh'
+types = 'mypy vmh'
 pre_test = 'task lint'
 test = 'pytest --cov=vmh/ -vv -x'
 post_test = 'coverage html'

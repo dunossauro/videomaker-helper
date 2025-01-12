@@ -39,9 +39,7 @@ def _get_board() -> Pedalboard:
     """
     effects = fx_chain
 
-    plugins = [
-        getattr(pedalboard, effect)(**effects[effect]) for effect in effects
-    ]
+    plugins = [getattr(pedalboard, effect)(**effects[effect]) for effect in effects]
 
     return Pedalboard(plugins)
 
@@ -53,7 +51,10 @@ def process_audio(
 ) -> Path:
     with AudioFile(input_file, 'r') as ifile:
         with AudioFile(
-            output_file, 'w', ifile.samplerate, ifile.num_channels,
+            output_file,
+            'w',
+            ifile.samplerate,
+            ifile.num_channels,
         ) as ofile:
             while ifile.tell() < ifile.frames:
                 chunk = ifile.read(ifile.samplerate)
