@@ -3,7 +3,7 @@ from itertools import islice, pairwise
 from typing import Literal
 
 from loguru import logger
-from moviepy.editor import AudioFileClip, VideoFileClip, concatenate_videoclips
+from moviepy import AudioFileClip, VideoFileClip, concatenate_videoclips
 
 from vmh.audio import detect_silences
 

@@ -13,13 +13,6 @@ from vmh.settings import cache_db_path
 db = TinyDB(str(cache_db_path))
 
 
-class TranscribeModes(str, Enum):
-    print = 'print'
-    txt = 'txt'
-    json = 'json'
-    srt = 'srt'
-
-
 class Distance(str, Enum):
     negative = 'negative'
     tiny = 'tiny'
@@ -52,17 +45,17 @@ class Seguiment(TypedDict):
     no_speech_prob: float
 
 
-def extract_audio(  # noqa: D417
+def extract_audio(
     video_file: str,
     output_file: str,
     eq: bool = True,
-) -> Path | tuple[Path, ...]:
+) -> Path | tuple[Path, Path]:
     """Extract audio from vídeo.
 
     Args:
         video_file: Video to extract audio
-        output_file:
-        eq:
+        output_file: Output file path
+        eq: Equalization
 
     Returns:
         A audio Path
@@ -71,8 +64,9 @@ def extract_audio(  # noqa: D417
     audio.export(output_file, format='wav')
 
     if eq:
-        process_audio(output_file, 'eq_' + output_file)
-        return Path(output_file), Path('eq_' + output_file)
+        _eq_path = Path(output_file)
+        eq_path = _eq_path.parent / ('eq_' + _eq_path.name)
+        return Path(output_file), Path(process_audio(output_file, str(eq_path)))
 
     return Path(output_file)
 
@@ -91,6 +85,7 @@ def cut_silences(
         audio,
         min_silence_len=silence_time,
         silence_thresh=threshold,
+        keep_silence=False,
     )
 
     combined = AudioSegment.empty()
