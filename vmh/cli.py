@@ -73,7 +73,7 @@ def extract_audio(
     audio_file: path_arg,
     output_file: Path = Argument(default='output.wav'),
     eq: bool = Option(
-        True,
+        False,
         help='Add compression and 10db of extracted audio',
     ),
 ):
