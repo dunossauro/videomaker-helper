@@ -16,6 +16,12 @@ jobs:
         with:
           python-version: '3.11.1'
 
+      - name: Update ubuntu
+        run: sudo apt update
+
+      - name: Install ffmpeg
+        run: sudo apt install ffmpeg -y
+
       - name: Install poetry
         run: pipx install --python python3.11 poetry
 
