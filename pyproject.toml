@@ -50,8 +50,8 @@ pythonpath = "."
 filterwarnings = 'ignore'
 
 [tool.ruff.lint]
-select = ['I', 'N', 'F', 'E', 'W', 'D']
-ignore = ['D100', 'D101', 'D103', 'D104', 'D203', 'D213']
+select = ['I', 'N', 'F', 'E', 'W', 'D', 'PL']
+ignore = ['D100', 'D101', 'D103', 'D104', 'D203', 'D213', 'PLR0913']
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
@@ -62,10 +62,11 @@ quote-style = "single"
 [tool.taskipy.tasks]
 format = 'ruff format'
 lint = 'ruff check'
-typos = 'typos vmh'
+typos = 'typos vmh tests'
 types = 'mypy vmh'
 pre_test = 'task lint'
 test = 'pytest --cov=vmh/ -vv -x'
+stest = 'pytest --cov=vmh/ -vv'
 post_test = 'coverage html'
 doc = 'mkdocs serve'
 
