@@ -626,8 +626,6 @@ VideoMaker Helper is a testament to the dynamic capabilities of the Python ecosy
 
 - **[moviepy](https://github.com/Zulko/moviepy)**: A versatile tool that empowers us to edit videos with a Pythonic touch, making complex video manipulations a breeze.
 
-- **[Whisper](https://openai.com/research/publications/whisper-an-automatic-speech-recognition-system-for-conversational-speech/)**: OpenAI's automatic speech recognition (ASR) system. It's designed to convert spoken language into written text, making audio transcription efficient and accurate.
-
 - **[pedalboard](https://github.com/spotify/pedalboard)**: Developed by Spotify, this library provides a robust platform for audio effects, further enhancing the audio capabilities of VideoMaker Helper.
 
 These dependencies, among others, form the backbone of our tool, and we express our deepest gratitude to the developers and communities behind these projects. Their commitment to open-source innovation drives tools like VideoMaker Helper to push boundaries and redefine content creation.
