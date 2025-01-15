@@ -26,7 +26,7 @@ jobs:
         run: pipx install --python python3.11 poetry
 
       - name: Install dependencies
-        run: poetry install
+        run: poetry install --without doc
 
       - name: Check ruff
         run: poetry run task lint
