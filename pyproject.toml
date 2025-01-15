@@ -1,31 +1,44 @@
-[tool.poetry]
+[project]
 name = "videomaker-helper"
 version = "0.2.2"
 description = "Simples tools to help video makers"
-authors = ["dunossauro <mendesxeduardo@gmail.com>"]
+authors = [{ name = "dunossauro", email = "mendesxeduardo@gmal.com" }]
 readme = "README.md"
-license = "GPL-3.0-or-later"
-packages = [{include = "vmh"}]
+license = { text = "GPL-3.0-or-later" }
 classifiers = [
-    "Environment :: Console",
+  "Environment :: Console",
 ]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-pydub = "^0.25.1"
-typer = "^0.9.0"
-loguru = "^0.7.0"
-tinydb = "^4.8.0"
-rich = "^13.5.2"
-pedalboard = "^0.9.16"
-parsel = "^1.8.1"
-moviepy = "^2.1.2"
-appdirs = "^1.4.4"
-matplotlib = "^3.7.2"
-librosa = "^0.10.1"
-inquirerpy = "^0.3.4"
-mkdocstrings = "^0.23.0"
-audioop-lts = {version = ">=0.2.1", markers = "python_version >= \"3.13\""}
+requires-python = ">=3.11,<4.0"
+dependencies = [
+	"pydub (>=0.25.1,<0.26.0)",
+	"typer (>=0.9.0,<0.10.0)",
+	"loguru (>=0.7.3,<0.8.0)",
+	"tinydb (>=4.8.0,<5.0.0)",
+	"rich (>=13.5.2,<14.0.0)",
+	"pedalboard (>=0.9.16,<0.10.0)",
+	"parsel (>=1.8.1,<2.0.0)",
+	"moviepy (>=2.1.2,<3.0.0)",
+	"appdirs (>=1.4.4,<2.0.0)",
+	"matplotlib (>=3.10.0,<4.0.0)",
+	"librosa (>=0.10.1,<0.11.0)",
+	"inquirerpy (>=0.3.4,<0.4.0)",
+	"audioop-lts (>=0.2.1) ; python_version >= \"3.13\""
+]
+
+[project.urls]
+Homepage = "https://codeberg.org/taconi/FoxDotChord"
+Documentation = "https://foxdotchord.readthedocs.io"
+Repository = "https://codeberg.org/taconi/FoxDotChord"
+"Contributor Guide" = "https://foxdotchord.readthedocs.io/contributing"
+Changelog = "https://foxdotchord.readthedocs.io/changelog/"
+Issues = "https://codeberg.org/taconi/FoxDotChord/issues"
+
+[project.scripts]
+vmh = "vmh.cli:app"
+
+[tool.poetry]
+packages = [{include = "vmh"}]
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.9.1"
@@ -41,9 +54,6 @@ mkdocs-material = "^9.2.7"
 mkdocs-video = "^1.5.0"
 mkdocstrings = "^0.23.0"
 mkdocstrings-python = "^1.6.0"
-
-[tool.poetry.scripts]
-vmh = "vmh.cli:app"
 
 [tool.pytest.ini_options]
 pythonpath = "."
@@ -77,5 +87,5 @@ doc = 'mkdocs serve'
 ignore_missing_imports = true
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0.1"]
 build-backend = "poetry.core.masonry.api"
