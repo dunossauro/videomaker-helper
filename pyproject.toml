@@ -49,6 +49,9 @@ vmh = "vmh.cli:app"
 pythonpath = "."
 filterwarnings = 'ignore'
 
+[tool.ruff]
+line-length = 79
+
 [tool.ruff.lint]
 select = ['I', 'N', 'F', 'E', 'W', 'D', 'PL']
 ignore = ['D100', 'D101', 'D103', 'D104', 'D203', 'D213', 'PLR0913']

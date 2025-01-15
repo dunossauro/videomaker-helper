@@ -66,7 +66,10 @@ def extract_audio(
     if eq:
         _eq_path = Path(output_file)
         eq_path = _eq_path.parent / ('eq_' + _eq_path.name)
-        return Path(output_file), Path(process_audio(output_file, str(eq_path)))
+        return (
+            Path(output_file),
+            Path(process_audio(output_file, str(eq_path))),
+        )
 
     return Path(output_file)
 

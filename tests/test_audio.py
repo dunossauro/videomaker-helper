@@ -4,7 +4,12 @@ from typing import cast
 
 from pydub import AudioSegment
 
-from vmh.audio import _audio_chain, cut_silences, detect_silences, extract_audio
+from vmh.audio import (
+    _audio_chain,
+    cut_silences,
+    detect_silences,
+    extract_audio,
+)
 
 audio_stub = {
     'path': 'tests/test_assets/audio_test.wav',
@@ -152,9 +157,7 @@ def test_cut_audio_silences(tmpdir):
     inpurt_file = 'tests/test_assets/sas.wav'
     output_file = tmpdir / 'out.mp3'
     expected_size = 1
-    cut_silences(
-        inpurt_file, output_file
-    )
+    cut_silences(inpurt_file, output_file)
 
     audio_seg: AudioSegment = AudioSegment.from_mp3(str(output_file))
 
