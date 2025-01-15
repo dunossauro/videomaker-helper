@@ -17,31 +17,23 @@ typer = "^0.9.0"
 loguru = "^0.7.0"
 tinydb = "^4.8.0"
 rich = "^13.5.2"
-pedalboard = "^0.7.7"
+pedalboard = "^0.9.16"
 parsel = "^1.8.1"
-moviepy = "v2.0.0.dev2"
+moviepy = "^2.1.2"
 appdirs = "^1.4.4"
-language-tool-python = "^2.7.1"
-whisper = "^1.1.10"
-numba = "^0.57.1"
-openai-whisper = {git = "https://github.com/openai/whisper.git"}
-torch = "^2.0.1"
-torchvision = "^0.15.2"
-torchaudio = "^2.0.2"
 matplotlib = "^3.7.2"
 librosa = "^0.10.1"
 inquirerpy = "^0.3.4"
 mkdocstrings = "^0.23.0"
+audioop-lts = {version = ">=0.2.1", markers = "python_version >= \"3.13\""}
 
 [tool.poetry.group.dev.dependencies]
-isort = "^5.12.0"
-blue = "^0.9.1"
-ruff = "^0.1.11"
-pyinstrument = "^4.5.1"
+ruff = "^0.9.1"
 pytest = "^7.4.0"
 pytest-cov = "^4.1.0"
 taskipy = "^1.12.0"
-mypy = "^1.5.1"
+mypy = "^1.14.1"
+typos = "^1.29.4"
 
 [tool.poetry.group.doc.dependencies]
 mkdocs = "^1.5.2"
@@ -50,10 +42,6 @@ mkdocs-video = "^1.5.0"
 mkdocstrings = "^0.23.0"
 mkdocstrings-python = "^1.6.0"
 
-[tool.isort]
-profile = "black"
-line_length = 79
-
 [tool.poetry.scripts]
 vmh = "vmh.cli:app"
 
@@ -61,31 +49,27 @@ vmh = "vmh.cli:app"
 pythonpath = "."
 filterwarnings = 'ignore'
 
+[tool.ruff]
+line-length = 79
+
 [tool.ruff.lint]
-select = ['ALL']
-ignore = [
-    'D100',
-    'D103',
-    'D104',
-    'E501',
-]
+select = ['I', 'N', 'F', 'E', 'W', 'D', 'PL']
+ignore = ['D100', 'D101', 'D103', 'D104', 'D203', 'D213', 'PLR0913']
 
-[tool.ruff.lint.per-file-ignores]
-'tests/*' = ['ANN201', 'S101']
-
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "google"
 
-[tool.ruff.lint.flake8-quotes]
-inline-quotes = 'single'
-
+[tool.ruff.format]
+quote-style = "single"
 
 [tool.taskipy.tasks]
-format = 'blue . && isort .'
-lint = 'blue . --check --diff && isort . --check --diff && ruff .'
-types = 'mypy .'
+format = 'ruff format'
+lint = 'ruff check'
+typos = 'typos vmh tests'
+types = 'mypy vmh'
 pre_test = 'task lint'
 test = 'pytest --cov=vmh/ -vv -x'
+stest = 'pytest --cov=vmh/ -vv'
 post_test = 'coverage html'
 doc = 'mkdocs serve'
 
@@ -95,7 +79,3 @@ ignore_missing_imports = true
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-[[tool.poetry.source]]
-name = "pypi"
-priority = "primary"

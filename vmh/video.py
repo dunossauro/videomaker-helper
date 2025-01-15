@@ -3,7 +3,7 @@ from itertools import islice, pairwise
 from typing import Literal
 
 from loguru import logger
-from moviepy.editor import AudioFileClip, VideoFileClip, concatenate_videoclips
+from moviepy import AudioFileClip, VideoFileClip, concatenate_videoclips
 
 from vmh.audio import detect_silences
 
@@ -42,7 +42,12 @@ def cut_video(
     silence_time: int,
     threshold: int,
     distance: Literal[
-        'negative', 'tiny', 'small', 'medium', 'large', 'huge',
+        'negative',
+        'tiny',
+        'small',
+        'medium',
+        'large',
+        'huge',
     ] = 'tiny',
     bitrate: str = '15M',
     codec: Codec = Codec.mpeg4,

@@ -74,7 +74,7 @@ vmh extract-audio --help
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
 │ --eq      --no-eq      Add compression and 10db of extracted audio           │
-│                        [default: eq]                                         │
+│                        [default: no-eq]                                      │
 │ --help                 Show this message and exit.                           │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
@@ -350,102 +350,6 @@ vmh cut-video --help
 ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
-### `Transcribe`
-
-The `transcribe` command is a powerful tool designed to convert audio content from video or standalone audio files into readable text, producing subtitles for the given content.
-
-- **Input Types**: This command can process both video and audio files.
-
-- **Output Modes**: With the `--mode` flag, users can specify the desired output format for the transcriptions:
-  - `txt`: Produces a `.txt` file with the transcription.
-  - `json`: Generates a structured `.json` file containing the transcription data.
-  - `srt`: Creates a `.srt` subtitle file, commonly used with video players.
-  - `print`: Instead of saving to a file, this mode displays the transcription result directly in the console.
-
-- **Optional Output Path**: While you can specify an `output_path` to determine where the generated file (txt, json, or srt) will be saved, it's not mandatory. If not provided, the default filename will be `output.srt`.
-
-Example Usage:
-
-To transcribe an audio file named `audio.mp3` and get the transcription result in a JSON format, use:
-
-```
-vmh transcribe audio.mp3 --mode json
-```
-
-`--help` Flag Output:
-
-The following shows the output you'd receive when using the `--help` flag with the `transcribe` command:
-
-```
-vmh transcribe --help
-
- Usage: vmh transcribe [OPTIONS] AUDIO_PATH [OUTPUT_PATH]
-
- Transcribes an audio file into subtitles.
-
-╭─ Arguments ───────────────────────────────────────────────────────────────────────╮
-│ *    audio_path       PATH           [default: None] [required]                   │
-│      output_path      [OUTPUT_PATH]  [default: output.srt]                        │
-╰───────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ─────────────────────────────────────────────────────────────────────────╮
-│ --mode        [print|txt|json|srt]  [default: TranscribeModes.srt]                │
-│ --help                              Show this message and exit.                   │
-╰───────────────────────────────────────────────────────────────────────────────────╯
-```
-
-### `grammar-check`
-
-**Command Purpose**: The `grammar-check` command offers users a powerful utility to analyze text files for grammatical inaccuracies. By harnessing the capabilities of LanguageTool, this command spotlights potential grammatical pitfalls within the text, ensuring textual fidelity and precision.
-
-This tool, though broadly applicable for any textual evaluation, finds its niche within the VMH suite for inspecting generated subtitles. Given the inherent challenges of transcribing speech—like unnatural phrasings, the integration of foreign terms, or hurried articulations—the `grammar-check` ensures that your subtitles not only convey the right message but do so with grammatical accuracy.
-
-#### Main Features:
-
-- **LanguageTool Integration**: Relying on the robust LanguageTool system, the `grammar-check` command evaluates textual content against an extensive database of grammatical rules, pinpointing areas that might benefit from corrections or reconsideration.
-
-- **Tailored for Subtitle Inspection**: While general grammar checks can be performed using this tool, its inclusion within VMH emphasizes its role in auditing subtitles. It becomes instrumental in ensuring that automated transcriptions are not just accurate in content but also in their grammatical construct.
-
-- **Support for Multiple Languages**: The command allows users to specify a language using the `lang` argument, catering to multilingual subtitle generation. By default, it assumes the language to be Brazilian Portuguese (`pt-BR`).
-
-#### Sample Commands:
-
-1. Performing a grammar check on `document.txt` in the default language (Brazilian Portuguese):
-```
-vmh grammar-check document.txt
-```
-
-2. Conducting a grammar check for content in English:
-```
-vmh grammar-check document.txt en-US
-```
-
-#### `--help` Option Display:
-
-A brief overview of available options and arguments for the `grammar-check` command:
-
-```
-vmh grammar-check --help
-
-Usage: vmh grammar-check [OPTIONS] FILE [LANG]
-
-  Check grammar in a text file using LanguageTool.
-
-╭─ Arguments ────────────────────────────────────────────────╮
-│ *    file      PATH    [default: None] [required]          │
-│      lang      [LANG]  [default: pt-BR]                    │
-╰────────────────────────────────────────────────────────────╯
-╭─ Options ──────────────────────────────────────────────────╮
-│ --help          Display this help message.                 │
-╰────────────────────────────────────────────────────────────╯
-```
-
-#### Usage Tips:
-
-1. **Consider the Context**: While automated grammar checks are a boon, it's essential to remember that subtleties in speech, especially in transcriptions or subtitles, might lead to flagged areas that are contextually accurate. Always review the suggestions with the context in mind.
-
-2. **Foreign Terms and Phrases**: If your subtitles or text include terms or phrases from different languages, anticipate potential flags from the grammar-check, especially if the specified language for checking is different.
-
-3. **Regular Audits**: For long projects with vast subtitle files, consider periodic grammar checks. This will not only help maintain the quality of your content but also ensure that any corrections can be integrated without revisiting large portions of your work.
 
 ### Plot commands
 
@@ -721,8 +625,6 @@ VideoMaker Helper is a testament to the dynamic capabilities of the Python ecosy
 - **[pydub](https://github.com/jiaaro/pydub)**: An intuitive library that simplifies audio processing, allowing us to manipulate and analyze sound effortlessly.
 
 - **[moviepy](https://github.com/Zulko/moviepy)**: A versatile tool that empowers us to edit videos with a Pythonic touch, making complex video manipulations a breeze.
-
-- **[Whisper](https://openai.com/research/publications/whisper-an-automatic-speech-recognition-system-for-conversational-speech/)**: OpenAI's automatic speech recognition (ASR) system. It's designed to convert spoken language into written text, making audio transcription efficient and accurate.
 
 - **[pedalboard](https://github.com/spotify/pedalboard)**: Developed by Spotify, this library provides a robust platform for audio effects, further enhancing the audio capabilities of VideoMaker Helper.
 

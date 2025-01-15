@@ -30,7 +30,10 @@ silence_option = Option(
 )
 
 threshold_option = Option(
-    -65, '--threshold', '-t', help='Value in db for detect silence',
+    -65,
+    '--threshold',
+    '-t',
+    help='Value in db for detect silence',
 )
 
 distance_option = Option(
@@ -62,8 +65,7 @@ def callcaback(
         case_sensitive=False,
         help='Show VMH version',
     ),
-):
-    ...
+): ...
 
 
 @app.command()
@@ -71,7 +73,8 @@ def extract_audio(
     audio_file: path_arg,
     output_file: Path = Argument(default='output.wav'),
     eq: bool = Option(
-        True, help='Add compression and 10db of extracted audio',
+        False,
+        help='Add compression and 10db of extracted audio',
     ),
 ):
     """Extracts the audio from a video."""
@@ -88,8 +91,9 @@ def silences(
 ):
     """Checks for silences in a audio file.
 
-    The checks are cached, so if the file has already been analyzed, it will return the cache.
-    """
+    The checks are cached, so if the file has already been analyzed,
+    it will return the cache.
+    """  # noqa: W505
     console.print(
         list(
             audio.detect_silences(
@@ -138,7 +142,8 @@ def kdenlive(
     video_file: path_arg,
     output_path: Path = Argument(default='cuts.kdenlive'),
     audio_file: Path = Argument(
-        default='', help='Optional audio equilized audio file',
+        default='',
+        help='Optional audio equilized audio file',
     ),
     silence_time: int = silence_option,
     threshold: int = threshold_option,
@@ -147,9 +152,10 @@ def kdenlive(
 ):
     """Generates an XML compatible with kdenlive settings.
 
-    Note: It doesn’t directly modify kdenlive files. It new kdenlive file with [OUTPUT_FILE].
-    """
-    # TODO: Ask if input_xml and output_path are same!
+    Note: It doesn’t directly modify kdenlive files.
+    It new kdenlive file with [OUTPUT_FILE].
+    """  # noqa: W505
+    # TODO(dunossauro): Ask if input_xml and output_path are same!
     output_path = output_path.resolve()
     if output_path.exists():
         logger.info(f'Deleting {output_path}')
@@ -174,7 +180,8 @@ def cut_video(
     video_file: path_arg,
     output_path: Path = Argument(default='result.mp4'),
     audio_file: str = Argument(
-        default='', help='Optional audio equilized audio file',
+        default='',
+        help='Optional audio equilized audio file',
     ),
     silence_time: int = silence_option,
     threshold: int = threshold_option,
@@ -197,28 +204,6 @@ def cut_video(
         preset=preset,
         bitrate=bitrare,
     )
-
-
-@app.command()
-def transcribe(
-    audio_path: Path = Argument(),
-    mode: audio.TranscribeModes = audio.TranscribeModes.srt,
-    output_path: str = Argument(default='output.srt'),
-):
-    """Transcribes an audio file into subtitles."""
-    console.print(audio.transcribe_audio(audio_path, mode.value, output_path))
-
-
-@app.command()
-def grammar_check(file: path_arg, lang: str = Argument(default='pt-BR')):
-    """Check grammar in a tex tfile."""
-    # lazy load, takes 2 secs to import
-    from language_tool_python import LanguageTool
-
-    tool = LanguageTool(lang)
-
-    with open(file) as f:
-        console.print(tool.check(f.read()))
 
 
 if __name__ == '__main__':

@@ -52,12 +52,13 @@ def process_audio(
     board: Pedalboard = _get_board(),
 ) -> Path:
     with AudioFile(input_file, 'r') as ifile:
-        with AudioFile(
-            output_file, 'w', ifile.samplerate, ifile.num_channels,
-        ) as ofile:
-            while ifile.tell() < ifile.frames:
-                chunk = ifile.read(ifile.samplerate)
-                effected = board(chunk, ifile.samplerate, reset=False)
-                ofile.write(effected)
+        audio = ifile.read(ifile.frames)
+
+    effected = board(audio, ifile.samplerate)
+
+    with AudioFile(
+        output_file, 'w', ifile.samplerate, ifile.num_channels
+    ) as outfile:
+        outfile.write(effected)
 
     return Path(output_file)

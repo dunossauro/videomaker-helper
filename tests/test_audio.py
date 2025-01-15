@@ -1,8 +1,15 @@
 from itertools import chain
+from pathlib import Path
+from typing import cast
 
-import pytest
+from pydub import AudioSegment
 
-from vmh.audio import _audio_chain, detect_silences, transcribe_audio
+from vmh.audio import (
+    _audio_chain,
+    cut_silences,
+    detect_silences,
+    extract_audio,
+)
 
 audio_stub = {
     'path': 'tests/test_assets/audio_test.wav',
@@ -53,7 +60,9 @@ def test_detect_silences_small():
     small_distance = 0.100
 
     silences = detect_silences(
-        audio_stub['path'], distance='small', force=True,
+        audio_stub['path'],
+        distance='small',
+        force=True,
     )
 
     times = chain.from_iterable(
@@ -71,7 +80,9 @@ def test_detect_silences_negative():
     negative_distance = 0.100
 
     silences = detect_silences(
-        audio_stub['path'], distance='small', force=True,
+        audio_stub['path'],
+        distance='small',
+        force=True,
     )
 
     times = chain.from_iterable(
@@ -85,8 +96,69 @@ def test_detect_silences_negative():
     assert silences == list(times)
 
 
-@pytest.mark.skip(reason='Need cuda to run this on CI')
-def test_transcribe_audio():
-    segments = transcribe_audio(audio_stub['path'], 'print', '')['segments']
-    for segment in segments:
-        assert 'Isso é um teste.' in segment['text']
+def test_extract_audio_no_eq(tmpdir):
+    output = tmpdir / 'out.mp3'
+    expected_seconds = 2
+
+    result = extract_audio(
+        'tests/test_assets/colorbar.mp4',
+        str(output),
+        eq=False,
+    )
+
+    audio_seg = AudioSegment.from_wav(str(result))
+    assert int(len(audio_seg) / 1000) == expected_seconds
+
+
+def test_extract_audio_no_eq_name_output(tmpdir):
+    output = tmpdir / 'out.mp3'
+
+    result = extract_audio(
+        'tests/test_assets/colorbar.mp4',
+        str(output),
+        eq=False,
+    )
+
+    result = cast(Path, result)
+    assert result.name == 'out.mp3'
+
+
+def test_extract_audio_with_eq_name_output(tmpdir):
+    output = tmpdir / 'out.mp3'
+
+    result_pure, result_eq = extract_audio(
+        'tests/test_assets/colorbar.mp4',
+        str(output),
+        eq=True,
+    )
+
+    assert result_pure.name == 'out.mp3'
+    assert result_eq.name == 'eq_out.mp3'
+
+
+def test_extract_audio_with_eq(tmpdir):
+    output = tmpdir / 'out.wav'
+    expected_seconds = 2
+
+    result_pure, result_eq = extract_audio(
+        'tests/test_assets/colorbar.mp4',
+        str(output),
+        eq=True,
+    )
+
+    audio_seg = AudioSegment.from_wav(str(result_pure))
+    assert int(len(audio_seg) / 1000) == expected_seconds
+
+    audio_seg = AudioSegment.from_wav(str(result_eq))
+    assert int(len(audio_seg) / 1000) == expected_seconds
+
+
+def test_cut_audio_silences(tmpdir):
+    inpurt_file = 'tests/test_assets/sas.wav'
+    output_file = tmpdir / 'out.mp3'
+    expected_size = 1
+    cut_silences(inpurt_file, output_file)
+
+    audio_seg: AudioSegment = AudioSegment.from_mp3(str(output_file))
+
+    assert (len(audio_seg) / 1000) == expected_size
