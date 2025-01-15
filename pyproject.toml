@@ -26,14 +26,6 @@ dependencies = [
 	"audioop-lts (>=0.2.1) ; python_version >= \"3.13\""
 ]
 
-[project.urls]
-Homepage = "https://codeberg.org/taconi/FoxDotChord"
-Documentation = "https://foxdotchord.readthedocs.io"
-Repository = "https://codeberg.org/taconi/FoxDotChord"
-"Contributor Guide" = "https://foxdotchord.readthedocs.io/contributing"
-Changelog = "https://foxdotchord.readthedocs.io/changelog/"
-Issues = "https://codeberg.org/taconi/FoxDotChord/issues"
-
 [project.scripts]
 vmh = "vmh.cli:app"
 
