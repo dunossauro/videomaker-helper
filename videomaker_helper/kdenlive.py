@@ -7,7 +7,7 @@ from xml.etree import ElementTree
 from loguru import logger
 from parsel.selector import Selector
 
-from vmh.audio import detect_silences
+from videomaker_helper.audio import detect_silences
 
 xml_template = """ <entry producer="{}" in="00:00:{:.3f}" out="00:00:{:.3f}">
    <property name=:id">{}</property>

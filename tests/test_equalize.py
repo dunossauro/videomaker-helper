@@ -1,7 +1,7 @@
 from pedalboard import Gain, Pedalboard
 from pydub import AudioSegment
 
-from vmh.equalize import process_audio
+from videomaker_helper.equalize import process_audio
 
 
 def test_process_audio_dummy_pedalboard(tmpdir):

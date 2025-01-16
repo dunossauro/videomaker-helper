@@ -1,6 +1,6 @@
 [project]
 name = "videomaker-helper"
-version = "0.2.2"
+version = "0.0.1"
 description = "Simples tools to help video makers"
 authors = [{ name = "dunossauro", email = "mendesxeduardo@gmal.com" }]
 readme = "README.md"
@@ -28,10 +28,7 @@ dependencies = [
 ]
 
 [project.scripts]
-vmh = "vmh.cli:app"
-
-[tool.poetry]
-packages = [{include = "vmh"}]
+vmh = "videomaker_helper.cli:app"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.9.1"
@@ -69,11 +66,11 @@ quote-style = "single"
 [tool.taskipy.tasks]
 format = 'ruff format'
 lint = 'ruff check'
-typos = 'typos vmh tests'
-types = 'mypy vmh'
+typos = 'typos videomaker_helper tests'
+types = 'mypy videomaker_helper'
 pre_test = 'task lint'
-test = 'pytest --cov=vmh/ -vv -x'
-stest = 'pytest --cov=vmh/ -vv'
+test = 'pytest --cov=videomaker_helper/ -vv -x'
+stest = 'pytest'
 post_test = 'coverage html'
 doc = 'mkdocs serve'
 
@@ -83,7 +80,7 @@ ignore_missing_imports = true
 [tool.towncrier]
 directory = "changelog.d"
 filename = "CHANGELOG.md"
-package = "vmh"
+package = "videomaker-helper"
 start_string = "<!-- towncrier release notes start -->\n"
 underlines = ["", "", ""]
 title_format = "## [{version}](https://github.com/dunossauro/videomaker-helper/tree/{version}) - {project_date}"

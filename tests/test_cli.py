@@ -1,7 +1,7 @@
 from typer.testing import CliRunner
 
-from vmh.cli import app
-from vmh.settings import __version__
+from videomaker_helper.cli import app
+from videomaker_helper.settings import __version__
 
 cli = CliRunner()
 

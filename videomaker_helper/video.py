@@ -5,7 +5,7 @@ from typing import Literal
 from loguru import logger
 from moviepy import AudioFileClip, VideoFileClip, concatenate_videoclips
 
-from vmh.audio import detect_silences
+from videomaker_helper.audio import detect_silences
 
 
 class Preset(str, Enum):
