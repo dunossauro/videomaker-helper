@@ -4,7 +4,7 @@ from typing import cast
 
 from pydub import AudioSegment
 
-from vmh.audio import (
+from videomaker_helper.audio import (
     _audio_chain,
     cut_silences,
     detect_silences,

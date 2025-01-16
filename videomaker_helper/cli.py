@@ -6,10 +6,10 @@ from loguru import logger
 from rich.console import Console
 from typer import Argument, Context, Exit, Option, Typer
 
-from vmh import audio, cache, plot, video
-from vmh.equalize import process_audio
-from vmh.kdenlive import cut
-from vmh.settings import __version__
+from videomaker_helper import audio, cache, plot, video
+from videomaker_helper.equalize import process_audio
+from videomaker_helper.kdenlive import cut
+from videomaker_helper.settings import __version__
 
 warnings.filterwarnings('ignore')
 

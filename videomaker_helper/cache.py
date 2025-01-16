@@ -2,7 +2,7 @@ from rich.console import Console
 from tinydb import TinyDB
 from typer import Abort, Typer, confirm
 
-from vmh import settings
+from videomaker_helper import settings
 
 cache = Typer()
 console = Console()

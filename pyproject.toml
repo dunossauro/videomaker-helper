@@ -1,6 +1,6 @@
 [project]
 name = "videomaker-helper"
-version = "0.2.2"
+version = "0.0.1"
 description = "Simples tools to help video makers"
 authors = [{ name = "dunossauro", email = "mendesxeduardo@gmal.com" }]
 readme = "README.md"
@@ -28,10 +28,7 @@ dependencies = [
 ]
 
 [project.scripts]
-vmh = "vmh.cli:app"
-
-[tool.poetry]
-packages = [{include = "vmh"}]
+vmh = "videomaker_helper.cli:app"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.9.1"
@@ -40,6 +37,7 @@ pytest-cov = "^4.1.0"
 taskipy = "^1.12.0"
 mypy = "^1.14.1"
 typos = "^1.29.4"
+towncrier = "^24.8.0"
 
 [tool.poetry.group.doc.dependencies]
 mkdocs = "^1.5.2"
@@ -68,16 +66,55 @@ quote-style = "single"
 [tool.taskipy.tasks]
 format = 'ruff format'
 lint = 'ruff check'
-typos = 'typos vmh tests'
-types = 'mypy vmh'
+typos = 'typos videomaker_helper tests'
+types = 'mypy videomaker_helper'
 pre_test = 'task lint'
-test = 'pytest --cov=vmh/ -vv -x'
-stest = 'pytest --cov=vmh/ -vv'
+test = 'pytest --cov=videomaker_helper/ -vv -x'
+stest = 'pytest'
 post_test = 'coverage html'
 doc = 'mkdocs serve'
 
 [tool.mypy]
 ignore_missing_imports = true
+
+[tool.towncrier]
+directory = "changelog.d"
+filename = "CHANGELOG.md"
+package = "videomaker-helper"
+start_string = "<!-- towncrier release notes start -->\n"
+underlines = ["", "", ""]
+title_format = "## [{version}](https://github.com/dunossauro/videomaker-helper/tree/{version}) - {project_date}"
+issue_format = "[#{issue}](https://github.com/dunossauro/videomaker-helper/issues/{issue})"
+
+[[tool.towncrier.type]]
+directory = "security"
+name = "Security"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "removed"
+name = "Removed"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "deprecated"
+name = "Deprecated"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "added"
+name = "Added"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "changed"
+name = "Changed"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "fixed"
+name = "Fixed"
+showcontent = true
 
 [build-system]
 requires = ["poetry-core>=2.0.1"]
