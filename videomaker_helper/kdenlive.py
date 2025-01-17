@@ -20,6 +20,11 @@ def check_chain(
     input_file: Path,
     property: int | None = None,
 ) -> tuple[str, ...]:
+    if filename.parent == input_file.parent:
+        search_name = str(filename.name)
+    else:
+        search_name = str(filename)
+
     with open(input_file) as f:
         content = f.read()
         s = Selector(content)
@@ -28,14 +33,14 @@ def check_chain(
             el = s.xpath(
                 f"""
     //chain[(
-        (./property[(@name='resource' and ./text()='{str(filename)}')])
+        (./property[(@name='resource' and ./text()='{search_name}')])
         and
         (./property[(@name='set.test_audio' and ./text()='{property}')])
     )]
 """,
             )
         else:
-            el = s.xpath(f'//chain/property[text() = "{str(filename)}"]/..')
+            el = s.xpath(f'//chain/property[text() = "{search_name}"]/..')
 
         _chain = el.css('chain::attr("id")').get()
         _chain = cast(str, _chain)
@@ -50,7 +55,10 @@ def check_chain(
         playlist_id = playlists.get()
         playlist_id = cast(str, playlist_id)
 
-        return _chain, _id, playlist_id
+        if all([_chain, _id, playlist_id]):
+            return _chain, _id, playlist_id
+        else:
+            raise AttributeError(f'{filename} not found in kdenlive project')
 
 
 def kdenlive_xml(
