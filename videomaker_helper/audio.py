@@ -127,11 +127,13 @@ def detect_silences(
     *,
     force: bool = False,
 ) -> list[float]:
-    times = db.search(
-        (where('file_name') == audio_file)
-        & (where('type') == 'silence')
-        & (where('distance') == distance),
-    )
+    times = None
+
+    if not force:
+        times = db.search(
+            (where('file_name') == audio_file)
+            & (where('type') == 'silence')
+        )
 
     if not times or force:
         logger.info(f'Reading file: {audio_file}')
@@ -154,8 +156,7 @@ def detect_silences(
             {
                 'type': 'silence',
                 'file_name': str(audio_file),
-                'times': times,
-                'distance': distance,
+                'silences': silences,
             },
         )
 
@@ -164,4 +165,4 @@ def detect_silences(
 
     else:
         logger.info('Using db cache!')
-        return times[0]['times']
+        return _audio_chain(times[0]['silences'], distance)
