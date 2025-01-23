@@ -10,7 +10,7 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          paths: [vmh]
+          paths: [videomaker_helper]
 
 watch:
-   - vmh
+   - videomaker_helper

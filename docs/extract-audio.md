@@ -50,4 +50,4 @@ vmh extract-audio --help
 
 ## API for developers
 
-::: vmh.audio.extract_audio
+::: videomaker_helper.audio.extract_audio
