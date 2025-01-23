@@ -79,7 +79,7 @@ def cut_video(
 
     logger.info(f'Creating subclips on {input_file}')
     clips = [
-        video.subclip(start, stop)
+        video.subclipped(start, stop)
         for start, stop in islice(pairwise(silences), 1, None, 2)
     ]
 
