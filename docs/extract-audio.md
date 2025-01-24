@@ -33,12 +33,12 @@ For a detailed breakdown of the available options and arguments for the `extract
 ```
 vmh extract-audio --help
 
- Usage: vmh extract-audio [OPTIONS] AUDIO_FILE [OUTPUT_FILE]
+ Usage: vmh extract-audio [OPTIONS] VIDEO_FILE [OUTPUT_FILE]
 
  Extracts the audio from a video.
 
 ╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    audio_file       PATH           [default: None] [required]              │
+│ *    video_file       PATH           [default: None] [required]              │
 │      output_file      [OUTPUT_FILE]  [default: output.wav]                   │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
