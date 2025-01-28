@@ -10,7 +10,7 @@ O projeto usa o [poetry](https://python-poetry.org/) como gerenciador de projeto
 poetry install
 ```
 
-Você checar o [Guia de estilo](#guia-de-estilo) caso sua contribuição tenha código. O comandos existentes no ambiente podem ser encontrados [aqui](#taskrunner-taskipyhttpsgithubcomtaskipytaskipy).
+Você checar o [Guia de estilo](#guia-de-estilo) caso sua contribuição tenha código. O comandos existentes no ambiente podem ser encontrados [aqui](#taskrunner-taskipy).
 
 Para checar se tudo está correto e os testes passam:
 
@@ -34,7 +34,7 @@ Caso sua alteração seja visível a quem for usar a aplicação, adicione uma e
 towncrier create
 ```
 
-As configurações estão [aqui](#changelogs-com-towncrierhttpstowncrierreadthedocsioenstable).
+As configurações estão [aqui](#changelogs-com-towncrier).
 
 ---
 
@@ -128,11 +128,6 @@ poetry run task types
 ```
 
 ##### Checagem de erros de grafia no código: [Typos](https://pypi.org/project/typos/)
-
-
-
-
-
 
 Para executar a checagem de erros de grafia você pode executar:
 
