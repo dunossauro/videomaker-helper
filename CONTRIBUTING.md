@@ -4,7 +4,41 @@
 
 ### TLDR
 
-...
+O projeto usa o [poetry](https://python-poetry.org/) como gerenciador de projeto.
+
+```bash
+poetry install
+```
+
+Você checar o [Guia de estilo](#guia-de-estilo) caso sua contribuição tenha código. O comandos existentes no ambiente podem ser encontrados [aqui](#taskrunner-taskipyhttpsgithubcomtaskipytaskipy).
+
+Para checar se tudo está correto e os testes passam:
+
+```bash
+poetry run task test
+```
+
+---
+
+Para iniciar a documentação:
+
+```bash
+poetry run task doc
+```
+
+---
+
+Caso sua alteração seja visível a quem for usar a aplicação, adicione uma entrada ao changelog:
+
+```bash
+towncrier create
+```
+
+As configurações estão [aqui](#changelogs-com-towncrierhttpstowncrierreadthedocsioenstable).
+
+---
+
+Antes de enviar seu pull request, garanta que exista uma issue, se não houver uma, crie antes de submenter, o nome da branch deve conter o número da issue. [Caso precise de mais informações](#versionamento-e-git).
 
 ### Configuração do ambiente
 
