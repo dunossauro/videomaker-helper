@@ -6,6 +6,10 @@ theme:
   name: material
   icon:
     repo: fontawesome/brands/git-alt
+
+markdown_extensions:
+  - pymdownx.snippets
+
 plugins:
   - mkdocs-video:
       is_video: True
