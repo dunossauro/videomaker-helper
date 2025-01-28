@@ -4,6 +4,17 @@ repo_name: videomaker-helper
 
 theme:
   name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
   icon:
     repo: fontawesome/brands/git-alt
 
@@ -19,6 +30,7 @@ plugins:
       handlers:
         python:
           paths: [videomaker_helper]
+  - search
 
 watch:
    - videomaker_helper
