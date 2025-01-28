@@ -1,5 +1,11 @@
 # Contributing
 
+> Para ver o guia de contribuição em Português, [clique aqui](#guia-de-contribuicao).
+
+## Contribution Guide
+
+...
+
 ## Guia de contribuição
 
 ### TLDR
