@@ -70,7 +70,7 @@ def callcaback(
 
 @app.command()
 def extract_audio(
-    audio_file: path_arg,
+    video_file: path_arg,
     output_file: Path = Argument(default='output.wav'),
     eq: bool = Option(
         False,
@@ -78,7 +78,7 @@ def extract_audio(
     ),
 ):
     """Extracts the audio from a video."""
-    console.print(audio.extract_audio(str(audio_file), str(output_file), eq))
+    console.print(audio.extract_audio(str(video_file), str(output_file), eq))
 
 
 @app.command()
