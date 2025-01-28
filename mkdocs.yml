@@ -1,8 +1,11 @@
 site_name: VideoMaker-Helper
+repo_url: https://github.com/dunossauro/videomaker-helper
+repo_name: videomaker-helper
 
 theme:
   name: material
-
+  icon:
+    repo: fontawesome/brands/git-alt
 plugins:
   - mkdocs-video:
       is_video: True
