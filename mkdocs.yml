@@ -26,6 +26,10 @@ plugins:
         python:
           paths: [videomaker_helper]
   - search
+  - towncrier
+
+markdown_extensions:
+  - pymdownx.snippets
 
 watch:
    - videomaker_helper
