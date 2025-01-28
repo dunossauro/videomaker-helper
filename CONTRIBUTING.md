@@ -141,15 +141,19 @@ poetry run task lint
 
 ### Versionamento e git
 
-Para enviar sua contribuição, não existe um formato pré-definido para mensagens, sinta-se a vontade. **As solicitações de PR devem ser enviadas para branch development**.
+Para enviar sua contribuição, não existe um formato pré-definido para mensagens, sinta-se a vontade.
 
-Caso queira notificar que está inciando uma contribuição, abra um PR em "draft" marcando uma issue em específico:
+- **Todos os PRs enviados devem ter uma issue**, caso você queira contribuir com algo que ainda não tem issue, abra uma issue antes.
+- **As solicitações de PR devem ser enviadas para branch development**.
+- O nome da branch **deve iniciar com o número da issue**
+	 Algo como `42_texto`.
+- Caso queira notificar que está inciando uma contribuição, abra um PR em "draft" marcando uma issue em específico:
 
-[Adicionar uma imagem aqui sobre como fazer esse processo]
+	[Adicionar uma imagem aqui sobre como fazer esse processo]
 
-Ao finalizar as alterações você pode clicar em "Ready for review"
+	Ao finalizar as alterações você pode clicar em "Ready for review"
 
-[Adicionar uma imagem aqui sobre como fazer esse processo]
+	[Adicionar uma imagem aqui sobre como fazer esse processo]
 
 #### Changelogs
 
