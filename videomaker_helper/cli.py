@@ -113,7 +113,7 @@ def cut_silences(
     output_file: path_arg,
     silence_time: int = silence_option,
     threshold: int = threshold_option,
-    distance: audio.Distance = distance_option
+    distance: audio.Distance = distance_option,
 ):
     """Removes all silences from an audio file."""
     console.print(

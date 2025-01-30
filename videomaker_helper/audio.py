@@ -101,10 +101,9 @@ def cut_silences(
         distance=distance,
     )
 
-    logger.info(f'Number of silences detected: {int(len(silences) / 2)}')
     logger.info('Deleting silences')
 
-    not_silent_segments = list(islice(pairwise(silences), 1, None, 2))
+    not_silent_segments = islice(pairwise(silences), 1, None, 2)
     combined = AudioSegment.empty()
 
     for start, stop in not_silent_segments:
