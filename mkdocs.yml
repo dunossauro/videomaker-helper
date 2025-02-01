@@ -17,6 +17,11 @@ theme:
         name: Switch to system preference
   icon:
     repo: fontawesome/brands/git-alt
+
+markdown_extensions:
+  - pymdownx.snippets
+  - pymdownx.superfences
+
 plugins:
   - mkdocs-video:
       is_video: True
