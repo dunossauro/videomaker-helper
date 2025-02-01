@@ -33,8 +33,5 @@ plugins:
   - search
   - towncrier
 
-markdown_extensions:
-  - pymdownx.snippets
-
 watch:
    - videomaker_helper
