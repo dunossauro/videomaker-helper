@@ -160,7 +160,7 @@ def detect_silences(
                 'file_name': str(audio_file),
                 'silences': silences,
                 'silence_time': silence_time,
-                'threshold': threshold
+                'threshold': threshold,
             },
         )
 
