@@ -31,6 +31,7 @@ plugins:
         python:
           paths: [videomaker_helper]
   - search
+  - towncrier
 
 watch:
    - videomaker_helper

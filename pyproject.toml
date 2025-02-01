@@ -44,6 +44,7 @@ mkdocs = "^1.5.2"
 mkdocs-material = "^9.2.7"
 mkdocs-video = "^1.5.0"
 mkdocstrings = {extras = ["python"], version = "^0.27.0"}
+mkdocs-towncrier = "^0.1.3"
 
 [tool.pytest.ini_options]
 pythonpath = "."
@@ -79,7 +80,7 @@ ignore_missing_imports = true
 [tool.towncrier]
 directory = "changelog.d"
 filename = "CHANGELOG.md"
-package = "videomaker-helper"
+package = "videomaker_helper"
 start_string = "<!-- towncrier release notes start -->\n"
 underlines = ["", "", ""]
 title_format = "## [{version}](https://github.com/dunossauro/videomaker-helper/tree/{version}) - {project_date}"
