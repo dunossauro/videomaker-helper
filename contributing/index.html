@@ -1,0 +1,1515 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../extract-audio/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Contributing - VideoMaker-Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#contribution-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="VideoMaker-Helper" class="md-header__button md-logo" aria-label="VideoMaker-Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VideoMaker-Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Contributing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dunossauro/videomaker-helper" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    videomaker-helper
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="VideoMaker-Helper" class="md-nav__button md-logo" aria-label="VideoMaker-Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VideoMaker-Helper
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dunossauro/videomaker-helper" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    videomaker-helper
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📹 VideoMaker Helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contribution-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contribution Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contribution Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#development-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#taskrunner-taskipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Taskrunner: taskipy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formatting-and-linter-ruff" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formatting and Linter: Ruff
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-type-checking-mypy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Type Checking: Mypy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spelling-check-in-code-typos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spelling Check in Code: Typos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changelogs-with-towncrier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changelogs with towncrier
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#style-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Style Guide
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versioning-and-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versioning and Git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Versioning and Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changelogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changelogs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-de-contribuicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guia de contribuição
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guia de contribuição">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tldr_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracao-do-ambiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuração do ambiente
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuração do ambiente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gerenciamento-de-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gerenciamento de projeto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ferramentas-de-desenvolvimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ferramentas de desenvolvimento
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ferramentas de desenvolvimento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#taskrunner-taskipy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Taskrunner: taskipy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formatacao-e-linter-ruff" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formatação e linter: Ruff
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checagem-de-tipos-estaticos-mypy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checagem de tipos estáticos: Mypy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checagem-de-erros-de-grafia-no-codigo-typos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checagem de erros de grafia no código: Typos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changelogs-com-towncrier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changelogs com towncrier
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guia-de-estilo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guia de estilo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versionamento-e-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versionamento e git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Versionamento e git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changelogs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changelogs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integracao-continua" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integração contínua
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extract-audio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extract audio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contribution-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contribution Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contribution Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#development-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#taskrunner-taskipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Taskrunner: taskipy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formatting-and-linter-ruff" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formatting and Linter: Ruff
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-type-checking-mypy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Type Checking: Mypy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spelling-check-in-code-typos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spelling Check in Code: Typos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changelogs-with-towncrier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changelogs with towncrier
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#style-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Style Guide
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versioning-and-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versioning and Git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Versioning and Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changelogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changelogs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-de-contribuicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guia de contribuição
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guia de contribuição">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tldr_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracao-do-ambiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuração do ambiente
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuração do ambiente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gerenciamento-de-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gerenciamento de projeto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ferramentas-de-desenvolvimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ferramentas de desenvolvimento
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ferramentas de desenvolvimento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#taskrunner-taskipy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Taskrunner: taskipy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formatacao-e-linter-ruff" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formatação e linter: Ruff
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checagem-de-tipos-estaticos-mypy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checagem de tipos estáticos: Mypy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checagem-de-erros-de-grafia-no-codigo-typos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checagem de erros de grafia no código: Typos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changelogs-com-towncrier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changelogs com towncrier
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guia-de-estilo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guia de estilo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versionamento-e-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versionamento e git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Versionamento e git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changelogs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changelogs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integracao-continua" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integração contínua
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Contributing</h1>
+
+<div><blockquote>
+<p>Para ver o guia de contribuição em Português, <a href="#guia-de-contribuicao">clique aqui</a>.</p>
+</blockquote>
+<h2 id="contribution-guide">Contribution Guide</h2>
+<h3 id="tldr">TLDR</h3>
+<p>This project uses <a href="https://python-poetry.org/">poetry</a> as the project manager.</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>install
+</code></pre></div>
+<p>If your contribution involves code, please refer to the <a href="#style-guide">Style Guide</a>. You can see all available commands in the environment <a href="#taskrunner-taskipy">here</a>.</p>
+<p>To check if everything is correct and the tests pass:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span><span class="nb">test</span>
+</code></pre></div>
+<hr>
+<p>To start the documentation:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>doc
+</code></pre></div>
+<hr>
+<p>If your change is visible to the users of the application, add an entry to the changelog:</p>
+<div class="highlight"><pre><span></span><code>towncrier<span class="w"> </span>create
+</code></pre></div>
+<p>The configurations are <a href="#changelogs-with-towncrier">here</a>.</p>
+<hr>
+<p>Before submitting your pull request, make sure there's an issue. If not, create one first. The branch name should contain the issue number. <a href="#versioning-and-git">For more information</a>.</p>
+<h3 id="environment-setup">Environment Setup</h3>
+<p>If you need help setting up the development environment for this project, follow the instructions below.</p>
+<h4 id="project-management">Project Management</h4>
+<p>This project uses <a href="https://python-poetry.org/">poetry</a> (2.0.1) as the project manager. You can install it using <a href="https://pipx.pypa.io/latest/">pipx</a>.</p>
+<p>You can install it with:</p>
+<div class="highlight"><pre><span></span><code>pipx<span class="w"> </span>install<span class="w"> </span>poetry
+</code></pre></div>
+<p>In the project directory, run:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>install
+</code></pre></div>
+<p>This will install all project dependencies and the editable package.</p>
+<h4 id="development-tools">Development Tools</h4>
+<p>A list of development tools and their configurations:</p>
+<h5 id="taskrunner-taskipy">Taskrunner: <a href="https://github.com/taskipy/taskipy">taskipy</a></h5>
+<p>Taskipy makes it easier to run commands during the development process of the project:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[tool.taskipy.tasks]</span>
+<span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff format'</span>
+<span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check'</span>
+<span class="n">typos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'typos videomaker_helper tests'</span>
+<span class="n">types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'mypy videomaker_helper'</span>
+<span class="n">pre_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'task lint'</span>
+<span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'pytest --cov=videomaker_helper/ -vv -x'</span>
+<span class="n">stest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'pytest'</span>
+<span class="n">post_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'coverage html'</span>
+<span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'mkdocs serve'</span>
+</code></pre></div></td></tr></table></div>
+<p>You can use <code>poetry run task --list</code> to see all available commands:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>--list
+format<span class="w">    </span>ruff<span class="w"> </span>format
+lint<span class="w">      </span>ruff<span class="w"> </span>check
+typos<span class="w">     </span>typos<span class="w"> </span>videomaker_helper<span class="w"> </span>tests
+types<span class="w">     </span>mypy<span class="w"> </span>videomaker_helper
+pre_test<span class="w">  </span>task<span class="w"> </span>lint
+<span class="nb">test</span><span class="w">      </span>pytest<span class="w"> </span>--cov<span class="o">=</span>videomaker_helper/<span class="w"> </span>-vv<span class="w"> </span>-x
+post_test<span class="w"> </span>coverage<span class="w"> </span>html
+doc<span class="w">       </span>mkdocs<span class="w"> </span>serve
+</code></pre></div>
+<p>Below are some of the most common commands you can use:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span><span class="nb">test</span><span class="w">    </span><span class="c1"># Run the automated tests</span>
+poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>format<span class="w">  </span><span class="c1"># Format the code</span>
+poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>typos<span class="w">   </span><span class="c1"># Check the spelling in the code</span>
+...
+</code></pre></div>
+<h5 id="formatting-and-linter-ruff">Formatting and Linter: <a href="https://docs.astral.sh/ruff/">Ruff</a></h5>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[tool.ruff]</span>
+<span class="n">line-length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">79</span>
+
+<span class="k">[tool.ruff.lint]</span>
+<span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'I'</span><span class="p">,</span><span class="w"> </span><span class="s1">'N'</span><span class="p">,</span><span class="w"> </span><span class="s1">'F'</span><span class="p">,</span><span class="w"> </span><span class="s1">'E'</span><span class="p">,</span><span class="w"> </span><span class="s1">'W'</span><span class="p">,</span><span class="w"> </span><span class="s1">'D'</span><span class="p">,</span><span class="w"> </span><span class="s1">'PL'</span><span class="p">]</span>
+<span class="n">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'D100'</span><span class="p">,</span><span class="w"> </span><span class="s1">'D101'</span><span class="p">,</span><span class="w"> </span><span class="s1">'D103'</span><span class="p">,</span><span class="w"> </span><span class="s1">'D104'</span><span class="p">,</span><span class="w"> </span><span class="s1">'D203'</span><span class="p">,</span><span class="w"> </span><span class="s1">'D213'</span><span class="p">,</span><span class="w"> </span><span class="s1">'PLR0913'</span><span class="p">]</span>
+
+<span class="k">[tool.ruff.lint.pydocstyle]</span>
+<span class="n">convention</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"google"</span>
+
+<span class="k">[tool.ruff.format]</span>
+<span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"single"</span>
+</code></pre></div></td></tr></table></div>
+<p>For more details on style configuration, refer to the <a href="#style-guide">Style Guide</a>.</p>
+<p>To check for compliance, run:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>lint<span class="w">    </span><span class="c1"># Check the project's style guide</span>
+poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>format<span class="w">  </span><span class="c1"># Format the files</span>
+</code></pre></div>
+<h5 id="static-type-checking-mypy">Static Type Checking: <a href="https://mypy.readthedocs.io/">Mypy</a></h5>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">76</span>
+<span class="normal">77</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[tool.mypy]</span>
+<span class="n">ignore_missing_imports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div></td></tr></table></div>
+<p>To run type checks, execute:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>types
+</code></pre></div>
+<h5 id="spelling-check-in-code-typos">Spelling Check in Code: <a href="https://pypi.org/project/typos/">Typos</a></h5>
+<p>To run the spelling check, execute:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>typos
+</code></pre></div>
+<h5 id="changelogs-with-towncrier">Changelogs with <a href="https://towncrier.readthedocs.io/en/stable/">towncrier</a></h5>
+<p>All visible changes should add a fragment to the changelog.</p>
+<p>The tags used follow the <a href="https://keepachangelog.com/1.1.0/">Keep a Changelog</a> standard.</p>
+<p>To add a new fragment:</p>
+<div class="highlight"><pre><span></span><code>towncrier<span class="w"> </span>create
+</code></pre></div>
+<p>Configuration:
+</p><div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[tool.towncrier]</span>
+<span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"changelog.d"</span>
+<span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"CHANGELOG.md"</span>
+<span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"videomaker-helper"</span>
+<span class="n">start_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;!-- towncrier release notes start --&gt;</span><span class="se">\n</span><span class="s2">"</span>
+<span class="n">underlines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="p">]</span>
+<span class="n">title_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"## [{version}](https://github.com/dunossauro/videomaker-helper/tree/{version}) - {project_date}"</span>
+<span class="n">issue_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"[#{issue}](https://github.com/dunossauro/videomaker-helper/issues/{issue})"</span>
+
+<span class="k">[[tool.towncrier.type]]</span>
+<span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"security"</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Security"</span>
+<span class="n">showcontent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[[tool.towncrier.type]]</span>
+<span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"removed"</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Removed"</span>
+<span class="n">showcontent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[[tool.towncrier.type]]</span>
+<span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"deprecated"</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Deprecated"</span>
+<span class="n">showcontent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[[tool.towncrier.type]]</span>
+<span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"added"</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Added"</span>
+<span class="n">showcontent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[[tool.towncrier.type]]</span>
+<span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"changed"</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Changed"</span>
+<span class="n">showcontent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[[tool.towncrier.type]]</span>
+<span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fixed"</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Fixed"</span>
+<span class="n">showcontent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="style-guide">Style Guide</h3>
+<p>This project follows the style guides:</p>
+<ul>
+<li><a href="https://peps.python.org/pep-0008/">PEP 8</a> for code</li>
+<li><a href="https://peps.python.org/pep-0257/">PEP 257</a> for docstrings</li>
+<li><a href="https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings">Google Docstrings</a> for docstring formatting</li>
+<li><a href="https://keepachangelog.com/1.1.0/">Keep a Changelog</a> for changelogs</li>
+</ul>
+<p>To check code style, run:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>lint
+</code></pre></div>
+<h3 id="versioning-and-git">Versioning and Git</h3>
+<p>There is no predefined format for commit messages. Feel free to choose a style that makes sense. Here are a few things to keep in mind:</p>
+<ul>
+<li><strong>All PRs must have an issue</strong>. If you want to contribute something that doesn’t have an issue yet, create one before submitting.</li>
+<li><strong>PRs must be submitted to the <code>development</code> branch</strong>.</li>
+<li>The branch name <strong>must start with the issue number</strong>:<ul>
+<li>For example, if the issue number is 42, the branch name would be <code>42_short-description</code>, where 'short-description' is a brief summary of the change.</li>
+</ul>
+</li>
+<li>To notify others you're starting a contribution and allow them to track progress, open a draft PR and link the relevant issue.:<ul>
+<li>Once the changes are ready, you can mark the PR as "Ready for review."</li>
+</ul>
+</li>
+</ul>
+<h4 id="changelogs">Changelogs</h4>
+<p>All visible changes to the users of the application should be documented in the changelog. This helps maintain a clear history of changes and ensures users are aware of updates.</p>
+<p>After making a change, if it is <strong>visible to the application's users</strong>, add an entry to the changelog using <code>towncrier</code>:</p>
+<div class="highlight"><pre><span></span><code>towncrier<span class="w"> </span>create
+</code></pre></div>
+<h3 id="continuous-integration">Continuous Integration</h3>
+<p>This project uses GitHub Actions for Continuous Integration (CI). If you need to run the entire process locally, you can use <a href="https://github.com/nektos/act">act</a>:</p>
+<div class="highlight"><pre><span></span><code>act
+</code></pre></div>
+<blockquote>
+<p><code>act</code> is a tool that emulates GitHub Actions workflows locally, allowing you to run tests and CI processes without needing to push to the repository.</p>
+</blockquote>
+<p>The full CI configuration can be found in <a href="https://github.com/dunossauro/videomaker-helper/blob/main/.github/workflows/pipeline.yaml"><code>.github/workflows/pipeline.yaml</code></a></p>
+<h2 id="guia-de-contribuicao">Guia de contribuição</h2>
+<h3 id="tldr_1">TLDR</h3>
+<p>O projeto usa o <a href="https://python-poetry.org/">poetry</a> como gerenciador de projeto.</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>install
+</code></pre></div>
+<p>Se sua contribuição envolver código, consulte o <a href="#guia-de-estilo">Guia de estilo</a>. Você pode ver todos os comandos disponíveis no ambiente <a href="#taskrunner-taskipy">aqui</a>.</p>
+<p>Para checar se tudo está correto e os testes passam:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span><span class="nb">test</span>
+</code></pre></div>
+<hr>
+<p>Para iniciar a documentação:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>doc
+</code></pre></div>
+<hr>
+<p>Caso sua alteração seja visível a quem for usar a aplicação, adicione uma entrada ao changelog:</p>
+<div class="highlight"><pre><span></span><code>towncrier<span class="w"> </span>create
+</code></pre></div>
+<p>As configurações estão <a href="#changelogs-com-towncrier">aqui</a>.</p>
+<hr>
+<p>Antes de enviar seu pull request, garanta que exista uma issue, se não houver uma, crie antes de submeter, o nome da branch deve conter o número da issue. <a href="#versionamento-e-git">Caso precise de mais informações</a>.</p>
+<h3 id="configuracao-do-ambiente">Configuração do ambiente</h3>
+<p>Se você precisar de ajuda para configurar o ambiente de desenvolvimento deste projeto, siga as instruções abaixo.</p>
+<h4 id="gerenciamento-de-projeto">Gerenciamento de projeto</h4>
+<p>Esse projeto usa o <a href="https://python-poetry.org/">poetry</a> (2.0.1) como gerenciador de projeto. Você pode instalar ele com <a href="https://pipx.pypa.io/latest/">pipx</a>.</p>
+<p>Você pode instalar com:</p>
+<div class="highlight"><pre><span></span><code>pipx<span class="w"> </span>install<span class="w"> </span>poetry
+</code></pre></div>
+<p>No diretório do projeto, execute:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>install
+</code></pre></div>
+<p>para instalar todas as dependências do projeto e o pacote editável.</p>
+<h4 id="ferramentas-de-desenvolvimento">Ferramentas de desenvolvimento</h4>
+<p>Uma lista das ferramentas de desenvolvimento e suas configurações:</p>
+<h5 id="taskrunner-taskipy_1">Taskrunner: <a href="https://github.com/taskipy/taskipy">taskipy</a></h5>
+<p>O taskipy facilita a execução dos comandos durante o momento de desenvolvimento do projeto:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[tool.taskipy.tasks]</span>
+<span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff format'</span>
+<span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check'</span>
+<span class="n">typos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'typos videomaker_helper tests'</span>
+<span class="n">types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'mypy videomaker_helper'</span>
+<span class="n">pre_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'task lint'</span>
+<span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'pytest --cov=videomaker_helper/ -vv -x'</span>
+<span class="n">stest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'pytest'</span>
+<span class="n">post_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'coverage html'</span>
+<span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'mkdocs serve'</span>
+</code></pre></div></td></tr></table></div>
+<p>Você pode usar poetry run task --list para ver todos os comandos disponíveis:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>--list
+format<span class="w">    </span>ruff<span class="w"> </span>format
+lint<span class="w">      </span>ruff<span class="w"> </span>check
+typos<span class="w">     </span>typos<span class="w"> </span>videomaker_helper<span class="w"> </span>tests
+types<span class="w">     </span>mypy<span class="w"> </span>videomaker_helper
+pre_test<span class="w">  </span>task<span class="w"> </span>lint
+<span class="nb">test</span><span class="w">      </span>pytest<span class="w"> </span>--cov<span class="o">=</span>videomaker_helper/<span class="w"> </span>-vv<span class="w"> </span>-x
+post_test<span class="w"> </span>coverage<span class="w"> </span>html
+doc<span class="w">       </span>mkdocs<span class="w"> </span>serve
+</code></pre></div>
+<p>Abaixo estão alguns dos comandos mais comuns que você pode utilizar:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span><span class="nb">test</span><span class="w">    </span><span class="c1"># Executa os testes automatizados</span>
+poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>format<span class="w">  </span><span class="c1"># Executa a formatação do código</span>
+poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>typos<span class="w">   </span><span class="c1"># Checa a grafia do código</span>
+...
+</code></pre></div>
+<h5 id="formatacao-e-linter-ruff">Formatação e linter: <a href="https://docs.astral.sh/ruff/">Ruff</a></h5>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[tool.ruff]</span>
+<span class="n">line-length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">79</span>
+
+<span class="k">[tool.ruff.lint]</span>
+<span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'I'</span><span class="p">,</span><span class="w"> </span><span class="s1">'N'</span><span class="p">,</span><span class="w"> </span><span class="s1">'F'</span><span class="p">,</span><span class="w"> </span><span class="s1">'E'</span><span class="p">,</span><span class="w"> </span><span class="s1">'W'</span><span class="p">,</span><span class="w"> </span><span class="s1">'D'</span><span class="p">,</span><span class="w"> </span><span class="s1">'PL'</span><span class="p">]</span>
+<span class="n">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'D100'</span><span class="p">,</span><span class="w"> </span><span class="s1">'D101'</span><span class="p">,</span><span class="w"> </span><span class="s1">'D103'</span><span class="p">,</span><span class="w"> </span><span class="s1">'D104'</span><span class="p">,</span><span class="w"> </span><span class="s1">'D203'</span><span class="p">,</span><span class="w"> </span><span class="s1">'D213'</span><span class="p">,</span><span class="w"> </span><span class="s1">'PLR0913'</span><span class="p">]</span>
+
+<span class="k">[tool.ruff.lint.pydocstyle]</span>
+<span class="n">convention</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"google"</span>
+
+<span class="k">[tool.ruff.format]</span>
+<span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"single"</span>
+</code></pre></div></td></tr></table></div>
+<p>Para mais detalhes sobre a configuração do estilo, consulte o <a href="#guia-de-estilo">Guia de estilo</a>.</p>
+<p>Basicamente para executar a checagem você deve executar:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>lint<span class="w">    </span><span class="c1"># Checa o guia de estilo do projeto</span>
+poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>format<span class="w">  </span><span class="c1"># Formata os arquivos</span>
+</code></pre></div>
+<h5 id="checagem-de-tipos-estaticos-mypy">Checagem de tipos estáticos: <a href="https://mypy.readthedocs.io/">Mypy</a></h5>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">76</span>
+<span class="normal">77</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[tool.mypy]</span>
+<span class="n">ignore_missing_imports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div></td></tr></table></div>
+<p>Para executar a checagem de tipos você pode executar:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>types
+</code></pre></div>
+<h5 id="checagem-de-erros-de-grafia-no-codigo-typos">Checagem de erros de grafia no código: <a href="https://pypi.org/project/typos/">Typos</a></h5>
+<p>Para executar a checagem de erros de grafia você pode executar:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>typos
+</code></pre></div>
+<h5 id="changelogs-com-towncrier">Changelogs com <a href="https://towncrier.readthedocs.io/en/stable/">towncrier</a></h5>
+<p>Todas as alterações visíveis devem adicionar um fragmento ao changelog.</p>
+<p>As tags usadas seguem o padrão <a href="https://keepachangelog.com/pt-BR/1.1.0/">Keep a changelook</a>.</p>
+<p>Para adicionar um novo fragmento:</p>
+<div class="highlight"><pre><span></span><code>towncrier<span class="w"> </span>create
+</code></pre></div>
+<p>Configuração:
+</p><div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[tool.towncrier]</span>
+<span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"changelog.d"</span>
+<span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"CHANGELOG.md"</span>
+<span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"videomaker-helper"</span>
+<span class="n">start_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;!-- towncrier release notes start --&gt;</span><span class="se">\n</span><span class="s2">"</span>
+<span class="n">underlines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="p">]</span>
+<span class="n">title_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"## [{version}](https://github.com/dunossauro/videomaker-helper/tree/{version}) - {project_date}"</span>
+<span class="n">issue_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"[#{issue}](https://github.com/dunossauro/videomaker-helper/issues/{issue})"</span>
+
+<span class="k">[[tool.towncrier.type]]</span>
+<span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"security"</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Security"</span>
+<span class="n">showcontent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[[tool.towncrier.type]]</span>
+<span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"removed"</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Removed"</span>
+<span class="n">showcontent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[[tool.towncrier.type]]</span>
+<span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"deprecated"</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Deprecated"</span>
+<span class="n">showcontent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[[tool.towncrier.type]]</span>
+<span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"added"</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Added"</span>
+<span class="n">showcontent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[[tool.towncrier.type]]</span>
+<span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"changed"</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Changed"</span>
+<span class="n">showcontent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[[tool.towncrier.type]]</span>
+<span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fixed"</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Fixed"</span>
+<span class="n">showcontent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="guia-de-estilo">Guia de estilo</h3>
+<p>Esse projeto segue os guias de estilo:</p>
+<ul>
+<li><a href="https://peps.python.org/pep-0008/">PEP 8</a> para código</li>
+<li><a href="https://peps.python.org/pep-0257/">PEP 257</a> para docstrings</li>
+<li><a href="https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings">Google Docstrings</a> para o formato das docstrings</li>
+<li><a href="https://keepachangelog.com/pt-BR/1.1.0/">Keep a changelook</a> para changelogs</li>
+</ul>
+<p>Para checar a conformidade do código você pode executar:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>lint
+</code></pre></div>
+<h3 id="versionamento-e-git">Versionamento e git</h3>
+<p>Para enviar sua contribuição, não há um formato pré-definido para as mensagens de commit. Sinta-se à vontade para escolher um estilo que faça sentido. Somente alguns pontos para atenção:</p>
+<ul>
+<li><strong>Todos os PRs enviados devem ter uma issue</strong>, caso você queira contribuir com algo que ainda não tem issue, abra uma issue antes.</li>
+<li><strong>As solicitações de PR devem ser enviadas para branch development</strong>.</li>
+<li>O nome da branch <strong>deve iniciar com o número da issue</strong><ul>
+<li>Por exemplo, se a issue for número 42, o nome da branch seria <code>42_texto</code>, onde 'texto' é uma descrição curta da mudança.</li>
+</ul>
+</li>
+<li>Para notificar que você está começando uma contribuição e permitir que outros saibam, abra um PR como 'draft' e vincule a issue relevante:<ul>
+<li>Ao finalizar as alterações você pode clicar em "Ready for review"</li>
+</ul>
+</li>
+</ul>
+<h4 id="changelogs_1">Changelogs</h4>
+<p>Todas as alterações visíveis para os usuários da aplicação devem ser documentadas no changelog. Isso ajuda a manter um histórico claro das mudanças feitas e garante que os usuários estejam cientes das atualizações.</p>
+<p>Após a alteração, caso ela seja <strong>visível para quem usa aplicação</strong> adicione uma entrada no changelog usando o <code>towncrier</code>:</p>
+<div class="highlight"><pre><span></span><code>towncrier<span class="w"> </span>create
+</code></pre></div>
+<h3 id="integracao-continua">Integração contínua</h3>
+<p>Este projeto utiliza o GitHub Actions para realizar a Integração Contínua (CI). Se precisar executar todo o fluxo localmente você pode usar o <a href="https://github.com/nektos/act">act</a>:</p>
+<div class="highlight"><pre><span></span><code>act
+</code></pre></div>
+<blockquote>
+<p>O act é uma ferramenta que emula os workflows do GitHub Actions localmente, permitindo que você execute testes e processos de integração contínua sem precisar fazer push para o repositório.</p>
+</blockquote>
+<p>A configuração completa do CI pode ser encontrada em <a href="https://github.com/dunossauro/videomaker-helper/blob/main/.github/workflows/pipeline.yaml"><code>.github/workflows/pipeline.yaml</code></a></p></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>
