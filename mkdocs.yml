@@ -44,6 +44,7 @@ nav:
     - cut-video.md
     - cut-silences.md
     - extract-audio.md
+    - kdenlive.md
     - threshold_and_distances.md
   - For Developers:
     - contributing.md
