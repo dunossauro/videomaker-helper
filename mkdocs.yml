@@ -32,6 +32,19 @@ plugins:
           paths: [videomaker_helper]
   - search
   - towncrier
+  - markdown-exec
+  - awesome-pages
 
 watch:
-   - videomaker_helper
+  - videomaker_helper
+
+nav:
+  - index.md
+  - Tools:
+    - cut-video.md
+    - cut-silences.md
+    - extract-audio.md
+    - threshold_and_distances.md
+  - For Developers:
+    - contributing.md
+    - CHANGELOG.md
