@@ -1,5 +1,5 @@
 from enum import Enum
-from itertools import chain
+from itertools import chain, islice, pairwise
 from pathlib import Path
 from typing import Literal, TypedDict
 
@@ -79,21 +79,40 @@ def cut_silences(
     output_file: str,
     silence_time: int = 400,
     threshold: int = -65,
+    distance: Literal[
+        'negative',
+        'tiny',
+        'small',
+        'medium',
+        'large',
+        'huge',
+    ] = 'tiny',
 ) -> Path:
     logger.info(f'Reading file: {audio_file}')
     audio = AudioSegment.from_file(audio_file)
     logger.info(f'File read: {audio_file}')
 
-    silences = silence.split_on_silence(
-        audio,
-        min_silence_len=silence_time,
-        silence_thresh=threshold,
-        keep_silence=False,
+    logger.info(f'Detecting silences with distance: {distance}')
+
+    silences = detect_silences(
+        audio_file,
+        silence_time=silence_time,
+        threshold=threshold,
+        distance=distance,
     )
 
+    logger.info('Deleting silences')
+
+    not_silent_segments = islice(pairwise(silences), 1, None, 2)
     combined = AudioSegment.empty()
-    for chunk in silences:
-        combined += chunk
+
+    for start, stop in not_silent_segments:
+        logger.debug(f'Cutting from {start} to {stop}')
+        start_ms = int(start * 1000)
+        stop_ms = int(stop * 1000)
+        combined += audio[start_ms:stop_ms]
+
+    logger.info(f'Writing file: {output_file}')
 
     combined.export(output_file, format='mp3')
 
@@ -131,8 +150,7 @@ def detect_silences(
 
     if not force:
         times = db.search(
-            (where('file_name') == audio_file)
-            & (where('type') == 'silence')
+            (where('file_name') == audio_file) & (where('type') == 'silence')
         )
 
     if not times or force:
