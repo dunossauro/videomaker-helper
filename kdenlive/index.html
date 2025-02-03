@@ -753,34 +753,33 @@
 <p>A snapshot of available options and arguments for the <code>kdenlive</code> command:</p>
 <div class="highlight"><pre><span></span><code>$ vmh kdenlive --help
 
- Usage: vmh kdenlive [OPTIONS] INPUT_XML VIDEO_FILE [OUTPUT_PATH] [AUDIO_FILE] 
+ Usage: vmh kdenlive [OPTIONS] INPUT_XML VIDEO_FILE [OUTPUT_PATH] [AUDIO_FILE]         
 
- Generates an XML compatible with kdenlive settings.                           
- Note: It doesn’t directly modify kdenlive files. It new kdenlive file with    
- [OUTPUT_FILE].                                                                
+ Generates an XML compatible with kdenlive settings.                                   
+ Note: It doesn’t directly modify kdenlive files. It new kdenlive file with            
+ [OUTPUT_FILE].                                                                        
 
-╭─ Arguments ─────────────────────────────────────────────────────────────────╮
-│ *    input_xml        PATH           [default: None] [required]             │
-│ *    video_file       PATH           [default: None] [required]             │
-│      output_path      [OUTPUT_PATH]  [default: cuts.kdenlive]               │
-│      audio_file       [AUDIO_FILE]   Optional audio equilized audio file    │
-╰─────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ───────────────────────────────────────────────────────────────────╮
-│ --silence-time  -s                INTEGER              Minimal time in ms   │
-│                                                        for configure a      │
-│                                                        silence              │
-│                                                        [default: 400]       │
-│ --threshold     -t                INTEGER              Value in db for      │
-│                                                        detect silence       │
-│                                                        [default: -65]       │
-│ --distance      -d                [negative|tiny|smal  Distance betweet     │
-│                                   l|medium|large|huge  silences             │
-│                                   ]                    [default: tiny]      │
-│ --force             --no-force                         Ignore cache         │
-│                                                        [default: no-force]  │
-│ --help                                                 Show this message    │
-│                                                        and exit.            │
-╰─────────────────────────────────────────────────────────────────────────────╯
+╭─ Arguments ─────────────────────────────────────────────────────────────────────────╮
+│ *    input_xml        PATH           [default: None] [required]                     │
+│ *    video_file       PATH           [default: None] [required]                     │
+│      output_path      [OUTPUT_PATH]  [default: cuts.kdenlive]                       │
+│      audio_file       [AUDIO_FILE]   Optional audio equilized audio file            │
+╰─────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────────────╮
+│ --silence-time  -s                INTEGER                  Minimal time in ms for   │
+│                                                            configure a silence      │
+│                                                            [default: 400]           │
+│ --threshold     -t                INTEGER                  Value in db for detect   │
+│                                                            silence                  │
+│                                                            [default: -65]           │
+│ --distance      -d                [negative|tiny|small|me  Distance betweet         │
+│                                   dium|large|huge]         silences                 │
+│                                                            [default: tiny]          │
+│ --force             --no-force                             Ignore cache             │
+│                                                            [default: no-force]      │
+│ --help                                                     Show this message and    │
+│                                                            exit.                    │
+╰─────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 <h2 id="api-for-developers">API for developers</h2>
 

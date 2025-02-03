@@ -746,26 +746,25 @@
 <h3 id="-help-flag-output"><code>--help</code> Flag Output:</h3>
 <div class="highlight"><pre><span></span><code>$ vmh cut-silences --help
 
- Usage: vmh cut-silences [OPTIONS] AUDIO_FILE OUTPUT_FILE                      
+ Usage: vmh cut-silences [OPTIONS] AUDIO_FILE OUTPUT_FILE                              
 
- Removes all silences from an audio file.                                      
+ Removes all silences from an audio file.                                              
 
-╭─ Arguments ─────────────────────────────────────────────────────────────────╮
-│ *    audio_file       PATH  [default: None] [required]                      │
-│ *    output_file      PATH  [default: None] [required]                      │
-╰─────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ───────────────────────────────────────────────────────────────────╮
-│ --silence-time  -s      INTEGER                   Minimal time in ms for    │
-│                                                   configure a silence       │
-│                                                   [default: 400]            │
-│ --threshold     -t      INTEGER                   Value in db for detect    │
-│                                                   silence                   │
-│                                                   [default: -65]            │
-│ --distance      -d      [negative|tiny|small|med  Distance betweet silences │
-│                         ium|large|huge]           [default: tiny]           │
-│ --help                                            Show this message and     │
-│                                                   exit.                     │
-╰─────────────────────────────────────────────────────────────────────────────╯
+╭─ Arguments ─────────────────────────────────────────────────────────────────────────╮
+│ *    audio_file       PATH  [default: None] [required]                              │
+│ *    output_file      PATH  [default: None] [required]                              │
+╰─────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────────────╮
+│ --silence-time  -s      INTEGER                       Minimal time in ms for        │
+│                                                       configure a silence           │
+│                                                       [default: 400]                │
+│ --threshold     -t      INTEGER                       Value in db for detect        │
+│                                                       silence                       │
+│                                                       [default: -65]                │
+│ --distance      -d      [negative|tiny|small|medium|  Distance betweet silences     │
+│                         large|huge]                   [default: tiny]               │
+│ --help                                                Show this message and exit.   │
+╰─────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 <h2 id="api-for-developers">API for developers</h2>
 
