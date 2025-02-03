@@ -9,8 +9,10 @@
       
       
       
-        <link rel="prev" href="../contributing/">
+        <link rel="prev" href="../cut-video/">
       
+      
+        <link rel="next" href="../equalize/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -18,7 +20,7 @@
     
     
       
-        <title>Changelogs - VideoMaker-Helper</title>
+        <title>Cut Silences - VideoMaker-Helper</title>
       
     
     
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#changelogs" class="md-skip">
+        <a href="#cut-silences" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Changelogs
+              Cut Silences
             
           </span>
         </div>
@@ -273,17 +275,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -298,7 +302,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Tools
@@ -331,10 +335,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../cut-silences/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Cut Silences
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -344,6 +369,77 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Usage:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Usage:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-help-flag-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      --help Flag Output:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-for-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      API for developers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#videomaker_helper.audio.cut_silences" class="md-nav__link">
+    <span class="md-ellipsis">
+      cut_silences
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -448,19 +544,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -475,7 +569,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             For Developers
@@ -508,31 +602,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Changelogs
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../CHANGELOG/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -542,68 +615,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#unreleased-2025-02-03" class="md-nav__link">
-    <span class="md-ellipsis">
-      Unreleased - 2025-02-03
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Unreleased - 2025-02-03">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#added" class="md-nav__link">
-    <span class="md-ellipsis">
-      Added
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#changed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Changed
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fixed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fixed
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -643,37 +654,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#unreleased-2025-02-03" class="md-nav__link">
+  <a href="#features" class="md-nav__link">
     <span class="md-ellipsis">
-      Unreleased - 2025-02-03
+      Features:
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Unreleased - 2025-02-03">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Usage:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Usage:">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#added" class="md-nav__link">
+  <a href="#-help-flag-output" class="md-nav__link">
     <span class="md-ellipsis">
-      Added
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#changed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Changed
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fixed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fixed
+      --help Flag Output:
     </span>
   </a>
   
@@ -681,6 +683,24 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-for-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      API for developers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#videomaker_helper.audio.cut_silences" class="md-nav__link">
+    <span class="md-ellipsis">
+      cut_silences
+    </span>
+  </a>
   
 </li>
       
@@ -703,33 +723,152 @@
   
 
 
-<div><h1 id="changelogs">Changelogs</h1>
-<h2 id="unreleased-2025-02-03"><a href="https://github.com/dunossauro/videomaker-helper/tree/Unreleased">Unreleased</a> - 2025-02-03</h2>
-<h3 id="added">Added</h3>
+<div><h1 id="cut-silences">Cut Silences</h1>
+<p>The <code>cut-silences</code> command is an essential utility for audio editors, podcasters, and content creators who wish to refine the auditory experience of their content. It meticulously scans the provided audio file and removes all the detected silent portions, ensuring the end result is a continuous and engaging audio piece without abrupt or prolonged gaps.</p>
+<h2 id="features">Features:</h2>
 <ul>
-<li>CI matrix testing 3.11, 3.12 and 3.13 (<a href="https://github.com/dunossauro/videomaker-helper/issues/11">#11</a>)</li>
-<li>Link to the ropository in the documentation by <a href="https://github.com/caio-imperial">@caio-imperial</a> (<a href="https://github.com/dunossauro/videomaker-helper/issues/20">#20</a>)</li>
-<li><code>cut_silences</code> now supports distances</li>
+<li>
+<p><strong>Simple Input</strong>: The command needs just the source <code>audio_file</code> and the desired <code>output_file</code> where the processed audio will be saved.</p>
+</li>
+<li>
+<p><strong>Efficient Silence Removal</strong>: Leveraging advanced algorithms, this tool efficiently detects and eliminates silences, making the audio flow more natural.</p>
+</li>
+<li>
+<p><strong>Customizable Detection</strong>: Users have the flexibility to define what constitutes a 'silence' in their audio:</p>
+</li>
+<li><code>silence-time</code> (or <code>-s</code>): Determines the minimum duration of a silence (measured in milliseconds) before it's considered for removal.</li>
+<li><code>threshold</code> (or <code>-t</code>): Sets the decibel level below which an audio segment is considered silent.</li>
 </ul>
-<p>Reference: <a href="https://github.com/dunossauro/videomaker-helper?tab=readme-ov-file#distance-flag">Distance Flag</a> (<a href="https://github.com/dunossauro/videomaker-helper/issues/26">#26</a>)
-- Changelog page in docs using snippets and towncrier by <a href="https://github.com/yanndrade">@yanndrade</a> (<a href="https://github.com/dunossauro/videomaker-helper/issues/33">#33</a>)
-- Darkmode option in documentation by <a href="https://github.com/taconi">@taconi</a> (<a href="https://github.com/dunossauro/videomaker-helper/issues/34">#34</a>)
-- Search bar in docs by <a href="https://github.com/yanndrade">@yanndrade</a> (<a href="https://github.com/dunossauro/videomaker-helper/issues/35">#35</a>)
-- CI configuration to run to the Pull Requests by <a href="https://github.com/taconi">@taconi</a> (<a href="https://github.com/dunossauro/videomaker-helper/issues/40">#40</a>)</p>
-<h3 id="changed">Changed</h3>
-<ul>
-<li>Replacing appdirs (not manteined) for platformdirs (<a href="https://github.com/dunossauro/videomaker-helper/issues/6">#6</a>)</li>
-<li>Cache now only stores the silences without distance (<a href="https://github.com/dunossauro/videomaker-helper/issues/17">#17</a>)</li>
-<li>Change package name from vmh to videomaker_helper</li>
-</ul>
-<h3 id="fixed">Fixed</h3>
-<ul>
-<li><strong>Breaking</strong>: Parameter in <code>extract-audio</code> to receive video, not audio by <a href="https://github.com/caio-imperial">@caio-imperial</a> (<a href="https://github.com/dunossauro/videomaker-helper/issues/18">#18</a>)</li>
-<li>Adjustments for kdenlive to recognize if video and .kdenlive is in the path</li>
-<li>Fixed package name on mkdocstrings and update mkdocstrings</li>
-<li>Migrate appdirs to platformdirs, now platformdirs creates .config path</li>
-<li>Moviepy 2.0 subclips support</li>
-</ul></div>
+<h2 id="example-usage">Example Usage:</h2>
+<p>To remove silences from an audio file named <code>podcast.mp3</code> and save the processed audio as <code>podcast_no_silences.mp3</code>, use:</p>
+<div class="highlight"><pre><span></span><code>vmh cut-silences podcast.mp3 podcast_no_silences.mp3
+</code></pre></div>
+<h3 id="-help-flag-output"><code>--help</code> Flag Output:</h3>
+<div class="highlight"><pre><span></span><code>$ vmh cut-silences --help
+
+ Usage: vmh cut-silences [OPTIONS] AUDIO_FILE OUTPUT_FILE                      
+
+ Removes all silences from an audio file.                                      
+
+╭─ Arguments ─────────────────────────────────────────────────────────────────╮
+│ *    audio_file       PATH  [default: None] [required]                      │
+│ *    output_file      PATH  [default: None] [required]                      │
+╰─────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────╮
+│ --silence-time  -s      INTEGER                   Minimal time in ms for    │
+│                                                   configure a silence       │
+│                                                   [default: 400]            │
+│ --threshold     -t      INTEGER                   Value in db for detect    │
+│                                                   silence                   │
+│                                                   [default: -65]            │
+│ --distance      -d      [negative|tiny|small|med  Distance betweet silences │
+│                         ium|large|huge]           [default: tiny]           │
+│ --help                                            Show this message and     │
+│                                                   exit.                     │
+╰─────────────────────────────────────────────────────────────────────────────╯
+</code></pre></div>
+<h2 id="api-for-developers">API for developers</h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<a id="videomaker_helper.audio.cut_silences"></a>
+    <div class="doc doc-contents first">
+
+            <details class="quote">
+              <summary>Source code in <code>videomaker_helper/audio.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">cut_silences</span><span class="p">(</span>
+    <span class="n">audio_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">silence_time</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">65</span><span class="p">,</span>
+    <span class="n">distance</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span>
+        <span class="s1">'negative'</span><span class="p">,</span>
+        <span class="s1">'tiny'</span><span class="p">,</span>
+        <span class="s1">'small'</span><span class="p">,</span>
+        <span class="s1">'medium'</span><span class="p">,</span>
+        <span class="s1">'large'</span><span class="p">,</span>
+        <span class="s1">'huge'</span><span class="p">,</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="s1">'tiny'</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Reading file: </span><span class="si">{</span><span class="n">audio_file</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="n">audio</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">audio_file</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'File read: </span><span class="si">{</span><span class="n">audio_file</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Detecting silences with distance: </span><span class="si">{</span><span class="n">distance</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+    <span class="n">silences</span> <span class="o">=</span> <span class="n">detect_silences</span><span class="p">(</span>
+        <span class="n">audio_file</span><span class="p">,</span>
+        <span class="n">silence_time</span><span class="o">=</span><span class="n">silence_time</span><span class="p">,</span>
+        <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>
+        <span class="n">distance</span><span class="o">=</span><span class="n">distance</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Deleting silences'</span><span class="p">)</span>
+
+    <span class="n">not_silent_segments</span> <span class="o">=</span> <span class="n">islice</span><span class="p">(</span><span class="n">pairwise</span><span class="p">(</span><span class="n">silences</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">combined</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="ow">in</span> <span class="n">not_silent_segments</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Cutting from </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">stop</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+        <span class="n">start_ms</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">start</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+        <span class="n">stop_ms</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">stop</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+        <span class="n">combined</span> <span class="o">+=</span> <span class="n">audio</span><span class="p">[</span><span class="n">start_ms</span><span class="p">:</span><span class="n">stop_ms</span><span class="p">]</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Writing file: </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+    <span class="n">combined</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'mp3'</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div></div>
 
 
 

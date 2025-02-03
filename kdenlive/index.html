@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../equalize/">
+        <link rel="prev" href="../extract-audio/">
       
       
-        <link rel="next" href="../kdenlive/">
+        <link rel="next" href="../threshold_and_distances/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Extract audio - VideoMaker-Helper</title>
+        <title>kdenlive - VideoMaker-Helper</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#features" class="md-skip">
+        <a href="#kdenlive" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Extract audio
+              kdenlive
             
           </span>
         </div>
@@ -379,6 +379,28 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../extract-audio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extract audio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -388,12 +410,14 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   <span class="md-ellipsis">
-    Extract audio
+    kdenlive
     
   </span>
   
@@ -405,7 +429,7 @@
         
   
   <span class="md-ellipsis">
-    Extract audio
+    kdenlive
     
   </span>
   
@@ -418,6 +442,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -426,27 +452,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
+  <a href="#main-features" class="md-nav__link">
     <span class="md-ellipsis">
-      Features:
+      Main Features:
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-usage" class="md-nav__link">
+  <a href="#sample-commands" class="md-nav__link">
     <span class="md-ellipsis">
-      Example Usage:
+      Sample Commands:
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#-help-flag-output" class="md-nav__link">
+  <a href="#-help-option-display" class="md-nav__link">
     <span class="md-ellipsis">
-      --help Flag Output:
+      --help Option Display:
     </span>
   </a>
   
@@ -462,9 +488,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#videomaker_helper.audio.extract_audio" class="md-nav__link">
+  <a href="#videomaker_helper.kdenlive.cut" class="md-nav__link">
     <span class="md-ellipsis">
-      extract_audio
+      cut
     </span>
   </a>
   
@@ -474,28 +500,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kdenlive/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    kdenlive
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -634,6 +638,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -642,27 +648,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
+  <a href="#main-features" class="md-nav__link">
     <span class="md-ellipsis">
-      Features:
+      Main Features:
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-usage" class="md-nav__link">
+  <a href="#sample-commands" class="md-nav__link">
     <span class="md-ellipsis">
-      Example Usage:
+      Sample Commands:
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#-help-flag-output" class="md-nav__link">
+  <a href="#-help-option-display" class="md-nav__link">
     <span class="md-ellipsis">
-      --help Flag Output:
+      --help Option Display:
     </span>
   </a>
   
@@ -678,9 +684,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#videomaker_helper.audio.extract_audio" class="md-nav__link">
+  <a href="#videomaker_helper.kdenlive.cut" class="md-nav__link">
     <span class="md-ellipsis">
-      extract_audio
+      cut
     </span>
   </a>
   
@@ -705,51 +711,76 @@
   
 
 
-  <h1>Extract audio</h1>
-
-<div><p>The <code>extract-audio</code> command is designed to detach the audio component from a video file. Whether you're repurposing the audio content of videos for podcasts, transcription, or other audio-centric endeavors, this tool provides a seamless experience.</p>
-<h2 id="features">Features:</h2>
+<div><h1 id="kdenlive">kdenlive</h1>
+<p>The <code>kdenlive</code> command facilitates video editors by generating XML files compatible with kdenlive settings, focusing specifically on automating the process of cutting silences from video timelines. This utility is especially designed to expedite the editing workflow, allowing users to jumpstart their projects with silences already trimmed, effectively eliminating one of the most time-consuming and tedious aspects of video editing.</p>
+<blockquote>
+<p>⚠️ Instability Alert: The interface for the kdenlive command is currently unstable. Users should anticipate potential modifications in future updates.</p>
+</blockquote>
+<h4 id="main-features">Main Features:</h4>
 <ul>
-<li><strong>Dual Audio Extraction with <code>--eq</code> Flag</strong>: </li>
-<li>When you use the <code>--eq</code> flag, the command produces two distinct audio files:<ol>
-<li>A pure audio file extracted directly from the video.</li>
-<li>An enhanced audio file where compression is applied, and the volume is amplified by 10 decibels.</li>
-</ol>
+<li>
+<p><strong>Automatic Silence-Cut Generation</strong>: VMH harnesses the <code>silences</code> command's capabilities to detect silent portions in your audio file. These detected silences are then converted into kdenlive-compatible XML cut instructions, effectively pre-empting the need for manual audio silence trimming.</p>
 </li>
 <li>
-<p>This gives users the flexibility to have both the raw and enhanced versions for various applications.</p>
+<p><strong>Efficient XML Creation for Kdenlive</strong>: This command abstracts away the complexities of kdenlive's XML structure. Instead of fumbling with XML details, users can generate the required XML content for their timelines swiftly and effortlessly.</p>
 </li>
 <li>
-<p><strong>Default Output</strong>: If an <code>output_file</code> isn't specified, the extracted audio will default to <code>output.wav</code>. If <code>--eq</code> is used, the enhanced version might have a suffix or different naming to differentiate it from the raw audio.</p>
+<p><strong>Fine-Tuned Silence Detection</strong>: Video editors can customize the silence detection parameters to suit their specific requirements:</p>
 </li>
-<li>
-<p><strong>Opt-Out of Audio Enhancement</strong>: If you only want the raw, unaltered audio without the enhanced version, simply use the <code>--no-eq</code> flag.</p>
-</li>
+<li><code>--silence-time</code>: Sets the minimum duration for a segment to be recognized as silence.</li>
+<li><code>--threshold</code>: Determines the decibel level to qualify a segment as silent.</li>
+<li><code>--distance</code>: Adjusts the granularity of silence detection, with options from short intervals to exact durations.</li>
 </ul>
-<h2 id="example-usage">Example Usage:</h2>
-<p>To extract both raw and enhanced audio from a video named <code>presentation.mp4</code>:</p>
-<div class="highlight"><pre><span></span><code>vmh extract-audio presentation.mp4 --eq
+<h4 id="sample-commands">Sample Commands:</h4>
+<ol>
+<li>
+<p>For an automated silence-trimmed XML setup using <code>audio.wav</code>, <code>video.mp4</code>, and <code>project.xml</code>:
+</p><div class="highlight"><pre><span></span><code>vmh<span class="w"> </span>kdenlive<span class="w"> </span>project.kdenlive<span class="w"> </span>video.mp4
 </code></pre></div>
-<p>For raw audio extraction without any enhancement:</p>
-<div class="highlight"><pre><span></span><code>vmh extract-audio presentation.mp4 --no-eq
+</li>
+<li>
+<p>Customizing silence detection parameters for the XML generation:
+</p><div class="highlight"><pre><span></span><code>vmh<span class="w"> </span>kdenlive<span class="w"> </span>project.kdenlive<span class="w"> </span>video.mp4<span class="w"> </span>--silence-time<span class="w"> </span><span class="m">500</span><span class="w"> </span>--threshold<span class="w"> </span>-30
 </code></pre></div>
-<h2 id="-help-flag-output"><code>--help</code> Flag Output:</h2>
-<p>For a detailed breakdown of the available options and arguments for the <code>extract-audio</code> command:</p>
-<div class="highlight"><pre><span></span><code>vmh extract-audio --help
+</li>
+<li>
+<p>Using equilized audio
+</p><div class="highlight"><pre><span></span><code>vmh<span class="w"> </span>kdenlive<span class="w"> </span>project.kdenlive<span class="w"> </span>video.mp4<span class="w"> </span>audio.mp3
+</code></pre></div>
+</li>
+</ol>
+<h4 id="-help-option-display"><code>--help</code> Option Display:</h4>
+<p>A snapshot of available options and arguments for the <code>kdenlive</code> command:</p>
+<div class="highlight"><pre><span></span><code>$ vmh kdenlive --help
 
- Usage: vmh extract-audio [OPTIONS] VIDEO_FILE [OUTPUT_FILE]
+ Usage: vmh kdenlive [OPTIONS] INPUT_XML VIDEO_FILE [OUTPUT_PATH] [AUDIO_FILE] 
 
- Extracts the audio from a video.
+ Generates an XML compatible with kdenlive settings.                           
+ Note: It doesn’t directly modify kdenlive files. It new kdenlive file with    
+ [OUTPUT_FILE].                                                                
 
-╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    video_file       PATH           [default: None] [required]              │
-│      output_file      [OUTPUT_FILE]  [default: output.wav]                   │
-╰──────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ────────────────────────────────────────────────────────────────────╮
-│ --eq      --no-eq      Add compression and 10db of extracted audio           │
-│                        [default: eq]                                         │
-│ --help                 Show this message and exit.                           │
-╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Arguments ─────────────────────────────────────────────────────────────────╮
+│ *    input_xml        PATH           [default: None] [required]             │
+│ *    video_file       PATH           [default: None] [required]             │
+│      output_path      [OUTPUT_PATH]  [default: cuts.kdenlive]               │
+│      audio_file       [AUDIO_FILE]   Optional audio equilized audio file    │
+╰─────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────╮
+│ --silence-time  -s                INTEGER              Minimal time in ms   │
+│                                                        for configure a      │
+│                                                        silence              │
+│                                                        [default: 400]       │
+│ --threshold     -t                INTEGER              Value in db for      │
+│                                                        detect silence       │
+│                                                        [default: -65]       │
+│ --distance      -d                [negative|tiny|smal  Distance betweet     │
+│                                   l|medium|large|huge  silences             │
+│                                   ]                    [default: tiny]      │
+│ --force             --no-force                         Ignore cache         │
+│                                                        [default: no-force]  │
+│ --help                                                 Show this message    │
+│                                                        and exit.            │
+╰─────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 <h2 id="api-for-developers">API for developers</h2>
 
@@ -758,152 +789,150 @@
 
 
 
-<a id="videomaker_helper.audio.extract_audio"></a>
+<a id="videomaker_helper.kdenlive.cut"></a>
     <div class="doc doc-contents first">
 
-        <p>Extract audio from vídeo.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>video_file</code>
-            </td>
-            <td>
-                  <code>str</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Video to extract audio</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>output_file</code>
-            </td>
-            <td>
-                  <code>str</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Output file path</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>eq</code>
-            </td>
-            <td>
-                  <code>bool</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Equalization</p>
-              </div>
-            </td>
-            <td>
-                  <code>True</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="pathlib.Path">Path</span> | tuple[<span title="pathlib.Path">Path</span>, <span title="pathlib.Path">Path</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A audio Path</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
             <details class="quote">
-              <summary>Source code in <code>videomaker_helper/audio.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">extract_audio</span><span class="p">(</span>
-    <span class="n">video_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">eq</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="n">Path</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">"""Extract audio from vídeo.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        video_file: Video to extract audio</span>
-<span class="sd">        output_file: Output file path</span>
-<span class="sd">        eq: Equalization</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        A audio Path</span>
-<span class="sd">    """</span>
-    <span class="n">audio</span><span class="p">:</span> <span class="n">AudioSegment</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">video_file</span><span class="p">)</span>
-    <span class="n">audio</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'wav'</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">eq</span><span class="p">:</span>
-        <span class="n">_eq_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
-        <span class="n">eq_path</span> <span class="o">=</span> <span class="n">_eq_path</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="p">(</span><span class="s1">'eq_'</span> <span class="o">+</span> <span class="n">_eq_path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="n">Path</span><span class="p">(</span><span class="n">output_file</span><span class="p">),</span>
-            <span class="n">Path</span><span class="p">(</span><span class="n">process_audio</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">eq_path</span><span class="p">))),</span>
+              <summary>Source code in <code>videomaker_helper/kdenlive.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">cut</span><span class="p">(</span>
+    <span class="n">audio_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">video_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">input_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">output_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">silence_time</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="n">distance</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span>
+        <span class="s1">'negative'</span><span class="p">,</span>
+        <span class="s1">'tiny'</span><span class="p">,</span>
+        <span class="s1">'small'</span><span class="p">,</span>
+        <span class="s1">'medium'</span><span class="p">,</span>
+        <span class="s1">'large'</span><span class="p">,</span>
+        <span class="s1">'huge'</span><span class="p">,</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="s1">'tiny'</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">audio_file</span> <span class="o">!=</span> <span class="n">Path</span><span class="p">(</span><span class="n">getcwd</span><span class="p">()):</span>  <span class="c1"># Typer don't support Path | None</span>
+        <span class="n">times</span> <span class="o">=</span> <span class="n">detect_silences</span><span class="p">(</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">audio_file</span><span class="p">),</span>
+            <span class="n">silence_time</span><span class="p">,</span>
+            <span class="n">threshold</span><span class="p">,</span>
+            <span class="n">distance</span><span class="p">,</span>
+            <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">times</span> <span class="o">=</span> <span class="n">detect_silences</span><span class="p">(</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">video_file</span><span class="p">),</span>
+            <span class="n">silence_time</span><span class="p">,</span>
+            <span class="n">threshold</span><span class="p">,</span>
+            <span class="n">distance</span><span class="p">,</span>
+            <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span>
         <span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
+    <span class="n">chain_id</span><span class="p">,</span> <span class="n">file_id</span><span class="p">,</span> <span class="n">playlist</span> <span class="o">=</span> <span class="n">check_chain</span><span class="p">(</span><span class="n">video_file</span><span class="p">,</span> <span class="n">input_file</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">_output_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">kdenlive_xml</span><span class="p">(</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">input_file</span><span class="p">),</span>
+        <span class="n">playlist_id</span><span class="o">=</span><span class="n">playlist</span><span class="p">,</span>
+        <span class="n">property_id</span><span class="o">=</span><span class="n">file_id</span><span class="p">,</span>
+        <span class="n">chain_id</span><span class="o">=</span><span class="n">chain_id</span><span class="p">,</span>
+        <span class="n">cuts</span><span class="o">=</span><span class="n">times</span><span class="p">,</span>
+        <span class="n">output_path</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">output_path</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Video playlist </span><span class="si">{</span><span class="n">playlist</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+    <span class="n">chain_id</span><span class="p">,</span> <span class="n">file_id</span><span class="p">,</span> <span class="n">playlist</span> <span class="o">=</span> <span class="n">check_chain</span><span class="p">(</span><span class="n">video_file</span><span class="p">,</span> <span class="n">input_file</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">kdenlive_xml</span><span class="p">(</span>
+        <span class="n">_output_path</span><span class="p">,</span>
+        <span class="n">playlist_id</span><span class="o">=</span><span class="n">playlist</span><span class="p">,</span>
+        <span class="n">chain_id</span><span class="o">=</span><span class="n">chain_id</span><span class="p">,</span>
+        <span class="n">property_id</span><span class="o">=</span><span class="n">file_id</span><span class="p">,</span>
+        <span class="n">cuts</span><span class="o">=</span><span class="n">times</span><span class="p">,</span>
+        <span class="n">output_path</span><span class="o">=</span><span class="n">_output_path</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Audio playlist </span><span class="si">{</span><span class="n">playlist</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">audio_file</span> <span class="o">!=</span> <span class="n">Path</span><span class="p">(</span><span class="n">getcwd</span><span class="p">()):</span>  <span class="c1"># Typer don't support Path | None</span>
+        <span class="n">chain_id</span><span class="p">,</span> <span class="n">file_id</span><span class="p">,</span> <span class="n">playlist</span> <span class="o">=</span> <span class="n">check_chain</span><span class="p">(</span><span class="n">audio_file</span><span class="p">,</span> <span class="n">input_file</span><span class="p">)</span>
+        <span class="n">kdenlive_xml</span><span class="p">(</span>
+            <span class="n">_output_path</span><span class="p">,</span>
+            <span class="n">playlist_id</span><span class="o">=</span><span class="n">playlist</span><span class="p">,</span>
+            <span class="n">chain_id</span><span class="o">=</span><span class="n">chain_id</span><span class="p">,</span>
+            <span class="n">property_id</span><span class="o">=</span><span class="n">file_id</span><span class="p">,</span>
+            <span class="n">cuts</span><span class="o">=</span><span class="n">times</span><span class="p">,</span>
+            <span class="n">output_path</span><span class="o">=</span><span class="n">_output_path</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Audio playlist </span><span class="si">{</span><span class="n">playlist</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">_output_path</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>

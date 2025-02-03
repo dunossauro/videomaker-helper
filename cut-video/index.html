@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../equalize/">
+        <link rel="prev" href="..">
       
       
-        <link rel="next" href="../kdenlive/">
+        <link rel="next" href="../cut-silences/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Extract audio - VideoMaker-Helper</title>
+        <title>Cut Video - VideoMaker-Helper</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#features" class="md-skip">
+        <a href="#cut-video" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Extract audio
+              Cut Video
             
           </span>
         </div>
@@ -313,10 +313,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../cut-video/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Cut Video
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -326,6 +347,95 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-cuts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple cuts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cuts-based-on-another-audio-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cuts based on another audio file
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-and-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts and features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-help-flag-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      --help Flag Output:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-for-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      API for developers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#videomaker_helper.video.cut_video" class="md-nav__link">
+    <span class="md-ellipsis">
+      cut_video
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -379,29 +489,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Extract audio
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../extract-audio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -411,69 +502,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
-    <span class="md-ellipsis">
-      Features:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example Usage:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#-help-flag-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      --help Flag Output:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api-for-developers" class="md-nav__link">
-    <span class="md-ellipsis">
-      API for developers
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#videomaker_helper.audio.extract_audio" class="md-nav__link">
-    <span class="md-ellipsis">
-      extract_audio
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -634,6 +662,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -642,18 +672,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
+  <a href="#usage-examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Features:
+      Usage examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-cuts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple cuts
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#cuts-based-on-another-audio-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cuts based on another audio file
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#example-usage" class="md-nav__link">
+  <a href="#concepts-and-features" class="md-nav__link">
     <span class="md-ellipsis">
-      Example Usage:
+      Concepts and features
     </span>
   </a>
   
@@ -678,9 +732,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#videomaker_helper.audio.extract_audio" class="md-nav__link">
+  <a href="#videomaker_helper.video.cut_video" class="md-nav__link">
     <span class="md-ellipsis">
-      extract_audio
+      cut_video
     </span>
   </a>
   
@@ -705,51 +759,65 @@
   
 
 
-  <h1>Extract audio</h1>
-
-<div><p>The <code>extract-audio</code> command is designed to detach the audio component from a video file. Whether you're repurposing the audio content of videos for podcasts, transcription, or other audio-centric endeavors, this tool provides a seamless experience.</p>
-<h2 id="features">Features:</h2>
-<ul>
-<li><strong>Dual Audio Extraction with <code>--eq</code> Flag</strong>: </li>
-<li>When you use the <code>--eq</code> flag, the command produces two distinct audio files:<ol>
-<li>A pure audio file extracted directly from the video.</li>
-<li>An enhanced audio file where compression is applied, and the volume is amplified by 10 decibels.</li>
-</ol>
-</li>
-<li>
-<p>This gives users the flexibility to have both the raw and enhanced versions for various applications.</p>
-</li>
-<li>
-<p><strong>Default Output</strong>: If an <code>output_file</code> isn't specified, the extracted audio will default to <code>output.wav</code>. If <code>--eq</code> is used, the enhanced version might have a suffix or different naming to differentiate it from the raw audio.</p>
-</li>
-<li>
-<p><strong>Opt-Out of Audio Enhancement</strong>: If you only want the raw, unaltered audio without the enhanced version, simply use the <code>--no-eq</code> flag.</p>
-</li>
-</ul>
-<h2 id="example-usage">Example Usage:</h2>
-<p>To extract both raw and enhanced audio from a video named <code>presentation.mp4</code>:</p>
-<div class="highlight"><pre><span></span><code>vmh extract-audio presentation.mp4 --eq
+<div><h1 id="cut-video">Cut Video</h1>
+<p>The <code>cut-video</code> command creates a new video by removing the silences present in the video file.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>vmh cut-video sample.mp4
 </code></pre></div>
-<p>For raw audio extraction without any enhancement:</p>
-<div class="highlight"><pre><span></span><code>vmh extract-audio presentation.mp4 --no-eq
+<p>This will remove the silences and generate a file called <code>result.mp4</code>.</p>
+<blockquote>
+<p>You can find some examples of cuts <a href="https://github.com/dunossauro/videomaker-helper/tree/main/examples/cut-video">here</a>.</p>
+</blockquote>
+<h2 id="usage-examples">Usage examples</h2>
+<h3 id="simple-cuts">Simple cuts</h3>
+<p>To edit a video named <code>sample.mp4</code> using the default parameters, use:</p>
+<div class="highlight"><pre><span></span><code>vmh<span class="w"> </span>cut-video<span class="w"> </span>sample.mp4
 </code></pre></div>
+<p>This will remove the silences and generate a file called <code>result.mp4</code>.</p>
+<h3 id="cuts-based-on-another-audio-file">Cuts based on another audio file</h3>
+<p>Sometimes, we have a video file and an external audio file that is already equalized and processed.</p>
+<p>We can cut the video based on the silences from this audio and generate a new file that removes the original audio from the video and replaces it with the new audio file:</p>
+<div class="highlight"><pre><span></span><code>vmh<span class="w"> </span>cut-video<span class="w"> </span>video_sample.mp4<span class="w"> </span>--audio_file<span class="w"> </span>equalized_audio.wav
+</code></pre></div>
+<p>This way, the new video will have the equalized audio with the cuts already applied.</p>
+<h2 id="concepts-and-features">Concepts and features</h2>
+<p>Silences are defined by the audio threshold and the minimum duration of silence found in the audio. As this is common for all cutting commands, the explanation can be found <a href="../threshold_and_distances/">here</a>.</p>
 <h2 id="-help-flag-output"><code>--help</code> Flag Output:</h2>
-<p>For a detailed breakdown of the available options and arguments for the <code>extract-audio</code> command:</p>
-<div class="highlight"><pre><span></span><code>vmh extract-audio --help
+<div class="highlight"><pre><span></span><code>$ vmh cut-video --help
 
- Usage: vmh extract-audio [OPTIONS] VIDEO_FILE [OUTPUT_FILE]
+ Usage: vmh cut-video [OPTIONS] VIDEO_FILE [OUTPUT_PATH] [AUDIO_FILE]          
 
- Extracts the audio from a video.
+ Edits a video using silences as reference.                                    
 
-╭─ Arguments ──────────────────────────────────────────────────────────────────╮
-│ *    video_file       PATH           [default: None] [required]              │
-│      output_file      [OUTPUT_FILE]  [default: output.wav]                   │
-╰──────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ────────────────────────────────────────────────────────────────────╮
-│ --eq      --no-eq      Add compression and 10db of extracted audio           │
-│                        [default: eq]                                         │
-│ --help                 Show this message and exit.                           │
-╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Arguments ─────────────────────────────────────────────────────────────────╮
+│ *    video_file       PATH           [default: None] [required]             │
+│      output_path      [OUTPUT_PATH]  [default: result.mp4]                  │
+│      audio_file       [AUDIO_FILE]   Optional audio equilized audio file    │
+╰─────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────╮
+│ --silence-time  -s                INTEGER              Minimal time in ms   │
+│                                                        for configure a      │
+│                                                        silence              │
+│                                                        [default: 400]       │
+│ --threshold     -t                INTEGER              Value in db for      │
+│                                                        detect silence       │
+│                                                        [default: -65]       │
+│ --distance      -d                [negative|tiny|smal  Distance betweet     │
+│                                   l|medium|large|huge  silences             │
+│                                   ]                    [default: tiny]      │
+│ --codec         -c                [libx264|mpeg4|rawv  [default: mpeg4]     │
+│                                   ideo|png|libvorbis|                       │
+│                                   libvpx]                                   │
+│ --preset        -p                [ultrafast|superfas  [default: medium]    │
+│                                   t|veryfast|faster|f                       │
+│                                   ast|medium|slow|slo                       │
+│                                   wer|veryslow]                             │
+│ --bitrate       -b                TEXT                 [default: 15M]       │
+│ --force             --no-force                         Ignore cache         │
+│                                                        [default: no-force]  │
+│ --help                                                 Show this message    │
+│                                                        and exit.            │
+╰─────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 <h2 id="api-for-developers">API for developers</h2>
 
@@ -758,100 +826,21 @@
 
 
 
-<a id="videomaker_helper.audio.extract_audio"></a>
+<a id="videomaker_helper.video.cut_video"></a>
     <div class="doc doc-contents first">
 
-        <p>Extract audio from vídeo.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>video_file</code>
-            </td>
-            <td>
-                  <code>str</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Video to extract audio</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>output_file</code>
-            </td>
-            <td>
-                  <code>str</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Output file path</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>eq</code>
-            </td>
-            <td>
-                  <code>bool</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Equalization</p>
-              </div>
-            </td>
-            <td>
-                  <code>True</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="pathlib.Path">Path</span> | tuple[<span title="pathlib.Path">Path</span>, <span title="pathlib.Path">Path</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A audio Path</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
             <details class="quote">
-              <summary>Source code in <code>videomaker_helper/audio.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">48</span>
+              <summary>Source code in <code>videomaker_helper/video.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
@@ -877,33 +866,82 @@
 <span class="normal">71</span>
 <span class="normal">72</span>
 <span class="normal">73</span>
-<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">extract_audio</span><span class="p">(</span>
-    <span class="n">video_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">cut_video</span><span class="p">(</span>
+    <span class="n">input_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">eq</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="n">Path</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">"""Extract audio from vídeo.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        video_file: Video to extract audio</span>
-<span class="sd">        output_file: Output file path</span>
-<span class="sd">        eq: Equalization</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        A audio Path</span>
-<span class="sd">    """</span>
-    <span class="n">audio</span><span class="p">:</span> <span class="n">AudioSegment</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">video_file</span><span class="p">)</span>
-    <span class="n">audio</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'wav'</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">eq</span><span class="p">:</span>
-        <span class="n">_eq_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
-        <span class="n">eq_path</span> <span class="o">=</span> <span class="n">_eq_path</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="p">(</span><span class="s1">'eq_'</span> <span class="o">+</span> <span class="n">_eq_path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="n">Path</span><span class="p">(</span><span class="n">output_file</span><span class="p">),</span>
-            <span class="n">Path</span><span class="p">(</span><span class="n">process_audio</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">eq_path</span><span class="p">))),</span>
+    <span class="n">silence_time</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">distance</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span>
+        <span class="s1">'negative'</span><span class="p">,</span>
+        <span class="s1">'tiny'</span><span class="p">,</span>
+        <span class="s1">'small'</span><span class="p">,</span>
+        <span class="s1">'medium'</span><span class="p">,</span>
+        <span class="s1">'large'</span><span class="p">,</span>
+        <span class="s1">'huge'</span><span class="p">,</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="s1">'tiny'</span><span class="p">,</span>
+    <span class="n">bitrate</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'15M'</span><span class="p">,</span>
+    <span class="n">codec</span><span class="p">:</span> <span class="n">Codec</span> <span class="o">=</span> <span class="n">Codec</span><span class="o">.</span><span class="n">mpeg4</span><span class="p">,</span>
+    <span class="n">audio_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="n">preset</span><span class="p">:</span> <span class="n">Preset</span> <span class="o">=</span> <span class="n">Preset</span><span class="o">.</span><span class="n">medium</span><span class="p">,</span>
+    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Detecting silences on </span><span class="si">{</span><span class="n">input_file</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">audio_file</span><span class="p">:</span>
+        <span class="n">silences</span> <span class="o">=</span> <span class="n">detect_silences</span><span class="p">(</span>
+            <span class="n">audio_file</span><span class="p">,</span>
+            <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span>
+            <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>
+            <span class="n">silence_time</span><span class="o">=</span><span class="n">silence_time</span><span class="p">,</span>
+            <span class="n">distance</span><span class="o">=</span><span class="n">distance</span><span class="p">,</span>
         <span class="p">)</span>
+        <span class="n">video</span> <span class="o">=</span> <span class="n">VideoFileClip</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
+        <span class="n">paudio</span> <span class="o">=</span> <span class="n">AudioFileClip</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">audio_file</span><span class="p">))</span>
+        <span class="n">video</span><span class="o">.</span><span class="n">audio</span> <span class="o">=</span> <span class="n">paudio</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">silences</span> <span class="o">=</span> <span class="n">detect_silences</span><span class="p">(</span>
+            <span class="n">input_file</span><span class="p">,</span>
+            <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span>
+            <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>
+            <span class="n">silence_time</span><span class="o">=</span><span class="n">silence_time</span><span class="p">,</span>
+            <span class="n">distance</span><span class="o">=</span><span class="n">distance</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">video</span> <span class="o">=</span> <span class="n">VideoFileClip</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Creating subclips on </span><span class="si">{</span><span class="n">input_file</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="n">clips</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">video</span><span class="o">.</span><span class="n">subclipped</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="ow">in</span> <span class="n">islice</span><span class="p">(</span><span class="n">pairwise</span><span class="p">(</span><span class="n">silences</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="n">final_video</span> <span class="o">=</span> <span class="n">concatenate_videoclips</span><span class="p">(</span><span class="n">clips</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Writing </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="n">final_video</span><span class="o">.</span><span class="n">write_videofile</span><span class="p">(</span>
+        <span class="n">output_file</span><span class="p">,</span>
+        <span class="n">codec</span><span class="o">=</span><span class="n">codec</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+        <span class="n">preset</span><span class="o">=</span><span class="n">preset</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+        <span class="n">bitrate</span><span class="o">=</span><span class="n">bitrate</span><span class="p">,</span>
+    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>

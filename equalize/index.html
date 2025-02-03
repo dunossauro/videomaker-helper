@@ -9,8 +9,10 @@
       
       
       
-        <link rel="prev" href="../contributing/">
+        <link rel="prev" href="../cut-silences/">
       
+      
+        <link rel="next" href="../extract-audio/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -18,7 +20,7 @@
     
     
       
-        <title>Changelogs - VideoMaker-Helper</title>
+        <title>Equalize - VideoMaker-Helper</title>
       
     
     
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#changelogs" class="md-skip">
+        <a href="#equalize" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Changelogs
+              Equalize
             
           </span>
         </div>
@@ -273,17 +275,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -298,7 +302,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Tools
@@ -353,10 +357,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../equalize/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Equalize
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -366,6 +391,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#-help-flag-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      --help Flag Output:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-for-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      API for developers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#videomaker_helper.equalize.process_audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      process_audio
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -448,19 +520,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -475,7 +545,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             For Developers
@@ -508,31 +578,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Changelogs
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../CHANGELOG/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -542,68 +591,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#unreleased-2025-02-03" class="md-nav__link">
-    <span class="md-ellipsis">
-      Unreleased - 2025-02-03
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Unreleased - 2025-02-03">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#added" class="md-nav__link">
-    <span class="md-ellipsis">
-      Added
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#changed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Changed
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fixed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fixed
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -643,44 +630,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#unreleased-2025-02-03" class="md-nav__link">
+  <a href="#-help-flag-output" class="md-nav__link">
     <span class="md-ellipsis">
-      Unreleased - 2025-02-03
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Unreleased - 2025-02-03">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#added" class="md-nav__link">
-    <span class="md-ellipsis">
-      Added
+      --help Flag Output:
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#changed" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#api-for-developers" class="md-nav__link">
     <span class="md-ellipsis">
-      Changed
+      API for developers
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#fixed" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#videomaker_helper.equalize.process_audio" class="md-nav__link">
     <span class="md-ellipsis">
-      Fixed
+      process_audio
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -703,33 +675,73 @@
   
 
 
-<div><h1 id="changelogs">Changelogs</h1>
-<h2 id="unreleased-2025-02-03"><a href="https://github.com/dunossauro/videomaker-helper/tree/Unreleased">Unreleased</a> - 2025-02-03</h2>
-<h3 id="added">Added</h3>
-<ul>
-<li>CI matrix testing 3.11, 3.12 and 3.13 (<a href="https://github.com/dunossauro/videomaker-helper/issues/11">#11</a>)</li>
-<li>Link to the ropository in the documentation by <a href="https://github.com/caio-imperial">@caio-imperial</a> (<a href="https://github.com/dunossauro/videomaker-helper/issues/20">#20</a>)</li>
-<li><code>cut_silences</code> now supports distances</li>
-</ul>
-<p>Reference: <a href="https://github.com/dunossauro/videomaker-helper?tab=readme-ov-file#distance-flag">Distance Flag</a> (<a href="https://github.com/dunossauro/videomaker-helper/issues/26">#26</a>)
-- Changelog page in docs using snippets and towncrier by <a href="https://github.com/yanndrade">@yanndrade</a> (<a href="https://github.com/dunossauro/videomaker-helper/issues/33">#33</a>)
-- Darkmode option in documentation by <a href="https://github.com/taconi">@taconi</a> (<a href="https://github.com/dunossauro/videomaker-helper/issues/34">#34</a>)
-- Search bar in docs by <a href="https://github.com/yanndrade">@yanndrade</a> (<a href="https://github.com/dunossauro/videomaker-helper/issues/35">#35</a>)
-- CI configuration to run to the Pull Requests by <a href="https://github.com/taconi">@taconi</a> (<a href="https://github.com/dunossauro/videomaker-helper/issues/40">#40</a>)</p>
-<h3 id="changed">Changed</h3>
-<ul>
-<li>Replacing appdirs (not manteined) for platformdirs (<a href="https://github.com/dunossauro/videomaker-helper/issues/6">#6</a>)</li>
-<li>Cache now only stores the silences without distance (<a href="https://github.com/dunossauro/videomaker-helper/issues/17">#17</a>)</li>
-<li>Change package name from vmh to videomaker_helper</li>
-</ul>
-<h3 id="fixed">Fixed</h3>
-<ul>
-<li><strong>Breaking</strong>: Parameter in <code>extract-audio</code> to receive video, not audio by <a href="https://github.com/caio-imperial">@caio-imperial</a> (<a href="https://github.com/dunossauro/videomaker-helper/issues/18">#18</a>)</li>
-<li>Adjustments for kdenlive to recognize if video and .kdenlive is in the path</li>
-<li>Fixed package name on mkdocstrings and update mkdocstrings</li>
-<li>Migrate appdirs to platformdirs, now platformdirs creates .config path</li>
-<li>Moviepy 2.0 subclips support</li>
-</ul></div>
+<div><h1 id="equalize">Equalize</h1>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h3 id="-help-flag-output"><code>--help</code> Flag Output:</h3>
+<div class="highlight"><pre><span></span><code>$ vmh equalize --help
+
+ Usage: vmh equalize [OPTIONS] AUDIO_FILE [OUTPUT_FILE]                        
+
+ Add effects for audio file.                                                   
+
+╭─ Arguments ─────────────────────────────────────────────────────────────────╮
+│ *    audio_file       PATH           [default: None] [required]             │
+│      output_file      [OUTPUT_FILE]  [default: output.wav]                  │
+╰─────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                 │
+╰─────────────────────────────────────────────────────────────────────────────╯
+</code></pre></div>
+<h2 id="api-for-developers">API for developers</h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<a id="videomaker_helper.equalize.process_audio"></a>
+    <div class="doc doc-contents first">
+
+            <details class="quote">
+              <summary>Source code in <code>videomaker_helper/equalize.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_audio</span><span class="p">(</span>
+    <span class="n">input_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'output.wav'</span><span class="p">,</span>
+    <span class="n">board</span><span class="p">:</span> <span class="n">Pedalboard</span> <span class="o">=</span> <span class="n">_get_board</span><span class="p">(),</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">AudioFile</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">ifile</span><span class="p">:</span>
+        <span class="n">audio</span> <span class="o">=</span> <span class="n">ifile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ifile</span><span class="o">.</span><span class="n">frames</span><span class="p">)</span>
+
+    <span class="n">effected</span> <span class="o">=</span> <span class="n">board</span><span class="p">(</span><span class="n">audio</span><span class="p">,</span> <span class="n">ifile</span><span class="o">.</span><span class="n">samplerate</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">AudioFile</span><span class="p">(</span>
+        <span class="n">output_file</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">ifile</span><span class="o">.</span><span class="n">samplerate</span><span class="p">,</span> <span class="n">ifile</span><span class="o">.</span><span class="n">num_channels</span>
+    <span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+        <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">effected</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div></div>
 
 
 
