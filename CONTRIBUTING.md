@@ -229,7 +229,7 @@ Para ativar o pre-commit:
 poetry run pre-commit install
 ```
 
-Se sua contribuição envolver código, consulte o [Guia de estilo](#guia-de-estilo). Você pode ver todos os comandos disponíveis no ambiente [aqui](#taskrunner-taskipy).
+Se sua contribuição envolver código, consulte o [Guia de estilo](#guia-de-estilo). Você pode ver todos os commandos disponíveis no ambiente [aqui](#taskrunner-taskipy).
 
 Para checar se tudo está correto e os testes passam:
 
@@ -288,13 +288,13 @@ Uma lista das ferramentas de desenvolvimento e suas configurações:
 
 ##### Taskrunner: [taskipy](https://github.com/taskipy/taskipy)
 
-O taskipy facilita a execução dos comandos durante o momento de desenvolvimento do projeto:
+O taskipy facilita a execução dos commandos durante o memento de desenvolvimento do projeto:
 
 ```toml title="pyproject.toml" linenums="65"
 --8<-- "pyproject.toml:65:75"
 ```
 
-Você pode usar poetry run task --list para ver todos os comandos disponíveis:
+Você pode usar poetry run task --list para ver todos os commandos disponíveis:
 
 ```bash
 $ poetry run task --list
@@ -308,7 +308,7 @@ post_test coverage html
 doc       mkdocs serve
 ```
 
-Abaixo estão alguns dos comandos mais comuns que você pode utilizar:
+Abaixo estão alguns dos commandos mais comuns que você pode utilizar:
 
 ```bash
 poetry run task test    # Executa os testes automatizados
@@ -345,9 +345,9 @@ Para executar a checagem de tipos você pode executar:
 poetry run task types
 ```
 
-##### Checagem de erros de grafia no código: [Typos](https://pypi.org/project/typos/)
+##### Checagem de errors de grafia no código: [Typos](https://pypi.org/project/typos/)
 
-Para executar a checagem de erros de grafia você pode executar:
+Para executar a checagem de errors de grafia você pode executar:
 
 ```bash
 poetry run task typos
@@ -391,7 +391,7 @@ poetry run task lint
 Para enviar sua contribuição, não há um formato pré-definido para as mensagens de commit. Sinta-se à vontade para escolher um estilo que faça sentido. Somente alguns pontos para atenção:
 
 - **Todos os PRs enviados devem ter uma issue**, caso você queira contribuir com algo que ainda não tem issue, abra uma issue antes.
-- **As solicitações de PR devem ser enviadas para branch development**.
+- **As solicitações de PR devem set enviadas para branch development**.
 - O nome da branch **deve iniciar com o número da issue**
     - Por exemplo, se a issue for número 42, o nome da branch seria `42_texto`, onde 'texto' é uma descrição curta da mudança.
 - Para notificar que você está começando uma contribuição e permitir que outros saibam, abra um PR como 'draft' e vincule a issue relevante:
@@ -399,7 +399,7 @@ Para enviar sua contribuição, não há um formato pré-definido para as mensag
 
 #### Changelogs
 
-Todas as alterações visíveis para os usuários da aplicação devem ser documentadas no changelog. Isso ajuda a manter um histórico claro das mudanças feitas e garante que os usuários estejam cientes das atualizações.
+Todas as alterações visíveis para os usuários da aplicação devem set documentadas no changelog. Isso ajuda a manter um histórico claro das mudanças feitas e garante que os usuários estejam cientes das atualizações.
 
 Após a alteração, caso ela seja **visível para quem usa aplicação** adicione uma entrada no changelog usando o `towncrier`:
 
@@ -409,12 +409,12 @@ towncrier create
 
 ### Integração contínua
 
-Este projeto utiliza o GitHub Actions para realizar a Integração Contínua (CI). Se precisar executar todo o fluxo localmente você pode usar o [act](https://github.com/nektos/act):
+Este projeto utilize o GitHub Actions para realizar a Integração Contínua (CI). Se precisar executar todo o fluxo localmente você pode usar o [act](https://github.com/nektos/act):
 
 ```bash
 act
 ```
 
-> O act é uma ferramenta que emula os workflows do GitHub Actions localmente, permitindo que você execute testes e processos de integração contínua sem precisar fazer push para o repositório.
+> O act é uma ferramenta que emula os workflows do GitHub Actions localmente, permitindo que você execute testes e processors de integração contínua sem precisar fazer push para o repositório.
 
-A configuração completa do CI pode ser encontrada em [`.github/workflows/pipeline.yaml`](https://github.com/dunossauro/videomaker-helper/blob/main/.github/workflows/pipeline.yaml)
+A configuração completa do CI pode set encontrada em [`.github/workflows/pipeline.yaml`](https://github.com/dunossauro/videomaker-helper/blob/main/.github/workflows/pipeline.yaml)
