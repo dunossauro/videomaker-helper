@@ -6,10 +6,18 @@
 
 ### TLDR
 
-This project uses [poetry](https://python-poetry.org/) as the project manager.
+This project uses [poetry](https://python-poetry.org/) as the project manager and [pre-commit](https://pre-commit.com/) to assurance some stuffs.
+
+To install project:
 
 ```bash
 poetry install
+```
+
+to activate pre-commit:
+
+```bash
+poetry run pre-commit install
 ```
 
 If your contribution involves code, please refer to the [Style Guide](#style-guide). You can see all available commands in the environment [here](#taskrunner-taskipy).
@@ -207,10 +215,18 @@ The full CI configuration can be found in [`.github/workflows/pipeline.yaml`](ht
 
 ### TLDR
 
-O projeto usa o [poetry](https://python-poetry.org/) como gerenciador de projeto.
+O projeto usa o [poetry](https://python-poetry.org/) como gerenciador de projeto e [pre-commit](https://pre-commit.com/) para assegurar algumas coisas.
+
+Para instalar o poetry:
 
 ```bash
 poetry install
+```
+
+Para ativar o pre-commit:
+
+```bash
+poetry run pre-commit install
 ```
 
 Se sua contribuição envolver código, consulte o [Guia de estilo](#guia-de-estilo). Você pode ver todos os comandos disponíveis no ambiente [aqui](#taskrunner-taskipy).
@@ -385,6 +401,7 @@ Para enviar sua contribuição, não há um formato pré-definido para as mensag
 
 Todas as alterações visíveis para os usuários da aplicação devem ser documentadas no changelog. Isso ajuda a manter um histórico claro das mudanças feitas e garante que os usuários estejam cientes das atualizações.
 
+
 Após a alteração, caso ela seja **visível para quem usa aplicação** adicione uma entrada no changelog usando o `towncrier`:
 
 ```bash
@@ -400,5 +417,6 @@ act
 ```
 
 > O act é uma ferramenta que emula os workflows do GitHub Actions localmente, permitindo que você execute testes e processos de integração contínua sem precisar fazer push para o repositório.
+
 
 A configuração completa do CI pode ser encontrada em [`.github/workflows/pipeline.yaml`](https://github.com/dunossauro/videomaker-helper/blob/main/.github/workflows/pipeline.yaml)

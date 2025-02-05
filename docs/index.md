@@ -1,5 +1,7 @@
 # 📹 VideoMaker Helper
 
+> This project is at a very early stage of development, bugs and lack of documentation are expected at this stage.
+
 VideoMaker Helper is a collection of command-line utilities designed to simplify common tasks for video and audio content creators. These tools aim to automate specific aspects of the video-making process, reducing manual work and enhancing overall efficiency.
 
 ## 🥝 Core Features:

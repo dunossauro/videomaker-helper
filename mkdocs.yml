@@ -43,6 +43,7 @@ nav:
   - Tools:
     - cut-video.md
     - cut-silences.md
+    - equalize.md
     - extract-audio.md
     - kdenlive.md
     - threshold_and_distances.md

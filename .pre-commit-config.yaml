@@ -1,0 +1,45 @@
+repos:
+
+- repo: https://github.com/python-poetry/poetry
+  rev: '2.0.1'
+  hooks:
+    - id: poetry-check
+    - id: poetry-lock
+    - id: poetry-install
+
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.9.4
+  hooks:
+    - id: ruff
+      args: [ --fix ]
+    - id: ruff-format
+
+- repo: https://github.com/crate-ci/typos
+  rev: typos-dict-v0.12.4
+  hooks:
+   - id: typos
+     args:
+       - --force-exclude
+       - --exclude
+       - "*.md"
+
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v1.14.1
+  hooks:
+   - id: mypy
+
+- repo: local
+  hooks:
+   - id: pytest-check
+     name: pytest-check
+     entry: poetry run task test
+     language: system
+     pass_filenames: false
+     always_run: true
+
+- repo: https://github.com/twisted/towncrier
+  rev: 24.8.0
+  hooks:
+    - id: towncrier-update
+      files: $changelog\.d/
+      args: ['--keep']
