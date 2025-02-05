@@ -18,6 +18,10 @@ repos:
   rev: typos-dict-v0.12.4
   hooks:
    - id: typos
+     args:
+       - --force-exclude
+       - --exclude
+       - "*.md"
 
 - repo: https://github.com/pre-commit/mirrors-mypy
   rev: v1.14.1
