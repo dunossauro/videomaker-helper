@@ -82,32 +82,6 @@ def extract_audio(
 
 
 @app.command()
-def silences(
-    audio_file: path_arg,
-    silence_time: int = silence_option,
-    threshold: int = threshold_option,
-    distance: audio.Distance = distance_option,
-    force: bool = force_option,
-):
-    """Checks for silences in a audio file.
-
-    The checks are cached, so if the file has already been analyzed,
-    it will return the cache.
-    """  # noqa: W505
-    console.print(
-        list(
-            audio.detect_silences(
-                str(audio_file),
-                silence_time=silence_time,
-                threshold=threshold,
-                distance=distance.value,
-                force=force,
-            ),
-        ),
-    )
-
-
-@app.command()
 def cut_silences(
     audio_file: path_arg,
     output_file: path_arg,
