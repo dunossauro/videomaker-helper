@@ -150,7 +150,10 @@ def detect_silences(
 
     if not force:
         times = db.search(
-            (where('file_name') == audio_file) & (where('type') == 'silence')
+            (where('file_name') == audio_file)
+            & (where('type') == 'silence')
+            & (where('silence_time') == silence_time)
+            & (where('threshold') == threshold)
         )
 
     if not times or force:
@@ -175,6 +178,8 @@ def detect_silences(
                 'type': 'silence',
                 'file_name': str(audio_file),
                 'silences': silences,
+                'silence_time': silence_time,
+                'threshold': threshold,
             },
         )
 
