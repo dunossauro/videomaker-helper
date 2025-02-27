@@ -51,6 +51,16 @@ def process_audio(
     output_file: str = 'output.wav',
     board: Pedalboard = _get_board(),
 ) -> Path:
+    """Process Audio.
+
+    Args:
+        input_file: Input file name
+        output_file: Output file name
+        board: Effect board
+
+    Return:
+        Processed audio file path.
+    """
     with AudioFile(input_file, 'r') as ifile:
         audio = ifile.read(ifile.frames)
 

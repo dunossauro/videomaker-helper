@@ -48,5 +48,14 @@ nav:
     - kdenlive.md
     - threshold_and_distances.md
   - For Developers:
+    - API:
+      - api/audio.md
+      - api/cache.md
+      - api/equalize.md
+      - api/kdenlive.md
+      - api/plot.md
+      - api/settings.md
+      - api/video.md
+
     - contributing.md
     - CHANGELOG.md

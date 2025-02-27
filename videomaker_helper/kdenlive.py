@@ -20,6 +20,16 @@ def check_chain(
     input_file: Path,
     property: int | None = None,
 ) -> tuple[str, ...]:
+    """Checks for the existence of a `chain` in the Kdenlive project.
+
+    Args:
+        filename: Path for the file to search
+        input_file: Path for the Kdenlive xml project file
+        property: An optional value that refines the search
+
+    Returns:
+        Chain identifier, the ID and the playlist ID
+    """
     if filename.parent == input_file.parent:
         search_name = str(filename.name)
     else:
@@ -71,6 +81,20 @@ def kdenlive_xml(
     *,
     overwrite: bool = False,
 ) -> str:
+    """Update a playlist with new cut segments.
+
+    Args:
+        path: Path to the input Kdenlive project file
+        playlist_id: The ID of the playlist
+        property_id: The ID associetaded with the property
+        chain_id: The ID of chain
+        cuts: A list of cut timestamps
+        output_path: The path to save the modified file
+        overwrite: If True, the input file is overwritten
+
+    Returns:
+        The path to the modified Kdenlive file
+    """
     tree = ElementTree.parse(path)
     root = tree.getroot()
 
@@ -119,6 +143,21 @@ def cut(
         'huge',
     ] = 'tiny',
 ) -> Path:
+    """Updates a Kdenlive project cutting silences from audio or video file.
+
+    Args:
+        audio_file: The path to the audio file
+        video_file: The path to the video file
+        input_file: The path to the Kdenlive file
+        output_path: The path were project will be saved
+        silence_time: The minimum length for any silent section
+        threshold: The upper bound for how quiet is silent
+        distance: Threshold distance
+        force: If True, ignore cache
+
+    Returns:
+        Path to the modified Kdenlive project
+    """
     if audio_file != Path(getcwd()):  # Typer don't support Path | None
         times = detect_silences(
             str(audio_file),

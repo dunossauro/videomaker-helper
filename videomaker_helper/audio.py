@@ -88,6 +88,18 @@ def cut_silences(
         'huge',
     ] = 'tiny',
 ) -> Path:
+    """Cut silences from audio file.
+
+    Args:
+        audio_file: Input audio file path
+        output_file: Output audio file path
+        silence_time: The minimum length for any silent section
+        threshold: The upper bound for how quiet is silent
+        distance: Threshold distance
+
+    Returns:
+        Path to audio with silences cut
+    """
     logger.info(f'Reading file: {audio_file}')
     audio = AudioSegment.from_file(audio_file)
     logger.info(f'File read: {audio_file}')
@@ -146,6 +158,18 @@ def detect_silences(
     *,
     force: bool = False,
 ) -> list[float]:
+    """Detect silence in a audio file.
+
+    Args:
+        audio_file: Input audio file path
+        silence_time: The minimum length for any silent section
+        threshold: The upper bound for how quiet is silent
+        distance: Threshold distance
+        force: If True, ignore cache
+
+    Returns:
+        Timestamp with silences
+    """
     times = None
 
     if not force:

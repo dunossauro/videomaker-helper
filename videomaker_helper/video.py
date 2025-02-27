@@ -55,6 +55,20 @@ def cut_video(
     preset: Preset = Preset.medium,
     force: bool = True,
 ):
+    """Cut a video file based on detected silences.
+
+    Args:
+        input_file: The path to the Kdenlive file
+        output_file: The path were project will be saved
+        silence_time: The minimum length for any silent section
+        threshold: The upper bound for how quiet is silent
+        distance: Threshold distance
+        bitrate: The bitrate for the output video
+        codec: The codec to use for encoding video
+        audio_file: An optional separated audio file to use
+        preset: The encoding preset to use for video comprenssion
+        force: If True, ignore cache
+    """
     logger.info(f'Detecting silences on {input_file}')
     if audio_file:
         silences = detect_silences(
