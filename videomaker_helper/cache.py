@@ -1,10 +1,11 @@
+from click import Abort, confirm
+from cyclopts import App
 from rich.console import Console
 from tinydb import TinyDB
-from typer import Abort, Typer, confirm
 
 from videomaker_helper import settings
 
-cache = Typer()
+cache = App(help='Cache tools.')
 console = Console()
 db = TinyDB(str(settings.cache_db_path))
 

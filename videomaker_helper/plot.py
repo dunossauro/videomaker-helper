@@ -1,13 +1,15 @@
+from typing import Annotated
+
 import matplotlib.pyplot as plt
+from cyclopts import App, Parameter
 from librosa import load
 from librosa.display import waveshow
-from typer import Option, Typer
 
-plot = Typer(no_args_is_help=True)
+plot = App(help='Audio debug tools.')
 
 
 @plot.command()
-def plot_wave(file: str, fig_name: str) -> None:
+def plot_wave(file: str, fig_name: str, /) -> None:
     """Plot a figure with audio wave."""
     y, sr = load(file, mono=False)
     waveshow(y, sr=sr)
@@ -20,7 +22,11 @@ def compare_waves(
     files: list[str],
     fig_name: str,
     fig_size: tuple[float, float] = (10, 12),
-    force_db: bool = Option(True, help='Force to use 1 to -1 dbs in plot'),
+    /,
+    *,
+    force_db: Annotated[
+        bool, Parameter(help='Force to use 1 to -1 dbs in plot')
+    ] = True,
 ) -> None:
     """Plot a figure with N audio waves for comparison."""
     _, ax = plt.subplots(

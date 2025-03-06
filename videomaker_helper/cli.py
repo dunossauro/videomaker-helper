@@ -2,9 +2,9 @@ import warnings
 from pathlib import Path
 from typing import Annotated
 
+from cyclopts import App, Parameter
 from loguru import logger
 from rich.console import Console
-from typer import Argument, Context, Exit, Option, Typer
 
 from videomaker_helper import audio, cache, plot, video
 from videomaker_helper.equalize import process_audio
@@ -13,69 +13,58 @@ from videomaker_helper.settings import __version__
 
 warnings.filterwarnings('ignore')
 
-path_arg = Annotated[Path, Argument()]
+path_arg = Annotated[Path, Parameter(help='Path to the file')]
 console = Console()
 
-app = Typer(help='Videomaker Helper!', no_args_is_help=True)
-app.add_typer(cache.cache, name='cache', help='Cache tools.')
-app.add_typer(plot.plot, name='plot', help='Audio debug tools.')
+app = App(
+    version=__version__,
+    help='Videomaker Helper!',
+    version_flags=['--version', '-v'],
+)
+app.command(cache.cache, name='cache')
+app.command(plot.plot, name='plot')
 
 
 # Options
-silence_option = Option(
-    400,
-    '--silence-time',
-    '-s',
-    help='Minimal time in ms for configure a silence',
-)
-
-threshold_option = Option(
-    -65,
-    '--threshold',
-    '-t',
-    help='Value in db for detect silence',
-)
-
-distance_option = Option(
-    audio.Distance.tiny,
-    '--distance',
-    '-d',
-    help='Distance betweet silences',
-)
-
-force_option = Option(False, help='Ignore cache')
-
-
-def version(arg):
-    if arg:
-        print(__version__)
-        raise Exit(code=0)
-
-
-@app.callback(invoke_without_command=True)
-def callcaback(
-    ctx: Context,
-    version: bool = Option(
-        False,
-        '--version',
-        '-v',
-        callback=version,
-        is_eager=True,
-        is_flag=True,
-        case_sensitive=False,
-        help='Show VMH version',
+silence_option = Annotated[
+    int,
+    Parameter(
+        name=['--silence-time', '-s'],
+        help='Minimal time in ms for configure a silence',
     ),
-): ...
+]
+
+threshold_option = Annotated[
+    int,
+    Parameter(
+        name=['--threshold', '-t'],
+        help='Value in db for detect silence',
+    ),
+]
+
+distance_option = Annotated[
+    audio.Distance,
+    Parameter(
+        name=['--distance', '-d'],
+        help='Distance between silences',
+    ),
+]
+
+force_option = Annotated[bool, Parameter(help='Ignore cache')]
 
 
 @app.command()
 def extract_audio(
     video_file: path_arg,
-    output_file: Path = Argument(default='output.wav'),
-    eq: bool = Option(
-        False,
-        help='Add compression and 10db of extracted audio',
-    ),
+    output_file: Path = Path('output.wav'),
+    /,
+    *,
+    eq: Annotated[
+        bool,
+        Parameter(
+            help='Add compression and 10db of extracted audio',
+        ),
+    ] = False,
 ):
     """Extracts the audio from a video."""
     console.print(audio.extract_audio(str(video_file), str(output_file), eq))
@@ -85,9 +74,11 @@ def extract_audio(
 def cut_silences(
     audio_file: path_arg,
     output_file: path_arg,
-    silence_time: int = silence_option,
-    threshold: int = threshold_option,
-    distance: audio.Distance = distance_option,
+    /,
+    *,
+    silence_time: silence_option = 400,
+    threshold: threshold_option = -65,
+    distance: distance_option = audio.Distance.tiny,
 ):
     """Removes all silences from an audio file."""
     console.print(
@@ -103,7 +94,8 @@ def cut_silences(
 @app.command()
 def equalize(
     audio_file: path_arg,
-    output_file: Path = Argument(default='output.wav'),
+    output_file: Path = Path('output.wav'),
+    /,
 ):
     """Add effects for audio file."""
     process_audio(str(audio_file.resolve()), str(output_file))
@@ -115,15 +107,19 @@ def equalize(
 def kdenlive(
     input_xml: path_arg,
     video_file: path_arg,
-    output_path: Path = Argument(default='cuts.kdenlive'),
-    audio_file: Path = Argument(
-        default='',
-        help='Optional audio equilized audio file',
-    ),
-    silence_time: int = silence_option,
-    threshold: int = threshold_option,
-    distance: audio.Distance = distance_option,
-    force: bool = force_option,
+    output_path: Path = Path('cuts.kdenlive'),
+    audio_file: Annotated[
+        Path,
+        Parameter(
+            help='Optional audio equilized audio file',
+        ),
+    ] = Path(),
+    /,
+    *,
+    silence_time: Annotated[int, silence_option] = 400,
+    threshold: Annotated[int, threshold_option] = -65,
+    distance: distance_option = audio.Distance.tiny,
+    force: force_option = False,
 ):
     """Generates an XML compatible with kdenlive settings.
 
@@ -153,18 +149,26 @@ def kdenlive(
 @app.command()
 def cut_video(
     video_file: path_arg,
-    output_path: Path = Argument(default='result.mp4'),
-    audio_file: str = Argument(
-        default='',
-        help='Optional audio equilized audio file',
-    ),
-    silence_time: int = silence_option,
-    threshold: int = threshold_option,
-    distance: audio.Distance = distance_option,
-    codec: video.Codec = Option(video.Codec.mpeg4, '--codec', '-c'),
-    preset: video.Preset = Option(video.Preset.medium, '--preset', '-p'),
-    bitrare: str = Option('15M', '--bitrate', '-b'),
-    force: bool = force_option,
+    output_path: Path = Path('result.mp4'),
+    audio_file: Annotated[
+        str,
+        Parameter(
+            help='Optional audio equilized audio file',
+        ),
+    ] = '',
+    /,
+    *,
+    silence_time: silence_option = 400,
+    threshold: threshold_option = -65,
+    distance: distance_option = audio.Distance.tiny,
+    codec: Annotated[
+        video.Codec, Parameter(name=['--codec', '-c'])
+    ] = video.Codec.mpeg4,
+    preset: Annotated[
+        video.Preset, Parameter(name=['--preset', '-p'])
+    ] = video.Preset.medium,
+    bitrare: Annotated[str, Parameter(name=['--bitrate', '-b'])] = '15M',
+    force: force_option = False,
 ):
     """Edits a video using silences as reference."""
     video.cut_video(
